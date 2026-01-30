@@ -1,0 +1,7 @@
+{
+  "name": "RYD Nepal - Premium Gig Economy Rentals",
+  "description": "A comprehensive motorcycle rental platform for ride-sharing and delivery riders in urban Nepal, providing Hero Super Splendor 125cc motorcycles with included maintenance and support.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
