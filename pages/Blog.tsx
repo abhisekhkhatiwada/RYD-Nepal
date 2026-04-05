@@ -24,7 +24,7 @@ const DATA = {
   serviceIfOwned: 1500,     // avg per service if paying yourself
   insurancePerYear: 6000,
   loanInterest: 0.10,       // 10% p.a. average
-  loanDownPct: 0.20,
+  loanDownPct: 0.50,
   loanMonths: 36,
   sagoonKitValue: 3000,
   fuelCreditValue: 1500,
@@ -100,6 +100,60 @@ const Blog: React.FC = () => {
           { '@type': 'Thing', 'name': 'Motorcycle Rental' },
           { '@type': 'Thing', 'name': 'Gig Economy Nepal' },
           { '@type': 'Thing', 'name': 'Hero Super Splendor 125cc' },
+        ],
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'mainEntity': [
+          {
+            '@type': 'Question',
+            'name': 'How much does it cost to rent a Hero Splendor 125 in Kathmandu?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': `The RYD Nepal Pro Monthly plan costs Rs. ${DATA.dailyRent}/day (billed at Rs. ${DATA.weeklyRent}/week). There is no down payment, no credit check, and no hidden fees. Daily rent includes insurance support, free bi-weekly maintenance, and 24/7 breakdown support.`,
+            },
+          },
+          {
+            '@type': 'Question',
+            'name': 'How much can I earn as a Pathao/InDrive rider in Kathmandu?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': `Active Kathmandu riders average Rs. ${DATA.avgGrossDailyEarning} gross per day on Pathao, InDrive, Yango, and Tootle. After daily fuel (Rs. ${dailyFuel}) and RYD rent (Rs. ${DATA.dailyRent}), your daily net profit is Rs. ${dailyProfit}. Over 26 working days, that is Rs. ${monthlyProfit}/month in take-home income.`,
+            },
+          },
+          {
+            '@type': 'Question',
+            'name': 'What happens if the bike breaks down?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'RYD Nepal provides 24/7 breakdown support. Call any time and a replacement bike is dispatched within 30 minutes. All mechanical repairs are handled by RYD at zero cost to the rider.',
+            },
+          },
+          {
+            '@type': 'Question',
+            'name': `Do I own the bike after ${DATA.ownershipWeeks} weeks?`,
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': `Yes. After completing ${DATA.ownershipWeeks} weeks (18 months) of the Pro plan, full ownership of the Hero Super Splendor 125cc BS6 is transferred to you at no extra cost. The bluebook (vehicle registration) is transferred to your name.`,
+            },
+          },
+          {
+            '@type': 'Question',
+            'name': "What if I can't pay rent for a week?",
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'RYD Nepal offers flexible support for genuine hardship cases. There is no credit bureau involvement, no penalty fees, and no long-term financial damage — unlike a bank loan which charges penalties and reports defaults to the credit bureau.',
+            },
+          },
+          {
+            '@type': 'Question',
+            'name': 'How does RYD compare to a bank loan for buying a bike?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': `A bank loan requires Rs. ${loanDown} down payment (${Math.round(DATA.loanDownPct * 100)}%) upfront and Rs. ${emi}/month EMI for 36 months. RYD requires zero upfront cost — you pay Rs. ${DATA.dailyRent}/day only on days you ride and earn. No credit check, start same or next day, free maintenance included.`,
+            },
+          },
         ],
       },
     ],
@@ -197,14 +251,14 @@ const Blog: React.FC = () => {
               <>
                 <p>You want to earn money in Kathmandu. Pathao, InDrive, Yango, and Tootle are hiring riders every day. Riders are earning <strong>Rs. 40,000–80,000+ per month</strong>. But there's one problem:</p>
                 <p className="text-xl font-bold text-slate-900">You need a bike to earn money. You need money to buy a bike.</p>
-                <p>A brand new <strong>Hero Super Splendor 125cc BS6</strong> costs <strong>Rs. {fmt(DATA.bikePrice)}</strong> in Nepal. Most people don't have Rs. 2.67 lakh lying around. And getting a bank loan? You need proof of income, a credit history, and a <strong>down payment of at least Rs. {fmt(loanDown)}</strong> (20%).</p>
+                <p>A brand new <strong>Hero Super Splendor 125cc BS6</strong> costs <strong>Rs. {fmt(DATA.bikePrice)}</strong> in Nepal. Most people don't have Rs. 2.67 lakh lying around. And getting a bank loan? You need proof of income, a credit history, and a <strong>down payment of at least Rs. {fmt(loanDown)}</strong> ({Math.round(DATA.loanDownPct * 100)}%).</p>
                 <p>This is where <strong>RYD Nepal's Rs. 1,000/day rent-to-own model</strong> breaks the deadlock. Let's do the math — every single rupee of it.</p>
               </>
             ) : (
               <>
                 <p>तपाईं काठमाडौंमा पैसा कमाउन चाहनुहुन्छ। पाठाओ, इनड्राइभ, यांगो, र टुटलले हरेक दिन राइडरहरू खोजिरहेका छन्। राइडरहरूले <strong>महिनाको रु. ४०,०००–८०,०००+</strong> कमाइरहेका छन्। तर एउटा समस्या छ:</p>
                 <p className="text-xl font-bold text-slate-900">पैसा कमाउन बाइक चाहिन्छ। बाइक किन्न पैसा चाहिन्छ।</p>
-                <p>नयाँ <strong>हिरो सुपर स्प्लेन्डर 125cc BS6</strong> को मूल्य नेपालमा <strong>रु. {fmtNe(DATA.bikePrice)}</strong> छ। धेरैसँग रु. २.६७ लाख छैन। बैंक लोन? आम्दानीको प्रमाण, क्रेडिट हिस्ट्री, र <strong>कम्तीमा रु. {fmtNe(loanDown)}</strong> (२०%) डाउन पेमेन्ट चाहिन्छ।</p>
+                <p>नयाँ <strong>हिरो सुपर स्प्लेन्डर 125cc BS6</strong> को मूल्य नेपालमा <strong>रु. {fmtNe(DATA.bikePrice)}</strong> छ। धेरैसँग रु. २.६७ लाख छैन। बैंक लोन? आम्दानीको प्रमाण, क्रेडिट हिस्ट्री, र <strong>कम्तीमा रु. {fmtNe(loanDown)}</strong> ({fmtNe(Math.round(DATA.loanDownPct * 100))}%) डाउन पेमेन्ट चाहिन्छ।</p>
                 <p>यही ठाउँमा <strong>RYD Nepal को दिनको रु. १,००० भाडा-बाट-आफ्नो मोडल</strong>ले समस्या समाधान गर्छ। हिसाब गरौं — हरेक रुपैयाँको।</p>
               </>
             )}
@@ -496,7 +550,7 @@ const Blog: React.FC = () => {
               </thead>
               <tbody className="text-xs sm:text-sm">
                 {(en ? [
-                  ['Upfront Cost', 'Rs. 0', `Rs. ${fmt(loanDown)} (20%)`, `Rs. ${fmt(DATA.bikePrice)}`],
+                  ['Upfront Cost', 'Rs. 0', `Rs. ${fmt(loanDown)} (${Math.round(DATA.loanDownPct * 100)}%)`, `Rs. ${fmt(DATA.bikePrice)}`],
                   ['Credit Check', 'None needed', 'Required', 'N/A'],
                   ['Monthly Cost', `Rs. ${fmt(DATA.weeklyRent * 4.33)}`, `Rs. ${fmt(buyMonthlyCost)}`, `Rs. ${fmt(DATA.serviceIfOwned * 2 + Math.round(DATA.insurancePerYear / 12))}`],
                   ['Maintenance', 'FREE (every 2 wks)', 'You pay Rs. 1,500/service', 'You pay Rs. 1,500/service'],
@@ -508,7 +562,7 @@ const Blog: React.FC = () => {
                   ['Own the Bike?', 'YES ✓ (after 18 months)', 'After 36 months EMI', 'YES ✓ (day 1)'],
                   ['Total + Maintenance + Insurance', `Rs. ${fmt(totalRentPaid)}`, `Rs. ${fmt(emi * 18 + loanDown + DATA.serviceIfOwned * 2 * 18 + Math.round(DATA.insurancePerYear * 1.5))}*`, `Rs. ${fmt(DATA.bikePrice + DATA.serviceIfOwned * 2 * 18 + Math.round(DATA.insurancePerYear * 1.5))}`],
                 ] : [
-                  ['अग्रिम लागत', 'रु. ०', `रु. ${fmtNe(loanDown)} (२०%)`, `रु. ${fmtNe(DATA.bikePrice)}`],
+                  ['अग्रिम लागत', 'रु. ०', `रु. ${fmtNe(loanDown)} (${fmtNe(Math.round(DATA.loanDownPct * 100))}%)`, `रु. ${fmtNe(DATA.bikePrice)}`],
                   ['क्रेडिट चेक', 'आवश्यक छैन', 'आवश्यक', 'लागू हुँदैन'],
                   ['मासिक लागत', `रु. ${fmtNe(Math.round(DATA.weeklyRent * 4.33))}`, `रु. ${fmtNe(buyMonthlyCost)}`, `रु. ${fmtNe(DATA.serviceIfOwned * 2 + Math.round(DATA.insurancePerYear / 12))}`],
                   ['मर्मत सम्भार', 'निःशुल्क (हरेक २ हप्ता)', 'तपाईं तिर्नुहुन्छ रु. १,५००/सर्भिस', 'तपाईं तिर्नुहुन्छ रु. १,५००/सर्भिस'],
@@ -531,8 +585,8 @@ const Blog: React.FC = () => {
           </div>
           <p className="text-xs text-slate-400 italic mb-4">
             {en
-              ? `*Bank loan calculation: Rs. ${fmt(DATA.bikePrice)} bike, 20% down payment, 10% annual interest, 36-month EMI of Rs. ${fmt(emi)}/month. Still owe Rs. ${fmt(loanPrincipal - Math.round((emi * 18) - (loanPrincipal * DATA.loanInterest * 1.5 / 2)))} after 18 months.`
-              : `*बैंक लोन हिसाब: रु. ${fmtNe(DATA.bikePrice)} बाइक, २०% डाउन पेमेन्ट, १०% वार्षिक ब्याज, ३६ महिना EMI रु. ${fmtNe(emi)}/महिना।`
+              ? `*Bank loan calculation: Rs. ${fmt(DATA.bikePrice)} bike, ${Math.round(DATA.loanDownPct * 100)}% down payment, 10% annual interest, 36-month EMI of Rs. ${fmt(emi)}/month. Still owe Rs. ${fmt(loanPrincipal - Math.round((emi * 18) - (loanPrincipal * DATA.loanInterest * 1.5 / 2)))} after 18 months.`
+              : `*बैंक लोन हिसाब: रु. ${fmtNe(DATA.bikePrice)} बाइक, ${fmtNe(Math.round(DATA.loanDownPct * 100))}% डाउन पेमेन्ट, १०% वार्षिक ब्याज, ३६ महिना EMI रु. ${fmtNe(emi)}/महिना।`
             }
           </p>
         </section>
@@ -818,6 +872,180 @@ const Blog: React.FC = () => {
                 </>
               )}
             </div>
+          </div>
+        </section>
+
+        {/* ── FAQ Section ── */}
+        <section className="mb-16">
+          <div className="flex items-center space-x-3 mb-8">
+            <div className="bg-primary-100 p-2 rounded-xl"><Calculator className="w-5 h-5 text-primary" /></div>
+            <h2 className="text-2xl md:text-3xl font-black text-slate-900">
+              {en ? 'Frequently Asked Questions' : 'बारम्बार सोधिने प्रश्नहरू'}
+            </h2>
+          </div>
+
+          <div className="space-y-3">
+            {/* FAQ 1 */}
+            <details className="group bg-white rounded-2xl border border-slate-200 overflow-hidden">
+              <summary className="flex items-center justify-between p-5 cursor-pointer list-none font-bold text-slate-900 hover:bg-slate-50 transition-colors">
+                <span>{en ? 'How much does it cost to rent a Hero Splendor 125 in Kathmandu?' : 'काठमाडौंमा हिरो स्प्लेन्डर 125 भाडामा लिन कति खर्च लाग्छ?'}</span>
+                <ChevronRight className="w-5 h-5 text-slate-400 group-open:rotate-90 transition-transform flex-shrink-0 ml-3" />
+              </summary>
+              <div className="px-5 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-4">
+                {en ? (
+                  <p>
+                    The RYD Nepal Pro Monthly plan costs <strong>Rs. {fmt(DATA.dailyRent)}/day</strong> (billed at Rs. {fmt(DATA.weeklyRent)}/week). There is <strong>no down payment</strong>, no credit check, and no hidden fees. Your daily rent covers insurance support, free bi-weekly maintenance at our Kapan workshop, and 24/7 breakdown support — all included.
+                  </p>
+                ) : (
+                  <p>
+                    RYD Nepal प्रो मासिक योजनाको मूल्य <strong>रु. {fmtNe(DATA.dailyRent)}/दिन</strong> (रु. {fmtNe(DATA.weeklyRent)}/हप्ताको दरले बिल हुन्छ)। <strong>कुनै डाउन पेमेन्ट छैन</strong>, क्रेडिट चेक छैन, र लुकेको शुल्क छैन। दैनिक भाडामा बीमा सहायता, कपन कार्यशालामा निःशुल्क द्वि-साप्ताहिक मर्मत, र २४/७ ब्रेकडाउन सपोर्ट सबै समावेश छ।
+                  </p>
+                )}
+              </div>
+            </details>
+
+            {/* FAQ 2 */}
+            <details className="group bg-white rounded-2xl border border-slate-200 overflow-hidden">
+              <summary className="flex items-center justify-between p-5 cursor-pointer list-none font-bold text-slate-900 hover:bg-slate-50 transition-colors">
+                <span>{en ? 'How much can I earn as a Pathao/InDrive rider?' : 'पाठाओ/इनड्राइभ राइडरको रूपमा म कति कमाउन सक्छु?'}</span>
+                <ChevronRight className="w-5 h-5 text-slate-400 group-open:rotate-90 transition-transform flex-shrink-0 ml-3" />
+              </summary>
+              <div className="px-5 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-4">
+                {en ? (
+                  <p>
+                    Active Kathmandu riders average <strong>Rs. {fmt(DATA.avgGrossDailyEarning)} gross per day</strong> across Pathao, InDrive, Yango, and Tootle. After paying daily fuel (Rs. {fmt(dailyFuel)}) and your RYD rent (Rs. {fmt(DATA.dailyRent)}), your <strong>daily net profit is Rs. {fmt(dailyProfit)}</strong>. Over a {DATA.workingDaysPerMonth}-working-day month, that's <strong>Rs. {fmt(monthlyProfit)}/month</strong> in take-home income — from zero upfront investment.
+                  </p>
+                ) : (
+                  <p>
+                    सक्रिय काठमाडौं राइडरहरू पाठाओ, इनड्राइभ, यांगो, र टुटलमा <strong>दैनिक रु. {fmtNe(DATA.avgGrossDailyEarning)} कुल</strong> आम्दानी गर्छन्। दैनिक इन्धन (रु. {fmtNe(dailyFuel)}) र RYD भाडा (रु. {fmtNe(DATA.dailyRent)}) तिरेपछि, तपाईंको <strong>दैनिक खुद नाफा रु. {fmtNe(dailyProfit)}</strong> हुन्छ। {fmtNe(DATA.workingDaysPerMonth)} कार्यदिनको महिनामा, यो <strong>रु. {fmtNe(monthlyProfit)}/महिना</strong> हो — शून्य अग्रिम लगानी बिना।
+                  </p>
+                )}
+              </div>
+            </details>
+
+            {/* FAQ 3 */}
+            <details className="group bg-white rounded-2xl border border-slate-200 overflow-hidden">
+              <summary className="flex items-center justify-between p-5 cursor-pointer list-none font-bold text-slate-900 hover:bg-slate-50 transition-colors">
+                <span>{en ? 'What happens if the bike breaks down?' : 'बाइक बिग्रियो भने के हुन्छ?'}</span>
+                <ChevronRight className="w-5 h-5 text-slate-400 group-open:rotate-90 transition-transform flex-shrink-0 ml-3" />
+              </summary>
+              <div className="px-5 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-4">
+                {en ? (
+                  <p>
+                    RYD Nepal provides <strong>24/7 breakdown support</strong>. Call our team any time — day or night — and a <strong>replacement bike is dispatched within 30 minutes</strong>. All repairs, major or minor, are handled by RYD at zero cost to you. A breakdown never kills a full day of earnings. Compare this to owning your own bike: a major repair can cost Rs. 8,000–15,000 and leave you off the road for days with zero income.
+                  </p>
+                ) : (
+                  <p>
+                    RYD Nepal ले <strong>२४/७ ब्रेकडाउन सपोर्ट</strong> प्रदान गर्छ। दिन वा रात जुनसुकै बेला हाम्रो टोलीलाई फोन गर्नुहोस् — <strong>३० मिनेटभित्र प्रतिस्थापन बाइक पठाइनेछ</strong>। साना वा ठूला सबै मर्मत RYD ले तपाईंलाई शून्य लागतमा सम्हाल्छ। ब्रेकडाउनले कहिल्यै पूरा दिनको आम्दानी खत्म गर्दैन। आफ्नै बाइकमा तुलना गर्दा ठूलो मर्मतमा रु. ८,०००–१५,००० लाग्न सक्छ र दिनौं आम्दानी ठप्प हुन्छ।
+                  </p>
+                )}
+              </div>
+            </details>
+
+            {/* FAQ 4 */}
+            <details className="group bg-white rounded-2xl border border-slate-200 overflow-hidden">
+              <summary className="flex items-center justify-between p-5 cursor-pointer list-none font-bold text-slate-900 hover:bg-slate-50 transition-colors">
+                <span>{en ? 'Do I own the bike after 18 months?' : '१८ महिनापछि बाइक मेरो हुन्छ?'}</span>
+                <ChevronRight className="w-5 h-5 text-slate-400 group-open:rotate-90 transition-transform flex-shrink-0 ml-3" />
+              </summary>
+              <div className="px-5 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-4">
+                {en ? (
+                  <p>
+                    Yes. After completing <strong>{DATA.ownershipWeeks} weeks (18 months)</strong> of the Pro plan, <strong>full ownership of the Hero Super Splendor 125cc BS6 is transferred to you</strong> — no extra payment required. The bike's bluebook (vehicle registration) is transferred to your name. You walk away owning an asset worth Rs. {fmt(DATA.bikePrice)} that you've already been earning from for a year and a half.
+                  </p>
+                ) : (
+                  <p>
+                    हो। प्रो योजनाको <strong>{fmtNe(DATA.ownershipWeeks)} हप्ता (१८ महिना)</strong> पूरा गरेपछि, <strong>हिरो सुपर स्प्लेन्डर 125cc BS6 को पूर्ण स्वामित्व तपाईंलाई हस्तान्तरण गरिन्छ</strong> — कुनै अतिरिक्त भुक्तानी चाहिँदैन। बाइकको ब्लुबुक (सवारी दर्ता) तपाईंको नाममा सर्छ। डेढ वर्षसम्म कमाइसकेको रु. {fmtNe(DATA.bikePrice)} मूल्यको सम्पत्ति लिएर जानुहुन्छ।
+                  </p>
+                )}
+              </div>
+            </details>
+
+            {/* FAQ 5 */}
+            <details className="group bg-white rounded-2xl border border-slate-200 overflow-hidden">
+              <summary className="flex items-center justify-between p-5 cursor-pointer list-none font-bold text-slate-900 hover:bg-slate-50 transition-colors">
+                <span>{en ? "What if I can't pay rent for a week?" : 'एक हप्ता भाडा तिर्न नसकें भने के हुन्छ?'}</span>
+                <ChevronRight className="w-5 h-5 text-slate-400 group-open:rotate-90 transition-transform flex-shrink-0 ml-3" />
+              </summary>
+              <div className="px-5 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-4">
+                {en ? (
+                  <p>
+                    Life happens — illness, festivals, family emergencies. RYD Nepal offers <strong>flexible support for genuine hardship cases</strong>. Talk to our team directly and we'll work something out. Contrast this with a bank loan: miss one EMI and the bank immediately charges a penalty, reports the default to the credit bureau, and damages your credit score for years. With RYD there's no credit bureau involvement, no penalty fees, and no long-term financial damage.
+                  </p>
+                ) : (
+                  <p>
+                    जीवनमा कुराहरू हुन्छन् — बिमारी, चाडपर्व, पारिवारिक आपत्काल। RYD Nepal ले <strong>वास्तविक कठिनाइका केसहरूमा लचिलो सहयोग</strong> प्रदान गर्छ। हाम्रो टोलीसँग सिधै कुरा गर्नुहोस् र हामी समाधान निकाल्छौं। बैंक लोनसँग तुलना गर्नुहोस्: एउटा EMI छुटायो भने बैंकले तुरुन्त जरिवाना लगाउँछ, क्रेडिट ब्यूरोलाई रिपोर्ट गर्छ, र वर्षौंसम्म क्रेडिट स्कोर बिगार्छ। RYD मा क्रेडिट ब्यूरो संलग्नता छैन, जरिवाना शुल्क छैन, र दीर्घकालीन आर्थिक क्षति हुँदैन।
+                  </p>
+                )}
+              </div>
+            </details>
+
+            {/* FAQ 6 */}
+            <details className="group bg-white rounded-2xl border border-slate-200 overflow-hidden">
+              <summary className="flex items-center justify-between p-5 cursor-pointer list-none font-bold text-slate-900 hover:bg-slate-50 transition-colors">
+                <span>{en ? 'How does RYD compare to a bank loan?' : 'RYD र बैंक लोनको तुलना कसरी गर्ने?'}</span>
+                <ChevronRight className="w-5 h-5 text-slate-400 group-open:rotate-90 transition-transform flex-shrink-0 ml-3" />
+              </summary>
+              <div className="px-5 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-4">
+                {en ? (
+                  <>
+                    <p className="mb-3">
+                      A bank loan requires a <strong>Rs. {fmt(loanDown)} down payment ({Math.round(DATA.loanDownPct * 100)}%)</strong> upfront plus <strong>Rs. {fmt(emi)}/month EMI</strong> for 36 months, a credit check, and 2–4 weeks of processing. RYD requires <strong>zero upfront cost</strong> — you pay Rs. {fmt(DATA.dailyRent)}/day only on days you ride and earn.
+                    </p>
+                    <div className="grid grid-cols-2 gap-3 text-xs">
+                      <div className="bg-red-50 rounded-xl p-3">
+                        <p className="font-bold text-red-700 mb-1">Bank Loan</p>
+                        <ul className="space-y-1 text-slate-600">
+                          <li>• Rs. {fmt(loanDown)} down payment</li>
+                          <li>• Rs. {fmt(emi)}/month EMI (36 mo)</li>
+                          <li>• Credit check required</li>
+                          <li>• 2–4 week processing delay</li>
+                          <li>• You pay all maintenance</li>
+                        </ul>
+                      </div>
+                      <div className="bg-green-50 rounded-xl p-3">
+                        <p className="font-bold text-green-700 mb-1">RYD Nepal</p>
+                        <ul className="space-y-1 text-slate-600">
+                          <li>• Rs. 0 upfront</li>
+                          <li>• Rs. {fmt(DATA.dailyRent)}/day only</li>
+                          <li>• No credit check</li>
+                          <li>• Start same or next day</li>
+                          <li>• Free maintenance included</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <p className="mb-3">
+                      बैंक लोनमा <strong>रु. {fmtNe(loanDown)} डाउन पेमेन्ट ({fmtNe(Math.round(DATA.loanDownPct * 100))}%)</strong> अग्रिम चाहिन्छ, त्यसपछि ३६ महिनासम्म <strong>रु. {fmtNe(emi)}/महिना EMI</strong>, क्रेडिट चेक, र २–४ हप्ता प्रतीक्षा। RYD मा <strong>शून्य अग्रिम लागत</strong> — तपाईं राइड गर्ने र कमाउने दिनमात्र रु. {fmtNe(DATA.dailyRent)}/दिन तिर्नुहुन्छ।
+                    </p>
+                    <div className="grid grid-cols-2 gap-3 text-xs">
+                      <div className="bg-red-50 rounded-xl p-3">
+                        <p className="font-bold text-red-700 mb-1">बैंक लोन</p>
+                        <ul className="space-y-1 text-slate-600">
+                          <li>• रु. {fmtNe(loanDown)} डाउन पेमेन्ट</li>
+                          <li>• रु. {fmtNe(emi)}/महिना EMI (३६ महिना)</li>
+                          <li>• क्रेडिट चेक चाहिन्छ</li>
+                          <li>• २–४ हप्ता प्रोसेसिंग</li>
+                          <li>• तपाईं मर्मत तिर्नुहुन्छ</li>
+                        </ul>
+                      </div>
+                      <div className="bg-green-50 rounded-xl p-3">
+                        <p className="font-bold text-green-700 mb-1">RYD Nepal</p>
+                        <ul className="space-y-1 text-slate-600">
+                          <li>• रु. ० अग्रिम</li>
+                          <li>• रु. {fmtNe(DATA.dailyRent)}/दिन मात्र</li>
+                          <li>• क्रेडिट चेक छैन</li>
+                          <li>• उही/अर्को दिन सुरु</li>
+                          <li>• निःशुल्क मर्मत समावेश</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </>
+                )}
+              </div>
+            </details>
           </div>
         </section>
 
