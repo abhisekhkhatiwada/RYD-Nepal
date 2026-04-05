@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { ArrowLeft } from 'lucide-react';
 import { useSEO, breadcrumbJsonLd } from '../utils/seo';
 import {
   Calculator, TrendingUp, Fuel, Wrench, Shield, Clock, ChevronRight,
@@ -73,11 +74,12 @@ const Blog: React.FC = () => {
       ? `Detailed financial breakdown: Rent a Hero Super Splendor 125cc BS6 at Rs. 1,000/day, earn Rs. ${fmt(DATA.avgGrossDailyEarning)}/day on Pathao/InDrive/Yango, own the bike after 1.5 years. Fuel cost Rs. ${fmt(dailyFuel)}/day at Rs. ${fmt(DATA.petrolPerLitre)}/litre. Free maintenance every 2 weeks. Complete rider profit calculation for Kathmandu.`
       : `पूर्ण आर्थिक विश्लेषण: हिरो सुपर स्प्लेन्डर 125cc BS6 दिनको रु. १,००० मा भाडामा लिनुहोस्, पाठाओ/इनड्राइभ/यांगोमा दिनको रु. ${fmtNe(DATA.avgGrossDailyEarning)} कमाउनुहोस्, १.५ वर्षपछि बाइक आफ्नो। इन्धन खर्च रु. ${fmtNe(dailyFuel)}/दिन। हरेक २ हप्तामा निःशुल्क सर्भिसिङ।`,
     keywords: 'rent to own bike Nepal, bike rental profit calculator Kathmandu, Rs 1000 per day bike rent, Hero Splendor 125 rent Nepal, Pathao rider income Nepal, gig worker bike rental profit, rent vs buy bike Nepal, motorcycle rental ROI Kathmandu, बाइक भाडा नाफा काठमाडौं, rent to own motorcycle calculation, daily bike rental profit Nepal, RYD Nepal blog, bike rental financial breakdown',
-    path: '/blog',
+    path: '/blog/rent-to-own-hero-splendor-125',
     jsonLd: [
       breadcrumbJsonLd([
         { name: 'Home', url: 'https://rydnepal.com/' },
         { name: 'Blog', url: 'https://rydnepal.com/blog' },
+        { name: 'Rent-to-Own Hero Splendor 125', url: 'https://rydnepal.com/blog/rent-to-own-hero-splendor-125' },
       ]),
       {
         '@context': 'https://schema.org',
@@ -90,7 +92,7 @@ const Blog: React.FC = () => {
         'datePublished': '2026-04-05',
         'dateModified': '2026-04-05',
         'image': 'https://rydnepal.com/blog/hero-splendor-125-blue.jpg',
-        'mainEntityOfPage': 'https://rydnepal.com/blog',
+        'mainEntityOfPage': 'https://rydnepal.com/blog/rent-to-own-hero-splendor-125',
         'inLanguage': ['en', 'ne'],
         'keywords': 'rent to own bike Nepal, bike rental profit, Hero Splendor 125, Pathao rider income, gig economy Nepal',
         'articleBody': 'Detailed financial analysis comparing renting vs buying a motorcycle for gig work in Kathmandu...',
@@ -114,6 +116,10 @@ const Blog: React.FC = () => {
           <div className="absolute bottom-10 right-10 w-96 h-96 bg-primary-400 rounded-full blur-3xl"></div>
         </div>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <Link to="/blog" className="inline-flex items-center gap-1.5 text-slate-400 hover:text-white text-sm mb-6 transition-colors">
+            <ArrowLeft className="w-4 h-4" />
+            {en ? 'Back to Blog' : 'ब्लगमा फर्कनुहोस्'}
+          </Link>
           <div className="flex items-center space-x-2 text-primary-300 text-xs font-bold uppercase tracking-widest mb-4">
             <BarChart3 className="w-4 h-4" />
             <span>{en ? 'RYD Nepal Blog — Financial Analysis' : 'RYD Nepal ब्लग — आर्थिक विश्लेषण'}</span>

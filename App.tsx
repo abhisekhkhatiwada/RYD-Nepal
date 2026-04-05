@@ -8,7 +8,8 @@ import About from './pages/About';
 import Services from './pages/Services';
 import Support from './pages/Support';
 import Contact from './pages/Contact';
-import Blog from './pages/Blog';
+import BlogIndex from './pages/BlogIndex';
+import BlogPost from './pages/BlogPost';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -275,7 +276,8 @@ const App: React.FC = () => {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
-            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog" element={<BlogIndex />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/support" element={<Support />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
