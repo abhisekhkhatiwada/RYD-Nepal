@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /*.json$
+
+# Sitemap
+Sitemap: https://rydnepal.com/sitemap.xml
+
+# Crawl-delay for polite bots
+User-agent: Baiduspider
+Crawl-delay: 10
+
+User-agent: Yandex
+Crawl-delay: 5
