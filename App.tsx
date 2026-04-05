@@ -8,6 +8,7 @@ import About from './pages/About';
 import Services from './pages/Services';
 import Support from './pages/Support';
 import Contact from './pages/Contact';
+import Blog from './pages/Blog';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,6 +29,7 @@ const Navbar = () => {
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Plans', path: '/services' },
+    { name: 'Blog', path: '/blog' },
     { name: 'Support', path: '/support' },
     { name: 'Contact', path: '/contact' },
   ];
@@ -108,7 +110,7 @@ const Navbar = () => {
               to="/contact"
               className="block w-full mt-2 bg-primary text-white px-4 py-3 rounded-xl text-sm font-bold text-center hover:bg-primary-600 transition-colors"
             >
-              Rent Now — Rs. 800/day
+              Rent Now — Rs. 700/day
             </Link>
           </div>
         </div>
@@ -134,7 +136,7 @@ const Footer = () => {
               </div>
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed mb-6">
-              Nepal's #1 motorcycle rental for gig workers. Rent a Hero Super Splendor 125cc in Kathmandu from Rs. 800/day. Earn on Pathao, InDrive & Tootle. Own after 1.5 years. बाइक भाडामा काठमाडौं — अब तपाईंको कमाउने पालो।
+              Nepal's #1 motorcycle rental for gig workers. Rent a Hero Super Splendor 125cc in Kathmandu from Rs. 700/day. Earn on Pathao, InDrive, Yango & Tootle. Own after 1.5 years. बाइक भाडामा काठमाडौं — अब तपाईंको कमाउने पालो।
             </p>
             <div className="flex items-center space-x-3">
               <a
@@ -183,6 +185,7 @@ const Footer = () => {
               {[
                 { label: 'About Us', to: '/about' },
                 { label: 'Rental Plans', to: '/services' },
+                { label: 'Blog', to: '/blog' },
                 { label: 'Rider Support', to: '/support' },
                 { label: 'Contact', to: '/contact' },
               ].map((link) => (
@@ -199,9 +202,9 @@ const Footer = () => {
           <div className="md:col-span-2">
             <h4 className="text-sm font-bold text-white uppercase tracking-widest mb-5">Plans</h4>
             <ul className="space-y-3 text-sm text-slate-400">
-              <li>Daily Flex — Rs. 800/day</li>
-              <li>Standard Weekly — Rs. 5,600</li>
+              <li>Weekly — Rs. 5,600/week</li>
               <li>Pro Monthly — Rs. 7,000/wk</li>
+              <li>Prepayment — Rs. 21,000/month</li>
               <li className="text-primary font-medium">Own after 1.5 years</li>
             </ul>
           </div>
@@ -272,6 +275,7 @@ const App: React.FC = () => {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/blog" element={<Blog />} />
             <Route path="/support" element={<Support />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>

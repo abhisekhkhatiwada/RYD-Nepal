@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 
 const Services: React.FC = () => {
   useSEO({
-    title: 'Bike Rental Plans Kathmandu — Rs. 800/Day | RYD Nepal Motorcycle Rental Pricing',
-    description: 'Rent a Hero Super Splendor 125cc in Kathmandu: Daily Rs. 800/day, Weekly Rs. 5,600, Pro Monthly Rs. 7,000/week with rent-to-own after 1.5 years. Free maintenance, Sagoon kit, 24/7 support. Cheapest bike rental in Kathmandu for Pathao, InDrive & Tootle riders.',
+    title: 'Bike Rental Plans Kathmandu — From Rs. 700/Day | RYD Nepal Motorcycle Rental Pricing',
+    description: 'Rent a Hero Super Splendor 125cc in Kathmandu: Weekly Rs. 5,600/week, Pro Monthly Rs. 7,000/week, Prepayment Rs. 21,000/month (Rs. 700/day) with rent-to-own after 1.5 years. Free maintenance, Sagoon kit, 24/7 support. Cheapest bike rental in Kathmandu for Pathao, InDrive, Yango & Tootle riders.',
     keywords: 'bike rental plans Kathmandu, motorcycle rental price Nepal, cheapest bike rent Kathmandu, daily bike rental Kathmandu, weekly bike rental Nepal, monthly motorcycle rental Kathmandu, rent to own bike Nepal, rent to own motorcycle Kathmandu, Hero Splendor rent price, bike on rent Kathmandu price, affordable motorcycle rental Nepal, Pathao bike rental cost, gig worker bike rental, बाइक भाडा काठमाडौं मूल्य, मोटरसाइकल भाडा नेपाल',
     path: '/services',
     jsonLd: [
@@ -19,31 +19,17 @@ const Services: React.FC = () => {
 
   const plans = [
     {
-      id: 'daily',
-      name: 'Daily Flex',
-      price: 'Rs. 800',
-      period: 'per day',
-      desc: 'Ideal for riders who want to try bike rental in Kathmandu before committing long-term. Perfect for new Pathao or InDrive riders.',
-      features: [
-        'Hero Super Splendor 125cc',
-        'Helmet provided',
-        'Third-party insurance guidance',
-        'Full tank on pickup',
-        '24/7 emergency support'
-      ],
-      isPopular: false
-    },
-    {
       id: 'weekly',
-      name: 'Standard Weekly',
+      name: 'Weekly',
       price: 'Rs. 5,600',
       period: 'per week',
-      desc: 'The most popular plan for part-time gig workers in Kathmandu who want predictable weekly costs on Pathao, InDrive, or Tootle.',
+      desc: 'Flexible weekly plan for gig workers in Kathmandu. Pay week by week on Pathao, InDrive, Yango, or Tootle.',
       features: [
         'Hero Super Splendor 125cc',
         'Sagoon welcome kit (first time)',
         'Routine service included',
         '1 Helmet provided',
+        'Rs. 1,500 fuel coupon on pickup',
         'Third-party insurance guidance',
         '24/7 breakdown support'
       ],
@@ -54,17 +40,36 @@ const Services: React.FC = () => {
       name: 'Pro Monthly',
       price: 'Rs. 7,000',
       period: 'per week',
-      desc: 'Best value for full-time Pathao, InDrive, or Tootle riders — own the Hero Super Splendor after just 1.5 years of rental.',
+      desc: 'Best value for full-time Pathao, InDrive, Yango, or Tootle riders — own the Hero Super Splendor after just 1.5 years of rental.',
       features: [
         'Hero Super Splendor 125cc (brand new)',
         'Sagoon welcome kit included',
         'All servicing included',
         '1 Helmet provided',
+        'Rs. 1,500 fuel coupon on pickup',
         'Phone mount & charger',
         'Own the bike after 1.5 years',
         'Priority breakdown assistance'
       ],
       isPopular: true
+    },
+    {
+      id: 'prepayment',
+      name: 'Prepayment',
+      price: 'Rs. 21,000',
+      period: 'per month',
+      desc: 'Pay the full month upfront and save — only Rs. 700/day. The most affordable option for committed riders.',
+      features: [
+        'Hero Super Splendor 125cc',
+        'Sagoon welcome kit (first time)',
+        'Only Rs. 700/day (Rs. 100/day savings)',
+        'All servicing included',
+        '1 Helmet provided',
+        'Rs. 1,500 fuel coupon on pickup',
+        'Third-party insurance guidance',
+        '24/7 breakdown support'
+      ],
+      isPopular: false
     }
   ];
 
@@ -158,7 +163,7 @@ const Services: React.FC = () => {
               <div className="bg-green-50 border border-green-100 rounded-2xl p-6">
                 <h3 className="font-bold text-green-700 mb-3">Renting from RYD Nepal</h3>
                 <ul className="space-y-2 text-sm text-slate-600">
-                  <li>Rs. 800/day — no upfront cost</li>
+                  <li>From Rs. 700/day — no upfront cost</li>
                   <li>Zero maintenance cost — included free</li>
                   <li>Insurance guidance included</li>
                   <li>Free Sagoon kit worth Rs. 3,000+</li>
@@ -203,7 +208,7 @@ const Services: React.FC = () => {
               </div>
               <h3 className="text-xl font-bold mb-3">24/7 Roadside Support</h3>
               <p className="text-slate-500 text-sm leading-relaxed">
-                Breakdown anywhere in Kathmandu Valley? Call our hotline. We dispatch a technician or a replacement bike quickly so your earning hours on Pathao, InDrive, or Tootle aren't wasted.
+                Breakdown anywhere in Kathmandu Valley? Call our hotline. We dispatch a technician or a replacement bike quickly so your earning hours on Pathao, InDrive, Yango, or Tootle aren't wasted.
               </p>
             </div>
           </div>
@@ -224,7 +229,7 @@ const Services: React.FC = () => {
                 On the Pro Monthly plan, every week of rent builds toward full ownership. After 1.5 years of continuous rental, the Hero Super Splendor is legally transferred to you — with zero bank loans, no interest, and no credit score requirements. The smartest way to own a motorcycle in Kathmandu.
               </p>
               <ul className="space-y-3">
-                {['No bank loan or EMI required', 'No credit check needed', 'Legal transfer of vehicle ownership', 'Ride it, earn from it on Pathao/InDrive/Tootle, then own it'].map((pt, i) => (
+                {['No bank loan or EMI required', 'No credit check needed', 'Legal transfer of vehicle ownership', 'Ride it, earn from it on Pathao/InDrive/Yango/Tootle, then own it'].map((pt, i) => (
                   <li key={i} className="flex items-center space-x-3 text-slate-300 text-sm">
                     <Check className="w-4 h-4 text-primary flex-shrink-0" />
                     <span>{pt}</span>
@@ -249,7 +254,7 @@ const Services: React.FC = () => {
           <h2 className="text-2xl font-bold text-slate-900 mb-4">बाइक भाडा योजनाहरू — काठमाडौं</h2>
           <p className="text-slate-600 leading-relaxed mb-4">
             RYD Nepal ले काठमाडौंमा हिरो सुपर स्प्लेन्डर 125cc बाइक भाडामा दिन्छ।
-            <strong>दैनिक रु. ८००</strong>, <strong>साप्ताहिक रु. ५,६००</strong>, वा <strong>प्रो मासिक रु. ७,०००/हप्ता</strong> —
+            <strong>साप्ताहिक रु. ५,६००</strong>, <strong>प्रो मासिक रु. ७,०००/हप्ता</strong>, वा <strong>प्रिपेमेन्ट रु. २१,०००/महिना (रु. ७००/दिन)</strong> —
             १.५ वर्षपछि बाइक आफ्नै। सम्पूर्ण मर्मत, बीमा सहायता, र २४/७ सपोर्ट समावेश।
           </p>
           <Link to="/contact" className="inline-block bg-primary text-white px-8 py-3 rounded-xl font-bold hover:bg-primary-600 transition-all">

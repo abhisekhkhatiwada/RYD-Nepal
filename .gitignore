@@ -23,3 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 .env
+
+# Downloaded binary assets — use external URLs instead
+public/blog/

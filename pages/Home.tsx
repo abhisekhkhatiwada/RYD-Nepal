@@ -6,8 +6,8 @@ import { ChevronRight, Shield, Clock, Settings, TrendingUp, Star, CheckCircle, B
 const Home: React.FC = () => {
   useSEO({
     title: 'RYD Nepal | Rent a Bike in Kathmandu — Earn Rs. 40,000–60,000/Month on Pathao & InDrive',
-    description: 'Rent a Hero Super Splendor 125cc motorcycle in Kathmandu from Rs. 800/day. Earn Rs. 40,000–60,000/month on Pathao, InDrive & Tootle. No loan, no down payment, own the bike after 1.5 years. बाइक भाडामा काठमाडौं — RYD Nepal.',
-    keywords: 'bike rent Kathmandu, motorcycle rental Nepal, rent bike Kathmandu, earn money Kathmandu, earn in Nepal, gig work Nepal, Pathao rider Nepal, InDrive bike Nepal, Tootle Nepal, Hero Splendor rent, cheapest bike rental Kathmandu, rent to own bike Nepal, how to earn money in Kathmandu, daily bike rental Nepal, food delivery bike rent Nepal, बाइक भाडामा काठमाडौं, काठमाडौंमा कमाउनुहोस्, RYD Nepal',
+    description: 'Rent a Hero Super Splendor 125cc motorcycle in Kathmandu from Rs. 700/day. Earn Rs. 40,000–60,000/month on Pathao, InDrive, Yango & Tootle. No loan, no down payment, own the bike after 1.5 years. बाइक भाडामा काठमाडौं — RYD Nepal.',
+    keywords: 'bike rent Kathmandu, motorcycle rental Nepal, rent bike Kathmandu, earn money Kathmandu, earn in Nepal, gig work Nepal, Pathao rider Nepal, InDrive bike Nepal, Tootle Nepal, Yango Nepal, Hero Splendor rent, cheapest bike rental Kathmandu, rent to own bike Nepal, how to earn money in Kathmandu, daily bike rental Nepal, food delivery bike rent Nepal, बाइक भाडामा काठमाडौं, काठमाडौंमा कमाउनुहोस्, RYD Nepal',
     path: '/',
     jsonLd: breadcrumbJsonLd([
       { name: 'Home', url: 'https://rydnepal.com/' },
@@ -33,7 +33,7 @@ const Home: React.FC = () => {
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-700">Kathmandu & Earn.</span>
               </h1>
               <p className="text-lg sm:text-xl text-slate-600 mb-8 max-w-xl leading-relaxed">
-                Rent a <strong>Hero Super Splendor 125cc</strong> from just <strong>Rs. 800/day</strong> and start earning on <strong>Pathao, InDrive, or Tootle</strong> — no purchase, no loan, no down payment needed.
+                Rent a <strong>Hero Super Splendor 125cc</strong> from just <strong>Rs. 700/day</strong> and start earning on <strong>Pathao, InDrive, Yango, or Tootle</strong> — no purchase, no loan, no down payment needed.
               </p>
               <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
                 <Link to="/services" className="bg-primary text-white px-8 py-4 rounded-2xl font-bold hover:bg-primary-600 transition-all shadow-xl shadow-primary-200 flex items-center justify-center">
@@ -79,7 +79,7 @@ const Home: React.FC = () => {
                   </div>
                   <div>
                     <p className="text-xs text-slate-500 font-bold uppercase">Bike Rent From</p>
-                    <p className="text-lg lg:text-2xl font-black text-slate-900">Rs. 800<span className="text-sm font-semibold text-slate-400">/day</span></p>
+                    <p className="text-lg lg:text-2xl font-black text-slate-900">Rs. 700<span className="text-sm font-semibold text-slate-400">/day</span></p>
                   </div>
                 </div>
               </div>
@@ -144,8 +144,8 @@ const Home: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               { icon: Users, title: "1. Register & Apply", desc: "Submit your driving license and citizenship copy at our Kapan office (Dhalane Pul) in Kathmandu or apply online. Takes less than 30 minutes." },
-              { icon: Shield, title: "2. Verify & Get Your Bike", desc: "Our team verifies your documents and prepares your well-maintained Hero Super Splendor 125cc motorcycle with a full tank." },
-              { icon: Bike, title: "3. Start Earning Today", desc: "Pick up your keys, collect your free Sagoon welcome kit, and start earning on Pathao, InDrive, or Tootle the same day." }
+              { icon: Shield, title: "2. Verify & Get Your Bike", desc: "Our team verifies your documents and prepares your well-maintained Hero Super Splendor 125cc motorcycle with a Rs. 1,500 fuel coupon." },
+              { icon: Bike, title: "3. Start Earning Today", desc: "Pick up your keys, collect your free Sagoon welcome kit, and start earning on Pathao, InDrive, Yango, or Tootle the same day." }
             ].map((step, i) => (
               <div key={i} className="bg-white p-8 rounded-[32px] shadow-sm border border-slate-100 relative group hover:shadow-xl transition-all duration-300">
                 <div className="bg-primary w-12 h-12 rounded-2xl flex items-center justify-center mb-6 text-white shadow-lg shadow-primary-100">
@@ -200,7 +200,7 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">Rider Success Stories from Kathmandu</h2>
-            <p className="text-slate-500 max-w-2xl mx-auto">Real reviews from riders earning on Pathao, InDrive, and Tootle with RYD Nepal bikes.</p>
+            <p className="text-slate-500 max-w-2xl mx-auto">Real reviews from riders earning on Pathao, InDrive, Yango, and Tootle with RYD Nepal bikes.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
@@ -249,8 +249,8 @@ const Home: React.FC = () => {
               How to Earn Money in Kathmandu with a Rental Bike
             </h2>
             <p className="text-slate-500 max-w-2xl mx-auto">
-              Thousands of people earn a full-time income in Kathmandu using Pathao, InDrive, and Tootle every day.
-              The only thing stopping most people? They don't own a motorcycle. RYD Nepal removes that barrier with affordable <Link to="/services" className="text-primary font-semibold hover:underline">bike rental plans from Rs. 800/day</Link>.
+              Thousands of people earn a full-time income in Kathmandu using Pathao, InDrive, Yango, and Tootle every day.
+              The only thing stopping most people? They don't own a motorcycle. RYD Nepal removes that barrier with affordable <Link to="/services" className="text-primary font-semibold hover:underline">bike rental plans from Rs. 700/day</Link>.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -270,6 +270,14 @@ const Home: React.FC = () => {
                 earning: 'Rs. 35,000 – 55,000',
                 period: 'per month',
                 desc: 'Negotiate your own fares on InDrive. Popular with riders who want more control over their earnings in Kathmandu Valley. Works perfectly with RYD Nepal\'s Hero Splendor.',
+              },
+              {
+                platform: 'Yango',
+                color: 'bg-purple-50 border-purple-100',
+                badge: 'bg-purple-600',
+                earning: 'Rs. 35,000 – 55,000',
+                period: 'per month',
+                desc: 'A fast-growing global ride-hailing platform now in Kathmandu. Yango offers competitive fares and growing demand. Start earning with a RYD Nepal rental bike.',
               },
               {
                 platform: 'Tootle',
@@ -294,7 +302,7 @@ const Home: React.FC = () => {
           </div>
           <div className="mt-10 bg-slate-900 rounded-3xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
-              <p className="text-white font-bold text-base sm:text-lg mb-1">Your rent is Rs. 800/day. Your earning potential is Rs. 1,500–2,500/day.</p>
+              <p className="text-white font-bold text-base sm:text-lg mb-1">Your rent is Rs. 700/day. Your earning potential is Rs. 1,500–2,500/day.</p>
               <p className="text-slate-400 text-sm">After bike rent, most active RYD Nepal riders net Rs. 700–1,700 profit every single day in Kathmandu.</p>
             </div>
             <Link to="/services" className="bg-primary text-white px-8 py-4 rounded-xl font-bold hover:bg-primary-600 transition-all shadow-lg shadow-primary-900/30 whitespace-nowrap flex-shrink-0">
@@ -312,7 +320,7 @@ const Home: React.FC = () => {
               बाइक भाडामा काठमाडौं — काठमाडौंमा कमाउनुहोस्
             </h2>
             <p className="text-slate-600 leading-relaxed mb-6">
-              RYD Nepal बाट काठमाडौंमा <strong>हिरो सुपर स्प्लेन्डर 125cc</strong> बाइक भाडामा लिनुहोस् — रु. ८००/दिन बाट सुरु।
+              RYD Nepal बाट काठमाडौंमा <strong>हिरो सुपर स्प्लेन्डर 125cc</strong> बाइक भाडामा लिनुहोस् — रु. ७००/दिन बाट सुरु।
               पाठाओ, इनड्राइभ, र टुटलमा <strong>महिनाको रु. ४०,०००–६०,००० कमाउनुहोस्</strong>।
               लोन चाहिँदैन, डाउन पेमेन्ट चाहिँदैन। <strong>१.५ वर्षपछि बाइक तपाईंको आफ्नै</strong> हुन्छ।
             </p>
@@ -328,6 +336,42 @@ const Home: React.FC = () => {
               <Link to="/services" className="bg-white border border-slate-200 text-slate-700 px-8 py-4 rounded-xl font-bold hover:bg-slate-50 transition-all">
                 भाडा योजनाहरू हेर्नुहोस् (View Plans)
               </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Blog Teaser */}
+      <section className="py-16 bg-white" aria-label="RYD Nepal blog — rent to own bike financial analysis">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-gradient-to-br from-slate-900 to-primary-900 rounded-3xl overflow-hidden">
+            <div className="grid md:grid-cols-2 gap-0">
+              <div className="p-8 md:p-12 flex flex-col justify-center">
+                <span className="text-primary-300 text-xs font-bold uppercase tracking-widest mb-3">New Blog Post</span>
+                <h2 className="text-2xl md:text-3xl font-black text-white mb-4">
+                  Why Rs. 1,000/Day Rent-to-Own Makes Financial Sense
+                </h2>
+                <p className="text-slate-400 mb-6 text-sm leading-relaxed">
+                  Full financial breakdown with real data: Hero Splendor 125cc at Rs. 2,66,900, petrol at Rs. 202/litre, earnings from Pathao, InDrive & Yango. Every rupee accounted for — in English and नेपाली।
+                </p>
+                <Link to="/blog" className="inline-flex items-center bg-primary text-white px-6 py-3 rounded-xl font-bold hover:bg-primary-600 transition-all shadow-lg shadow-primary-900/30 w-fit">
+                  Read Full Analysis <ChevronRight className="ml-2 w-4 h-4" />
+                </Link>
+              </div>
+              <div className="hidden md:flex items-center justify-center p-8 bg-white/5">
+                <div className="text-center space-y-4">
+                  <div className="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                    <p className="text-slate-400 text-xs mb-1">Daily Net Profit</p>
+                    <p className="text-4xl font-black text-white">Rs. 633</p>
+                    <p className="text-primary-300 text-xs mt-1">after rent + fuel</p>
+                  </div>
+                  <div className="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                    <p className="text-slate-400 text-xs mb-1">Own the Bike In</p>
+                    <p className="text-4xl font-black text-white">1.5 <span className="text-lg">Years</span></p>
+                    <p className="text-primary-300 text-xs mt-1">zero down payment</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -391,7 +435,7 @@ const Home: React.FC = () => {
             <div className="relative z-10 grid md:grid-cols-2 gap-12 items-center">
               <div>
                 <h2 className="text-4xl md:text-5xl font-black text-white mb-6">Join 500+ Riders <br/> Earning in Kathmandu</h2>
-                <p className="text-slate-400 text-lg mb-8 max-w-md">Get your Hero Super Splendor 125cc keys today. No credit checks, no loan hassle — just Rs. 800/day and you're earning on Pathao, InDrive, or Tootle.</p>
+                <p className="text-slate-400 text-lg mb-8 max-w-md">Get your Hero Super Splendor 125cc keys today. No credit checks, no loan hassle — just Rs. 700/day and you're earning on Pathao, InDrive, Yango, or Tootle.</p>
                 <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
                   <Link to="/contact" className="bg-primary text-white px-10 py-5 rounded-2xl font-bold hover:bg-primary-600 transition-all shadow-xl shadow-primary-900/40">
                     Rent a Bike Now

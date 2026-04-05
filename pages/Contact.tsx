@@ -8,7 +8,7 @@ const Contact: React.FC = () => {
 
   useSEO({
     title: 'Apply Now — Rent a Bike in Kathmandu | RYD Nepal Contact, Office Location & Phone',
-    description: 'Apply for a Hero Super Splendor 125cc rental in Kathmandu. RYD Nepal office at Dhalane Pul, Kapan, Kathmandu (near Dhalane Bridge). Call +977-9709197877. Sunday–Friday 9AM–6PM. Start earning on Pathao, InDrive, Tootle today.',
+    description: 'Apply for a Hero Super Splendor 125cc rental in Kathmandu. RYD Nepal office at Dhalane Pul, Kapan, Kathmandu (near Dhalane Bridge). Call +977-9709197877. Sunday–Friday 9AM–6PM. Start earning on Pathao, InDrive, Yango, Tootle today.',
     keywords: 'RYD Nepal contact, RYD Nepal phone number, RYD Nepal office Kathmandu, bike rental application Kathmandu, apply for bike rental Nepal, rent bike Kapan, motorcycle rental Kapan Kathmandu, Dhalane Pul bike rental, how to apply Pathao rider, bike rental near me Kathmandu, RYD Nepal address, आरवाईडी नेपाल सम्पर्क, बाइक भाडा आवेदन काठमाडौं',
     path: '/contact',
     jsonLd: [
@@ -20,7 +20,7 @@ const Contact: React.FC = () => {
         '@context': 'https://schema.org',
         '@type': 'ContactPage',
         name: 'Contact RYD Nepal — Apply for Bike Rental in Kathmandu',
-        description: 'Apply for a motorcycle rental in Kathmandu or contact RYD Nepal for inquiries about bike rental plans, Pathao/InDrive/Tootle registration, and more.',
+        description: 'Apply for a motorcycle rental in Kathmandu or contact RYD Nepal for inquiries about bike rental plans, Pathao/InDrive/Yango/Tootle registration, and more.',
         url: 'https://rydnepal.com/contact',
         mainEntity: { '@id': 'https://rydnepal.com/#business' },
       },
@@ -42,7 +42,7 @@ const Contact: React.FC = () => {
           </div>
           <h2 className="text-3xl font-black text-slate-900 mb-4">Application Sent!</h2>
           <p className="text-slate-600 mb-8 leading-relaxed">
-            Thank you for applying to rent a bike in Kathmandu. Our team will contact you within 2-4 hours to discuss your Hero Super Splendor rental and help you get started on Pathao, InDrive, or Tootle.
+            Thank you for applying to rent a bike in Kathmandu. Our team will contact you within 2-4 hours to discuss your Hero Super Splendor rental and help you get started on Pathao, InDrive, Yango, or Tootle.
           </p>
           <button
             onClick={() => setSubmitted(false)}
@@ -65,7 +65,7 @@ const Contact: React.FC = () => {
               <span className="text-primary font-bold uppercase tracking-widest text-xs mb-4 block">Rent a Bike in Kathmandu</span>
               <h1 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 leading-tight">Apply for Bike <br/> Rental Today</h1>
               <p className="text-lg text-slate-600 mb-10 leading-relaxed max-w-lg">
-                Ready to start earning on Pathao, InDrive, or Tootle? Apply for a <strong>Hero Super Splendor 125cc</strong> rental at RYD Nepal. Questions about our <Link to="/services" className="text-primary font-semibold hover:underline">rental plans</Link>, the Sagoon welcome kit, or the application process? We're here to help.
+                Ready to start earning on Pathao, InDrive, Yango, or Tootle? Apply for a <strong>Hero Super Splendor 125cc</strong> rental at RYD Nepal. Questions about our <Link to="/services" className="text-primary font-semibold hover:underline">rental plans</Link>, the Sagoon welcome kit, or the application process? We're here to help.
               </p>
 
               <div className="space-y-8">
@@ -150,9 +150,9 @@ const Contact: React.FC = () => {
                 <div>
                   <label className="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Preferred Rental Plan</label>
                   <select className="w-full px-5 py-4 rounded-2xl bg-slate-50 border-none focus:ring-2 focus:ring-primary-100 outline-none transition-all appearance-none cursor-pointer text-slate-700">
-                    <option>Daily Flex (Rs. 800/day)</option>
-                    <option>Standard Weekly (Rs. 5,600/week)</option>
+                    <option>Weekly (Rs. 5,600/week)</option>
                     <option>Pro Monthly (Rs. 7,000/week — rent to own)</option>
+                    <option>Prepayment (Rs. 21,000/month — Rs. 700/day)</option>
                     <option>Enterprise / Bulk Bike Rental</option>
                   </select>
                 </div>
@@ -161,6 +161,7 @@ const Contact: React.FC = () => {
                   <select className="w-full px-5 py-4 rounded-2xl bg-slate-50 border-none focus:ring-2 focus:ring-primary-100 outline-none transition-all appearance-none cursor-pointer text-slate-700">
                     <option>Pathao</option>
                     <option>InDrive</option>
+                    <option>Yango</option>
                     <option>Tootle</option>
                     <option>Food Delivery (Foodmandu, etc.)</option>
                     <option>Other / Not Yet Registered</option>
