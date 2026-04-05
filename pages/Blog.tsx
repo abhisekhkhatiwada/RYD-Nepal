@@ -875,6 +875,103 @@ const Blog: React.FC = () => {
           </div>
         </section>
 
+        {/* ── Testimonials ── */}
+        <section className="mb-16">
+          <div className="flex items-center space-x-3 mb-8">
+            <div className="bg-yellow-100 p-2 rounded-xl"><TrendingUp className="w-5 h-5 text-yellow-600" /></div>
+            <h2 className="text-2xl md:text-3xl font-black text-slate-900">
+              {en ? 'Real Riders. Real Results.' : 'वास्तविक राइडरहरू। वास्तविक नतिजाहरू।'}
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-5">
+            {(en ? [
+              {
+                initial: 'R',
+                name: 'Ramesh K.',
+                location: 'Balaju, Kathmandu',
+                months: '8 months with RYD',
+                earnings: 'Rs. 45,000–55,000/month',
+                platforms: 'Pathao + InDrive',
+                color: 'bg-blue-600',
+                quote: '"I had zero savings. RYD gave me a bike the same day I applied. Now I earn more than my previous office job, and in 10 more months the bike will be mine."',
+              },
+              {
+                initial: 'S',
+                name: 'Suman T.',
+                location: 'Koteshwor, Kathmandu',
+                months: '14 months with RYD',
+                earnings: 'Rs. 50,000–65,000/month',
+                platforms: 'Pathao + Yango',
+                color: 'bg-emerald-600',
+                quote: '"In 4 more months the bike is mine. Best decision I ever made. No bank would give me a loan without proof of income."',
+              },
+              {
+                initial: 'B',
+                name: 'Bikash M.',
+                location: 'Chabahil, Kathmandu',
+                months: '6 months with RYD',
+                earnings: 'Rs. 38,000–48,000/month',
+                platforms: 'InDrive + Tootle',
+                color: 'bg-purple-600',
+                quote: '"Free maintenance every 2 weeks saves me so much money. When my bike had issues at 9 PM, RYD sent a replacement in 20 minutes."',
+              },
+            ] : [
+              {
+                initial: 'र',
+                name: 'रमेश के.',
+                location: 'बालाजु, काठमाडौं',
+                months: 'RYD सँग ८ महिना',
+                earnings: 'रु. ४५,०००–५५,०००/महिना',
+                platforms: 'पाठाओ + इनड्राइभ',
+                color: 'bg-blue-600',
+                quote: '"मसँग शून्य बचत थियो। RYD ले मैले आवेदन दिएकै दिन बाइक दियो। अब मैले अघिल्लो अफिस जबभन्दा बढी कमाउँछु, र १० महिनापछि बाइक मेरो हुन्छ।"',
+              },
+              {
+                initial: 'सु',
+                name: 'सुमन त.',
+                location: 'कोटेश्वर, काठमाडौं',
+                months: 'RYD सँग १४ महिना',
+                earnings: 'रु. ५०,०००–६५,०००/महिना',
+                platforms: 'पाठाओ + यांगो',
+                color: 'bg-emerald-600',
+                quote: '"४ महिनापछि बाइक मेरो हुन्छ। मैले गरेको सबैभन्दा राम्रो निर्णय। कुनै बैंकले आम्दानीको प्रमाण बिना लोन दिँदैनथ्यो।"',
+              },
+              {
+                initial: 'बि',
+                name: 'विकाश म.',
+                location: 'चाबहिल, काठमाडौं',
+                months: 'RYD सँग ६ महिना',
+                earnings: 'रु. ३८,०००–४८,०००/महिना',
+                platforms: 'इनड्राइभ + टुटल',
+                color: 'bg-purple-600',
+                quote: '"हरेक २ हप्तामा निःशुल्क मर्मतले मलाई धेरै पैसा बचाउँछ। राती ९ बजे बाइकमा समस्या आउँदा RYD ले २० मिनेटमा प्रतिस्थापन पठायो।"',
+              },
+            ]).map((t, i) => (
+              <div key={i} className="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow p-6 flex flex-col">
+                <p className="text-slate-700 text-sm leading-relaxed italic flex-1 mb-5">{t.quote}</p>
+                <div className="flex items-center gap-3">
+                  <div className={`w-10 h-10 rounded-full ${t.color} text-white font-black text-sm flex items-center justify-center flex-shrink-0`}>
+                    {t.initial}
+                  </div>
+                  <div className="min-w-0">
+                    <p className="font-bold text-slate-900 text-sm">{t.name}</p>
+                    <p className="text-xs text-slate-500 truncate">{t.location} · {t.months}</p>
+                    <p className="text-xs text-emerald-600 font-semibold">{t.earnings}</p>
+                    <p className="text-xs text-slate-400">{t.platforms}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-xs text-slate-400 italic mt-4 text-center">
+            {en
+              ? 'Names changed for privacy. Earnings based on self-reported data from active RYD Nepal riders.'
+              : 'गोपनीयताका लागि नामहरू परिवर्तन गरिएका छन्। आम्दानी सक्रिय RYD Nepal राइडरहरूको स्व-रिपोर्ट डाटामा आधारित।'}
+          </p>
+        </section>
+
         {/* ── FAQ Section ── */}
         <section className="mb-16">
           <div className="flex items-center space-x-3 mb-8">
