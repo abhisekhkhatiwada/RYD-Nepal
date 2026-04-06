@@ -30,7 +30,7 @@ const Services: React.FC = () => {
         'Routine service included',
         '1 Helmet provided',
         'Rs. 1,500 fuel coupon on pickup',
-        'Third-party insurance guidance',
+        'Full insurance guidance',
         '24/7 breakdown support'
       ],
       isPopular: false
@@ -66,7 +66,7 @@ const Services: React.FC = () => {
         'All servicing included',
         '1 Helmet provided',
         'Rs. 1,500 fuel coupon on pickup',
-        'Third-party insurance guidance',
+        'Full insurance guidance',
         '24/7 breakdown support'
       ],
       isPopular: false
@@ -199,7 +199,7 @@ const Services: React.FC = () => {
               </div>
               <h3 className="text-xl font-bold mb-3">Insurance Assistance</h3>
               <p className="text-slate-500 text-sm leading-relaxed">
-                Every rental bike comes with third-party insurance. We guide you through the claims process and keep your paperwork hassle-free so you stay earning.
+                Every rental bike comes with full insurance. We guide you through the claims process and keep your paperwork hassle-free so you stay earning.
               </p>
             </div>
             <div className="text-center p-6">

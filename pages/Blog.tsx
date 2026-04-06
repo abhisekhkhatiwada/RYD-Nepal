@@ -421,7 +421,7 @@ const Blog: React.FC = () => {
                 <div className="flex justify-between text-sm">
                   <div>
                     <span className="text-slate-700">{en ? 'Insurance' : 'बीमा'}</span>
-                    <p className="text-xs text-slate-500">{en ? 'Third-party insurance guidance included' : 'तेस्रो-पक्ष बीमा सहयोग समावेश'}</p>
+                    <p className="text-xs text-slate-500">{en ? 'Full insurance guidance included' : 'पूर्ण बीमा सहयोग समावेश'}</p>
                   </div>
                   <span className="font-bold text-green-600">{en ? 'Rs.' : 'रु.'} 0</span>
                 </div>
@@ -610,7 +610,7 @@ const Blog: React.FC = () => {
               {
                 icon: Shield, color: 'bg-green-100 text-green-600',
                 title: `Insurance Support = Rs. ${fmt(insuranceSaved)} Saved`,
-                desc: `Third-party insurance is Rs. ${fmt(DATA.insurancePerYear)}/year. Over 1.5 years that's Rs. ${fmt(insuranceSaved)} you don't pay separately. Plus, RYD handles claims paperwork — no running around insurance offices.`
+                desc: `Full insurance is Rs. ${fmt(DATA.insurancePerYear)}/year. Over 1.5 years that's Rs. ${fmt(insuranceSaved)} you don't pay separately. Plus, RYD handles claims paperwork — no running around insurance offices.`
               },
               {
                 icon: Gift, color: 'bg-purple-100 text-purple-600',
@@ -631,7 +631,7 @@ const Blog: React.FC = () => {
               {
                 icon: Shield, color: 'bg-green-100 text-green-600',
                 title: `बीमा सहायता = रु. ${fmtNe(insuranceSaved)} बचत`,
-                desc: `तेस्रो-पक्ष बीमा वार्षिक रु. ${fmtNe(DATA.insurancePerYear)}। १.५ वर्षमा रु. ${fmtNe(insuranceSaved)} बचत। थप, RYD ले दावी कागजात सम्हाल्छ।`
+                desc: `पूर्ण बीमा वार्षिक रु. ${fmtNe(DATA.insurancePerYear)}। १.५ वर्षमा रु. ${fmtNe(insuranceSaved)} बचत। थप, RYD ले दावी कागजात सम्हाल्छ।`
               },
               {
                 icon: Gift, color: 'bg-purple-100 text-purple-600',

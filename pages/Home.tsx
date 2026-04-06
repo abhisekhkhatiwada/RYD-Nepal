@@ -170,7 +170,7 @@ const Home: React.FC = () => {
               </p>
               <div className="space-y-6">
                 {[
-                  { icon: Shield, title: 'Insurance Support Included', desc: 'Third-party insurance included with every bike rental. We handle claims paperwork so you stay on the road earning.' },
+                  { icon: Shield, title: 'Insurance Support Included', desc: 'Full insurance included with every bike rental. We handle claims paperwork so you stay on the road earning.' },
                   { icon: Settings, title: 'Zero Maintenance Cost', desc: 'Full servicing every 1,500km at our Kapan workshop — oil changes, brake checks, tire inspections all included in your rental.' },
                   { icon: TrendingUp, title: 'Rent to Own — Own After 1.5 Years', desc: 'On the Pro plan, own your Hero Super Splendor after 1.5 years of rental payments. No bank EMI, no credit check needed.' },
                   { icon: Clock, title: '24/7 Breakdown Support in Kathmandu Valley', desc: 'Emergency assistance anywhere in Kathmandu Valley — replacement bike dispatched within 30 minutes.' }
