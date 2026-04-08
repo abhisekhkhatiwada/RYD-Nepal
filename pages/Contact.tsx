@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useSEO, breadcrumbJsonLd } from '../utils/seo';
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle, Instagram, Facebook } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -57,6 +58,11 @@ const Contact: React.FC = () => {
 
   return (
     <div className="animate-in fade-in duration-700">
+      <Helmet>
+        <title>Contact RYD Nepal — Apply to Rent a Bike in Kathmandu</title>
+        <meta name="description" content="Apply to rent a motorcycle in Kathmandu. Fill out our quick form or call +977-9709197877. Office at Dhalane Pul, Kapan, Kathmandu. Get started with Pathao, InDrive, Yango or Tootle today." />
+        <link rel="canonical" href="https://www.rydnepal.com/contact" />
+      </Helmet>
       <section className="py-12 sm:py-20 bg-slate-50 border-b border-slate-100" aria-label="Contact RYD Nepal for bike rental in Kathmandu">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">

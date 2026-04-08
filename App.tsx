@@ -265,9 +265,9 @@ const ScrollToTop = () => {
   return null;
 };
 
-const App: React.FC = () => {
+export const AppShell: React.FC = () => {
   return (
-    <Router>
+    <>
       <ScrollToTop />
       <div className="min-h-screen flex flex-col">
         <Navbar />
@@ -285,8 +285,14 @@ const App: React.FC = () => {
         <Footer />
         <WhatsAppButton />
       </div>
-    </Router>
+    </>
   );
 };
+
+const App: React.FC = () => (
+  <Router>
+    <AppShell />
+  </Router>
+);
 
 export default App;

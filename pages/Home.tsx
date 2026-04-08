@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { useSEO, breadcrumbJsonLd } from '../utils/seo';
 import { ChevronRight, Shield, Clock, Settings, TrendingUp, Star, CheckCircle, Bike, Users, Gift, Instagram, Facebook } from 'lucide-react';
@@ -16,6 +17,11 @@ const Home: React.FC = () => {
 
   return (
     <div className="animate-in fade-in duration-700">
+      <Helmet>
+        <title>RYD Nepal | Rent a Bike in Kathmandu — Earn Rs. 40k–60k/Month</title>
+        <meta name="description" content="Rent a Hero Super Splendor 125cc motorcycle in Kathmandu from Rs. 700/day. Earn Rs. 40,000–60,000/month on Pathao, InDrive, Yango & Tootle. No loan, no down payment, own the bike after 1.5 years." />
+        <link rel="canonical" href="https://www.rydnepal.com/" />
+      </Helmet>
       {/* Hero Section */}
       <section className="relative py-14 lg:py-32 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

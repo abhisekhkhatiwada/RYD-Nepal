@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useSEO, breadcrumbJsonLd } from '../utils/seo';
 import { Target, Eye, Heart, Globe, Shield, CheckCircle, Award, Wrench } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -27,6 +28,11 @@ const About: React.FC = () => {
 
   return (
     <div className="animate-in fade-in duration-700">
+      <Helmet>
+        <title>About RYD Nepal — Kathmandu's Largest Bike Rental Fleet</title>
+        <meta name="description" content="RYD Nepal Pvt. Ltd. empowers gig workers in Kathmandu with affordable Hero Super Splendor 125cc motorcycle rentals. 500+ active riders, dedicated Kapan workshop, rent-to-own program." />
+        <link rel="canonical" href="https://www.rydnepal.com/about" />
+      </Helmet>
       {/* Header */}
       <section className="py-20 bg-slate-50 border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { useSEO, breadcrumbJsonLd } from '../utils/seo';
@@ -163,6 +164,11 @@ const Blog: React.FC = () => {
 
   return (
     <div className="animate-in fade-in duration-700">
+      <Helmet>
+        <title>Why Rent-to-Own a Hero Splendor 125 Makes Sense | RYD Nepal Blog</title>
+        <meta name="description" content="A data-driven breakdown of why paying Rs. 1,000/day to rent-to-own a Hero Super Splendor 125cc is smarter than a bank loan in Kathmandu. Real numbers for Pathao and InDrive riders." />
+        <link rel="canonical" href="https://www.rydnepal.com/blog/rent-to-own-hero-splendor-125" />
+      </Helmet>
       {/* Header */}
       <section className="relative py-16 lg:py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-primary-900 text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10">

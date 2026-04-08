@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useSEO, breadcrumbJsonLd } from '../utils/seo';
 import { Phone, MessageSquare, AlertCircle, ChevronDown, ChevronUp, MapPin, Wrench } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -102,6 +103,11 @@ const Support: React.FC = () => {
 
   return (
     <div className="animate-in fade-in duration-700">
+      <Helmet>
+        <title>Rider Support &amp; FAQ — RYD Nepal</title>
+        <meta name="description" content="24/7 breakdown assistance, workshop at Kapan, and answers to all your questions about renting a bike with RYD Nepal. Get support via WhatsApp or call us anytime." />
+        <link rel="canonical" href="https://www.rydnepal.com/support" />
+      </Helmet>
       {/* Hero Header */}
       <section className="py-20 bg-slate-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

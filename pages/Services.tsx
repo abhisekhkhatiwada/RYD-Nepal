@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useSEO, breadcrumbJsonLd } from '../utils/seo';
 import { Check, Shield, Wrench, Clock, Zap, Gift, TrendingUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -75,6 +76,11 @@ const Services: React.FC = () => {
 
   return (
     <div className="animate-in fade-in duration-700">
+      <Helmet>
+        <title>Bike Rental Plans — Weekly, Monthly &amp; Rent-to-Own | RYD Nepal</title>
+        <meta name="description" content="Rent a Hero Super Splendor 125cc in Kathmandu: Weekly Rs. 5,600/week, Pro Monthly Rs. 7,000/week, Prepayment Rs. 21,000/month. Includes free maintenance, insurance, and rent-to-own after 1.5 years." />
+        <link rel="canonical" href="https://www.rydnepal.com/services" />
+      </Helmet>
       {/* Header */}
       <section className="py-20 bg-gradient-to-b from-primary to-primary-800 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
