@@ -32,8 +32,8 @@ const Support: React.FC = () => {
     path: '/support',
     jsonLd: [
       breadcrumbJsonLd([
-        { name: 'Home', url: 'https://rydnepal.com/' },
-        { name: 'Rider Support & FAQ', url: 'https://rydnepal.com/support' },
+        { name: 'Home', url: 'https://www.rydnepal.com/' },
+        { name: 'Rider Support & FAQ', url: 'https://www.rydnepal.com/support' },
       ]),
       {
         '@context': 'https://schema.org',
@@ -45,6 +45,23 @@ const Support: React.FC = () => {
           { '@type': 'HowToStep', position: 2, name: 'Book Your Slot', text: 'Message or WhatsApp RYD Nepal at +977-9709197877 at least 2 days in advance to confirm a service slot at Kapan workshop.' },
           { '@type': 'HowToStep', position: 3, name: 'Drop Off by 10 AM', text: 'Bring your bike to Kapan workshop (near Dhalane Bridge, Kathmandu) by 10 AM on the confirmed date.' },
           { '@type': 'HowToStep', position: 4, name: 'Pick Up by 4 PM', text: 'Collect your fully serviced bike the same day by 4 PM — oil change, brakes, tires all checked.' },
+        ],
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: [
+          { '@type': 'Question', name: 'How much does it cost to rent a bike in Kathmandu?', acceptedAnswer: { '@type': 'Answer', text: 'RYD Nepal offers the cheapest bike rental in Kathmandu: Weekly at Rs. 5,600/week, Pro Monthly at Rs. 7,000/week (with rent-to-own after 1.5 years), and Prepayment at Rs. 21,000/month (just Rs. 700/day if paid in full upfront). All plans include a Hero Super Splendor 125cc, maintenance, and 24/7 support.' } },
+          { '@type': 'Question', name: 'What documents do I need to rent a Hero Super Splendor in Kathmandu?', acceptedAnswer: { '@type': 'Answer', text: 'You need a valid Nepali Motorcycle Riding License, a copy of your Citizenship card (नागरिकता), and a recent passport-sized photograph. A local reference is also required. Bring these to our Kapan office (Dhalane Pul) in Kathmandu or submit copies when applying online.' } },
+          { '@type': 'Question', name: 'Is there a security deposit for bike rental?', acceptedAnswer: { '@type': 'Answer', text: 'Yes, we require a refundable security deposit of Rs. 8,500 for the Weekly and Prepayment plans, and Rs. 10,500 for the Pro Monthly plan. It covers minor damages or missing accessories and is returned when you end the rental in good standing.' } },
+          { '@type': 'Question', name: 'What is the Sagoon welcome kit for new riders?', acceptedAnswer: { '@type': 'Answer', text: 'A free starter package worth Rs. 3,000+ given to every new RYD Nepal rider. It includes a helmet, phone holder, raincoat, and Rs. 1,500 worth of fuel credit. Provided once per rider, at onboarding.' } },
+          { '@type': 'Question', name: 'Who pays for fuel when renting a bike?', acceptedAnswer: { '@type': 'Answer', text: 'The rider pays fuel costs. The Hero Splendor 125cc offers 60-70 km/l mileage, which is highly fuel-efficient for gig work in Kathmandu. New riders get Rs. 1,500 fuel credit in their Sagoon kit on pickup.' } },
+          { '@type': 'Question', name: 'What happens if my rental bike breaks down in Kathmandu?', acceptedAnswer: { '@type': 'Answer', text: 'Call our 24/7 hotline at +977-9709197877. Within Kathmandu Valley we dispatch a technician or a replacement bike. Most breakdowns and flat tires are resolved within 30 minutes to 1 hour at no cost to RYD riders.' } },
+          { '@type': 'Question', name: 'How does the rent-to-own motorcycle plan work?', acceptedAnswer: { '@type': 'Answer', text: 'On the Pro Monthly plan (Rs. 7,000/week), after 1.5 years (78 weeks) of continuous rental, the Hero Super Splendor is legally transferred to your name at no additional cost. No bank loan, no EMI, no credit check.' } },
+          { '@type': 'Question', name: 'Where is the RYD Nepal motorcycle workshop in Kathmandu?', acceptedAnswer: { '@type': 'Answer', text: 'Our workshop is at Kapan, near Dhalane Bridge, Kathmandu. Open Sunday–Friday. Book a service slot 2 days in advance on WhatsApp. Drop off by 10 AM, pick up by 4 PM. Service is free for RYD riders; external riders can also book paid service packages.' } },
+          { '@type': 'Question', name: 'How do I become a Pathao rider in Kathmandu?', acceptedAnswer: { '@type': 'Answer', text: 'Apply at RYD Nepal with your license and citizenship, pick up your Hero Super Splendor 125cc, register on the Pathao app as a rider partner, and start earning Rs. 1,500–2,500 daily. We help guide you through Pathao registration.' } },
+          { '@type': 'Question', name: 'How do I join InDrive or Yango as a rider in Nepal?', acceptedAnswer: { '@type': 'Answer', text: 'Rent a bike from RYD Nepal first, then register on InDrive or Yango using your motorcycle license and vehicle documents. Both platforms accept RYD Nepal rental bikes. Active riders earn Rs. 35,000–55,000/month on each.' } },
+          { '@type': 'Question', name: 'काठमाडौंमा बाइक भाडामा कसरी लिने? (How to rent a bike in Kathmandu?)', acceptedAnswer: { '@type': 'Answer', text: 'RYD Nepal बाट काठमाडौंमा बाइक भाडामा लिन: १) लाइसेन्स र नागरिकता लिएर कपन, ढलाने पुल कार्यालय आउनुहोस्। २) कागजात प्रमाणित भएपछि हिरो सुपर स्प्लेन्डर 125cc लिनुहोस्। ३) सगुन किट पाउनुहोस्। ४) पाठाओ, इनड्राइभ, वा याङ्गोमा कमाउन सुरु गर्नुहोस्। भाडा रु. ७००/दिन बाट।' } },
         ],
       },
     ],

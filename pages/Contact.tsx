@@ -14,16 +14,16 @@ const Contact: React.FC = () => {
     path: '/contact',
     jsonLd: [
       breadcrumbJsonLd([
-        { name: 'Home', url: 'https://rydnepal.com/' },
-        { name: 'Contact / Apply', url: 'https://rydnepal.com/contact' },
+        { name: 'Home', url: 'https://www.rydnepal.com/' },
+        { name: 'Contact / Apply', url: 'https://www.rydnepal.com/contact' },
       ]),
       {
         '@context': 'https://schema.org',
         '@type': 'ContactPage',
         name: 'Contact RYD Nepal — Apply for Bike Rental in Kathmandu',
         description: 'Apply for a motorcycle rental in Kathmandu or contact RYD Nepal for inquiries about bike rental plans, Pathao/InDrive/Yango/Tootle registration, and more.',
-        url: 'https://rydnepal.com/contact',
-        mainEntity: { '@id': 'https://rydnepal.com/#business' },
+        url: 'https://www.rydnepal.com/contact',
+        mainEntity: { '@id': 'https://www.rydnepal.com/#business' },
       },
     ],
   });

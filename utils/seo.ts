@@ -16,7 +16,7 @@ interface SEOMeta {
  */
 export function useSEO({ title, description, keywords, path = '/', jsonLd, ogImage }: SEOMeta) {
   useEffect(() => {
-    const base = 'https://rydnepal.com';
+    const base = 'https://www.rydnepal.com';
     const url = `${base}${path}`;
     const defaultImage = 'https://images.deccanchronicle.com/dc-Cover-ilbrrabfksagbfb0ompgpgran2-20180314162754.Medi.jpeg';
     const image = ogImage || defaultImage;

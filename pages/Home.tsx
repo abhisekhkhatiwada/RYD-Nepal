@@ -11,7 +11,7 @@ const Home: React.FC = () => {
     keywords: 'bike rent Kathmandu, motorcycle rental Nepal, rent bike Kathmandu, earn money Kathmandu, earn in Nepal, gig work Nepal, Pathao rider Nepal, InDrive bike Nepal, Tootle Nepal, Yango Nepal, Hero Splendor rent, cheapest bike rental Kathmandu, rent to own bike Nepal, how to earn money in Kathmandu, daily bike rental Nepal, food delivery bike rent Nepal, बाइक भाडामा काठमाडौं, काठमाडौंमा कमाउनुहोस्, RYD Nepal',
     path: '/',
     jsonLd: breadcrumbJsonLd([
-      { name: 'Home', url: 'https://rydnepal.com/' },
+      { name: 'Home', url: 'https://www.rydnepal.com/' },
     ]),
   });
 

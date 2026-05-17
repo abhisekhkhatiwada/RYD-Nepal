@@ -12,8 +12,8 @@ const Services: React.FC = () => {
     path: '/services',
     jsonLd: [
       breadcrumbJsonLd([
-        { name: 'Home', url: 'https://rydnepal.com/' },
-        { name: 'Rental Plans', url: 'https://rydnepal.com/services' },
+        { name: 'Home', url: 'https://www.rydnepal.com/' },
+        { name: 'Rental Plans', url: 'https://www.rydnepal.com/services' },
       ]),
     ],
   });

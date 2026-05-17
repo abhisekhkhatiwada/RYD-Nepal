@@ -19,6 +19,21 @@ export interface BlogPostMeta {
 
 export const BLOG_POSTS: BlogPostMeta[] = [
   {
+    slug: 'why-ryd-nepal-best-bike-rental-kathmandu',
+    title: 'Why RYD Nepal Is the Bike Rental Near You in Kathmandu That Riders Actually Trust',
+    titleNe: 'किन RYD Nepal काठमाडौंको सबैभन्दा भरपर्दो बाइक भाडा सेवा हो',
+    excerpt:
+      'Free bi-weekly maintenance, well-maintained Hero Super Splendor bikes, 30-minute breakdown response, and 24/7 flat-tire help across Kathmandu — exactly what makes us different.',
+    excerptNe:
+      'निःशुल्क हरेक २ हप्ताको सर्भिस, राम्ररी मर्मत गरिएको हिरो सुपर स्प्लेन्डर, ३० मिनेटमा ब्रेकडाउन सहायता र काठमाडौंभरि २४/७ फ्ल्याट टायर सहायता।',
+    date: 'May 17, 2026',
+    dateNe: '२०२६ मे १७',
+    readTime: '10 min read',
+    readTimeNe: '१० मिनेट पठन',
+    tag: 'Service & Maintenance',
+    tagNe: 'सेवा र मर्मत',
+  },
+  {
     slug: 'rent-to-own-hero-splendor-125',
     title: 'Why Paying Rs. 1,000/Day to Rent-to-Own a Bike Makes Financial Sense',
     titleNe: 'किन दिनको रु. १,००० तिरेर बाइक आफ्नो बनाउन आर्थिक रूपमा सम्भव छ',
@@ -45,20 +60,20 @@ const BlogIndex: React.FC = () => {
     path: '/blog',
     jsonLd: [
       breadcrumbJsonLd([
-        { name: 'Home', url: 'https://rydnepal.com/' },
-        { name: 'Blog', url: 'https://rydnepal.com/blog' },
+        { name: 'Home', url: 'https://www.rydnepal.com/' },
+        { name: 'Blog', url: 'https://www.rydnepal.com/blog' },
       ]),
       {
         '@context': 'https://schema.org',
         '@type': 'Blog',
         name: 'RYD Nepal Blog',
-        url: 'https://rydnepal.com/blog',
+        url: 'https://www.rydnepal.com/blog',
         description:
           'Financial guides, rider tips, and news about motorcycle rental and gig economy in Kathmandu.',
         publisher: {
           '@type': 'Organization',
           name: 'RYD Nepal Pvt. Ltd.',
-          url: 'https://rydnepal.com',
+          url: 'https://www.rydnepal.com',
         },
       },
     ],

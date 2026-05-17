@@ -12,16 +12,16 @@ const About: React.FC = () => {
     path: '/about',
     jsonLd: [
       breadcrumbJsonLd([
-        { name: 'Home', url: 'https://rydnepal.com/' },
-        { name: 'About Us', url: 'https://rydnepal.com/about' },
+        { name: 'Home', url: 'https://www.rydnepal.com/' },
+        { name: 'About Us', url: 'https://www.rydnepal.com/about' },
       ]),
       {
         '@context': 'https://schema.org',
         '@type': 'AboutPage',
         name: 'About RYD Nepal — Motorcycle Rental Company in Kathmandu',
         description: 'Learn about RYD Nepal Pvt. Ltd., Kathmandu\'s leading motorcycle rental company empowering gig workers on Pathao, InDrive, Yango, and Tootle.',
-        url: 'https://rydnepal.com/about',
-        mainEntity: { '@id': 'https://rydnepal.com/#organization' },
+        url: 'https://www.rydnepal.com/about',
+        mainEntity: { '@id': 'https://www.rydnepal.com/#organization' },
       },
     ],
   });
