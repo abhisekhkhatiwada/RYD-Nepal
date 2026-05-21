@@ -1,9 +1,10 @@
-name: Deploy to GitHub Pages
+name: Deploy to GitHub Pages (DISABLED)
 
+# This workflow is intentionally disabled. The site deploys to Cloudflare Pages
+# via deploy-cloudflare.yml. The old `push` trigger has been removed and the
+# jobs below are guarded with `if: ${{ false }}`, so this never runs — even if
+# someone clicks "Run workflow" manually. Kept for reference, not deleted.
 on:
-  push:
-    branches:
-      - develop
   workflow_dispatch:
 
 permissions:
@@ -17,6 +18,7 @@ concurrency:
 
 jobs:
   build:
+    if: ${{ false }}  # disabled — see header comment
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -43,6 +45,7 @@ jobs:
           path: ./dist
 
   deploy:
+    if: ${{ false }}  # disabled — see header comment
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

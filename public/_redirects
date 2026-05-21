@@ -1,1 +1,10 @@
-/* /index.html 200
+# Every route is prerendered to a static .html file, so there is no SPA
+# catch-all here. The old `/* /index.html 200` rule served 200-OK HTML for
+# dead URLs (e.g. /login, /_next/*) — Google saw soft-404s and duplicates.
+
+# Legacy URLs from the previous Next.js site → real 404 so Google de-indexes them.
+/_next/*  /404.html  404
+/login    /404.html  404
+
+# Any other unknown path falls through to Cloudflare Pages' built-in 404
+# response, which serves /404.html with an HTTP 404 status.

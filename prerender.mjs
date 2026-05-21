@@ -149,22 +149,39 @@ for (const [route, meta] of Object.entries(ROUTE_META)) {
     `<link rel="canonical" href="${escAttr(meta.canonical)}">`,
   );
 
+  // Replace <meta property="og:url"> — template hard-codes it to the homepage,
+  // so without this every page advertised "/" as its Open Graph URL.
+  page = page.replace(
+    /<meta\s+property="og:url"[^>]*\/?>/i,
+    `<meta property="og:url" content="${escAttr(meta.canonical)}">`,
+  );
+
+  // Point every hreflang alternate at this route. The template hard-codes them
+  // all to the homepage, which wrongly tells Google each page is "/".
+  page = page.replace(
+    /(<link\s+rel="alternate"\s+hreflang="[^"]*"\s+href=")[^"]+("[^>]*>)/gi,
+    `$1${escAttr(meta.canonical)}$2`,
+  );
+
   // Inject rendered body HTML into the root div (no inline head tags)
   page = page.replace(
     '<div id="root"></div>',
     `<div id="root">${bodyHtml}</div>`,
   );
 
-  // Write output file
-  const outDir =
+  // Write output as a FLAT .html file: dist/about.html — never dist/about/index.html.
+  // Cloudflare Pages serves a flat .html at its clean URL with NO trailing slash
+  // (/about → 200) and 308-redirects /about/ → /about. A directory-based
+  // index.html does the reverse (/about → 308 → /about/), which made every
+  // canonical URL in sitemap.xml resolve to a redirect — the Search Console error.
+  const outFile =
     route === '/'
-      ? path.resolve(__dirname, 'dist')
-      : path.resolve(__dirname, 'dist', route.slice(1));
+      ? path.resolve(__dirname, 'dist/index.html')
+      : path.resolve(__dirname, 'dist', route.slice(1) + '.html');
 
-  fs.mkdirSync(outDir, { recursive: true });
-  const outFile = path.join(outDir, 'index.html');
+  fs.mkdirSync(path.dirname(outFile), { recursive: true });
   fs.writeFileSync(outFile, page);
-  console.log(`   ✓ dist${route === '/' ? '/index.html' : route + '/index.html'}`);
+  console.log(`   ✓ ${path.relative(__dirname, outFile)}`);
 }
 
 // ── 4. Generate sitemap.xml ───────────────────────────────────────────────────
