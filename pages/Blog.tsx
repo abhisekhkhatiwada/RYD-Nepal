@@ -76,6 +76,16 @@ const Blog: React.FC = () => {
       : `पूर्ण आर्थिक विश्लेषण: हिरो सुपर स्प्लेन्डर 125cc BS6 दिनको रु. १,००० मा भाडामा लिनुहोस्, पाठाओ/इनड्राइभ/यांगोमा दिनको रु. ${fmtNe(DATA.avgGrossDailyEarning)} कमाउनुहोस्, १.५ वर्षपछि बाइक आफ्नो। इन्धन खर्च रु. ${fmtNe(dailyFuel)}/दिन। हरेक २ हप्तामा निःशुल्क सर्भिसिङ।`,
     keywords: 'rent to own bike Nepal, bike rental profit calculator Kathmandu, Rs 1000 per day bike rent, Hero Splendor 125 rent Nepal, Pathao rider income Nepal, gig worker bike rental profit, rent vs buy bike Nepal, motorcycle rental ROI Kathmandu, बाइक भाडा नाफा काठमाडौं, rent to own motorcycle calculation, daily bike rental profit Nepal, RYD Nepal blog, bike rental financial breakdown',
     path: '/blog/rent-to-own-hero-splendor-125',
+    ogType: 'article',
+    ogTitle: lang === 'en'
+      ? 'Rs. 1,000/Day → Bike Worth Rs. 2.66 Lakh After 18 Months. The Maths.'
+      : 'दिनको रु. १,००० → १८ महिनापछि रु. २.६६ लाखको बाइक। पूर्ण हिसाब।',
+    ogDescription: lang === 'en'
+      ? 'Every rupee accounted for: rent, fuel, real Pathao earnings, and bike ownership at the end. The full financial breakdown for Kathmandu gig riders.'
+      : 'हरेक रुपैयाँको हिसाब: भाडा, इन्धन, वास्तविक पाठाओ कमाइ, र अन्तमा बाइक स्वामित्व। काठमाडौंका गिग राइडरहरूको लागि पूर्ण आर्थिक विश्लेषण।',
+    ogImage: 'https://www.rydnepal.com/og/rent-to-own-splendor.jpg',
+    datePublished: '2026-04-05',
+    dateModified: '2026-04-05',
     jsonLd: [
       breadcrumbJsonLd([
         { name: 'Home', url: 'https://www.rydnepal.com/' },
@@ -220,6 +230,22 @@ const Blog: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* ── Cover image (magazine-overlap) ── */}
+      <div className="bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 sm:-mt-16 relative z-10">
+          <img
+            src="/og/rent-to-own-splendor.jpg"
+            alt={en
+              ? 'Hero Super Splendor 125cc BS6 with Rs. 1,000/day to bike-ownership infographic — RYD Nepal rent-to-own'
+              : 'हिरो सुपर स्प्लेन्डर 125cc BS6 — दिनको रु. १,००० मा बाइक स्वामित्व — RYD Nepal भाडा-बाट-आफ्नो'}
+            className="w-full rounded-2xl shadow-2xl border border-slate-200 aspect-[1200/630] object-cover"
+            loading="eager"
+            width={1200}
+            height={630}
+          />
+        </div>
+      </div>
 
       {/* Quick Summary Cards */}
       <section className="py-10 bg-white border-b border-slate-100">

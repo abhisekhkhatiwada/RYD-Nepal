@@ -30,6 +30,16 @@ const BlogWhyRyd: React.FC = () => {
     keywords:
       'bike rental kathmandu near me, rent bike kathmandu, motorcycle rental kathmandu, scooter rental kathmandu, flat tire assistance kathmandu, bike rent in kathmandu, rental bike near me, nearest bike rental, bike rental service near me, RYD Nepal review, why RYD Nepal, best bike rental Kathmandu, well maintained rental bike Nepal, free maintenance bike rental Nepal, 24/7 bike breakdown Kathmandu, how much does pathao rider earn in nepal, Hero Super Splendor maintenance, Kapan motorcycle workshop, ride company Kathmandu, rental riders Nepal, बाइक भाडा काठमाडौं नजिक, मोटरसाइकल भाडा काठमाडौं, RYD नेपाल समीक्षा',
     path: '/blog/why-ryd-nepal-best-bike-rental-kathmandu',
+    ogType: 'article',
+    ogTitle: en
+      ? 'Why 500+ Kathmandu Riders Trust RYD Over Every Other Bike Rental'
+      : 'किन ५००+ काठमाडौंका राइडरहरू RYD लाई रोज्छन्',
+    ogDescription: en
+      ? 'Free service every 2 weeks. 30-minute flat-tire response inside Ring Road. Replacement bike if yours is down. Read what makes RYD different.'
+      : 'हरेक २ हप्तामा निःशुल्क सर्भिस। रिङ रोडभित्र ३० मिनेटमा फ्ल्याट टायर सहायता। बाइक डाउन भए प्रतिस्थापन। RYD किन फरक हो, पढ्नुहोस्।',
+    ogImage: 'https://www.rydnepal.com/og/why-ryd-nepal.jpg',
+    datePublished: '2026-05-17',
+    dateModified: '2026-05-17',
     jsonLd: [
       breadcrumbJsonLd([
         { name: 'Home', url: 'https://www.rydnepal.com/' },
@@ -126,6 +136,22 @@ const BlogWhyRyd: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* ── Cover image (magazine-overlap) ── */}
+      <div className="bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 sm:-mt-16 relative z-10">
+          <img
+            src="/og/why-ryd-nepal.jpg"
+            alt={en
+              ? 'RYD Nepal workshop in Kapan, Kathmandu — Hero Super Splendor 125cc fleet under service with a uniformed mechanic'
+              : 'कपन, काठमाडौंस्थित RYD Nepal वर्कशप — हिरो सुपर स्प्लेन्डर 125cc फ्लीट सर्भिसिङमा'}
+            className="w-full rounded-2xl shadow-2xl border border-slate-200 aspect-[1200/630] object-cover"
+            loading="eager"
+            width={1200}
+            height={630}
+          />
+        </div>
+      </div>
 
       {/* ── At-a-glance trust stats ── */}
       <section className="py-10 bg-white border-b border-slate-100">

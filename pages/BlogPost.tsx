@@ -5,10 +5,12 @@ import { BLOG_POSTS } from './BlogIndex';
 // Article components — one import per post
 import RentToOwnPost from './Blog';
 import WhyRydPost from './BlogWhyRyd';
+import GigEconomyPost from './BlogGigEconomy';
 
 const POST_COMPONENTS: Record<string, React.FC> = {
   'rent-to-own-hero-splendor-125': RentToOwnPost,
   'why-ryd-nepal-best-bike-rental-kathmandu': WhyRydPost,
+  'gig-economy-kathmandu-bike-rental': GigEconomyPost,
 };
 
 const BlogPost: React.FC = () => {

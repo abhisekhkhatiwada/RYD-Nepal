@@ -15,9 +15,27 @@ export interface BlogPostMeta {
   readTimeNe: string;
   tag: string;
   tagNe: string;
+  /** Path under /og/ used for the listing thumbnail and the social card */
+  cover: string;
 }
 
 export const BLOG_POSTS: BlogPostMeta[] = [
+  {
+    slug: 'gig-economy-kathmandu-bike-rental',
+    title: 'The Gig Economy in Kathmandu: Work Today, Get Paid Today',
+    titleNe: 'काठमाडौंमा गिग इकोनोमीको उदय: आजै काम, आजै पैसा',
+    excerpt:
+      'Ride-sharing is now formally recognised in the latest national budget. Here is how Kathmandu riders earn daily payouts in 2026 and how to start with zero investment, even without owning a bike.',
+    excerptNe:
+      'पछिल्लो राष्ट्रिय बजेटले राइड-सेयरिङलाई औपचारिक मान्यता दिएको छ। काठमाडौंका राइडरहरूले २०२६ मा कसरी दैनिक कमाउँछन् र बाइक नभए पनि शून्य लगानीमा कसरी सुरु गर्ने।',
+    date: 'May 31, 2026',
+    dateNe: '२०२६ मे ३१',
+    readTime: '9 min read',
+    readTimeNe: '९ मिनेट पठन',
+    tag: 'Gig Economy & Earnings',
+    tagNe: 'गिग इकोनोमी र कमाइ',
+    cover: '/og/gig-economy-kathmandu.jpg',
+  },
   {
     slug: 'why-ryd-nepal-best-bike-rental-kathmandu',
     title: 'Why RYD Nepal Is the Bike Rental Near You in Kathmandu That Riders Actually Trust',
@@ -32,6 +50,7 @@ export const BLOG_POSTS: BlogPostMeta[] = [
     readTimeNe: '१० मिनेट पठन',
     tag: 'Service & Maintenance',
     tagNe: 'सेवा र मर्मत',
+    cover: '/og/why-ryd-nepal.jpg',
   },
   {
     slug: 'rent-to-own-hero-splendor-125',
@@ -47,6 +66,7 @@ export const BLOG_POSTS: BlogPostMeta[] = [
     readTimeNe: '१२ मिनेट पठन',
     tag: 'Financial Analysis',
     tagNe: 'आर्थिक विश्लेषण',
+    cover: '/og/rent-to-own-splendor.jpg',
   },
 ];
 
@@ -58,6 +78,8 @@ const BlogIndex: React.FC = () => {
     keywords:
       'RYD Nepal blog, bike rental guide Kathmandu, gig rider tips Nepal, motorcycle rental Nepal, rent to own bike blog',
     path: '/blog',
+    ogTitle: 'Honest Guides for Kathmandu Gig Riders — RYD Nepal Blog',
+    ogDescription: 'Real numbers from 500+ active riders. Financial breakdowns, maintenance tips, and the truth about earning on Pathao, InDrive, Yango and Tootle.',
     jsonLd: [
       breadcrumbJsonLd([
         { name: 'Home', url: 'https://www.rydnepal.com/' },
@@ -110,6 +132,16 @@ const BlogIndex: React.FC = () => {
               to={`/blog/${post.slug}`}
               className="group block bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-lg hover:border-primary-100 transition-all duration-300 overflow-hidden"
             >
+              <div className="aspect-[1200/630] overflow-hidden bg-slate-100">
+                <img
+                  src={post.cover}
+                  alt={post.title}
+                  loading="lazy"
+                  width={1200}
+                  height={630}
+                  className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500"
+                />
+              </div>
               <div className="p-8">
                 <div className="flex flex-wrap gap-3 items-center mb-4 text-xs font-semibold">
                   <span className="bg-primary-50 text-primary px-3 py-1 rounded-full">{post.tag}</span>
