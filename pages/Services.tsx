@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom';
 
 const Services: React.FC = () => {
   useSEO({
-    title: 'Bike Rental Plans Kathmandu — From Rs. 700/Day | RYD Nepal Motorcycle Rental Pricing',
-    description: 'Rent a Hero Super Splendor 125cc in Kathmandu: Weekly Rs. 5,600/week, Pro Monthly Rs. 7,000/week, Prepayment Rs. 21,000/month (Rs. 700/day) with rent-to-own after 1.5 years. Free maintenance, Sagoon kit, 24/7 support. Cheapest bike rental in Kathmandu for Pathao, InDrive, Yango & Tootle riders.',
+    title: 'Bike Rent in Kathmandu — Price Per Day, Week & Month | RYD Nepal',
+    description: 'Bike rent in Kathmandu price list: Hero Super Splendor 125cc from Rs. 700/day, Rs. 5,600/week or Rs. 21,000/month — free maintenance, insurance & rent-to-own after 1.5 years. Transparent bike rental pricing for Pathao, InDrive, Yango & Tootle riders.',
     keywords: 'bike rental plans Kathmandu, motorcycle rental price Nepal, cheapest bike rent Kathmandu, daily bike rental Kathmandu, weekly bike rental Nepal, monthly motorcycle rental Kathmandu, rent to own bike Nepal, rent to own motorcycle Kathmandu, Hero Splendor rent price, bike on rent Kathmandu price, affordable motorcycle rental Nepal, Pathao bike rental cost, gig worker bike rental, बाइक भाडा काठमाडौं मूल्य, मोटरसाइकल भाडा नेपाल',
     path: '/services',
     jsonLd: [

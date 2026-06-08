@@ -22,8 +22,8 @@ const BlogGigEconomy: React.FC = () => {
 
   useSEO({
     title: en
-      ? 'The Gig Economy in Kathmandu: Work Today, Get Paid Today (2026 Rider Guide) | RYD Nepal'
-      : 'काठमाडौंमा गिग इकोनोमी: आजै काम, आजै पैसा (२०२६ राइडर गाइड) | RYD Nepal',
+      ? 'How Much Do Pathao & InDrive Riders Earn in Kathmandu? (2026 Guide)'
+      : 'काठमाडौंमा Pathao र InDrive राइडरले कति कमाउँछन्? (२०२६ गाइड)',
     description: en
       ? 'A practical 2026 guide to the ride-sharing gig economy in Kathmandu. How much riders earn, how the new national budget treats ride-sharing, and how to start with zero investment by renting a Hero Super Splendor 125cc from RYD Nepal at Rs. 700 a day.'
       : 'काठमाडौंको राइड-सेयरिङ गिग इकोनोमीको २०२६ को व्यावहारिक गाइड। राइडरले कति कमाउँछन्, नयाँ राष्ट्रिय बजेटले राइड-सेयरिङलाई कसरी हेर्छ, र RYD Nepal बाट दिनको रु. ७०० मा हिरो सुपर स्प्लेन्डर 125cc भाडामा लिएर कसरी शून्य लगानीमा सुरु गर्ने।',
@@ -155,9 +155,9 @@ const BlogGigEconomy: React.FC = () => {
 
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-black leading-tight mb-6">
             {en ? (
-              <>The Rise of the <span className="text-primary">Gig Economy</span> in Kathmandu: Work Today, Get Paid Today</>
+              <>How Much Do <span className="text-primary">Pathao &amp; InDrive Riders</span> Earn in Kathmandu? Work Today, Get Paid Today</>
             ) : (
-              <>काठमाडौंमा <span className="text-primary">गिग इकोनोमी</span>को उदय: आजै काम, आजै पैसा</>
+              <>काठमाडौंमा <span className="text-primary">Pathao र InDrive राइडर</span>ले कति कमाउँछन्? आजै काम, आजै पैसा</>
             )}
           </h1>
           <p className="text-lg text-slate-300 max-w-3xl leading-relaxed">

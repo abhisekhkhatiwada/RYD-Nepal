@@ -6,8 +6,8 @@ import { ChevronRight, Shield, Clock, Settings, TrendingUp, Star, CheckCircle, B
 
 const Home: React.FC = () => {
   useSEO({
-    title: 'RYD Nepal | Rent a Bike in Kathmandu — Earn Rs. 40,000–60,000/Month on Pathao & InDrive',
-    description: 'Rent a Hero Super Splendor 125cc motorcycle in Kathmandu from Rs. 700/day. Earn Rs. 40,000–60,000/month on Pathao, InDrive, Yango & Tootle. No loan, no down payment, own the bike after 1.5 years. बाइक भाडामा काठमाडौं — RYD Nepal.',
+    title: 'Bike Rental in Kathmandu — Rent from Rs. 700/Day | RYD Nepal',
+    description: 'Bike rental in Kathmandu made simple. Rent a Hero Super Splendor 125cc from Rs. 700/day — no loan, no down payment. Earn Rs. 40,000–60,000/month on Pathao, InDrive, Yango & Tootle and own the bike after 1.5 years. बाइक भाडामा काठमाडौं — RYD Nepal.',
     keywords: 'bike rent Kathmandu, motorcycle rental Nepal, rent bike Kathmandu, earn money Kathmandu, earn in Nepal, gig work Nepal, Pathao rider Nepal, InDrive bike Nepal, Tootle Nepal, Yango Nepal, Hero Splendor rent, cheapest bike rental Kathmandu, rent to own bike Nepal, how to earn money in Kathmandu, daily bike rental Nepal, food delivery bike rent Nepal, बाइक भाडामा काठमाडौं, काठमाडौंमा कमाउनुहोस्, RYD Nepal',
     path: '/',
     jsonLd: breadcrumbJsonLd([
@@ -18,8 +18,8 @@ const Home: React.FC = () => {
   return (
     <div className="animate-in fade-in duration-700">
       <Helmet>
-        <title>RYD Nepal | Rent a Bike in Kathmandu — Earn Rs. 40k–60k/Month</title>
-        <meta name="description" content="Rent a Hero Super Splendor 125cc motorcycle in Kathmandu from Rs. 700/day. Earn Rs. 40,000–60,000/month on Pathao, InDrive, Yango & Tootle. No loan, no down payment, own the bike after 1.5 years." />
+        <title>Bike Rental in Kathmandu — Rent from Rs. 700/Day | RYD Nepal</title>
+        <meta name="description" content="Bike rental in Kathmandu made simple. Rent a Hero Super Splendor 125cc from Rs. 700/day — no loan, no down payment. Earn Rs. 40,000–60,000/month on Pathao, InDrive, Yango & Tootle and own the bike after 1.5 years." />
         <link rel="canonical" href="https://www.rydnepal.com/" />
       </Helmet>
       {/* Hero Section */}
@@ -39,7 +39,7 @@ const Home: React.FC = () => {
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-700">Kathmandu & Earn.</span>
               </h1>
               <p className="text-lg sm:text-xl text-slate-600 mb-8 max-w-xl leading-relaxed">
-                Rent a <strong>Hero Super Splendor 125cc</strong> from just <strong>Rs. 700/day</strong> and start earning on <strong>Pathao, InDrive, Yango, or Tootle</strong> — no purchase, no loan, no down payment needed.
+                Affordable <strong>bike rental in Kathmandu</strong>: rent a <strong>Hero Super Splendor 125cc</strong> from just <strong>Rs. 700/day</strong> and start earning on <strong>Pathao, InDrive, Yango, or Tootle</strong> — no purchase, no loan, no down payment needed. Pick up from our Kapan workshop, near Ring Road.
               </p>
               <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
                 <Link to="/services" className="bg-primary text-white px-8 py-4 rounded-2xl font-bold hover:bg-primary-600 transition-all shadow-xl shadow-primary-200 flex items-center justify-center">

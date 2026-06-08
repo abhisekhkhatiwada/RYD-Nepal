@@ -35,8 +35,8 @@ const DEFAULT_OG_IMAGE = 'https://www.rydnepal.com/og/why-ryd-nepal.jpg';
 
 const ROUTE_META = {
   '/': {
-    title: 'RYD Nepal | Rent a Bike in Kathmandu — Earn Rs. 40k–60k/Month',
-    description: 'Rent a Hero Super Splendor 125cc motorcycle in Kathmandu from Rs. 700/day. Earn Rs. 40,000–60,000/month on Pathao, InDrive, Yango & Tootle. No loan, no down payment, own the bike after 1.5 years.',
+    title: 'Bike Rental in Kathmandu — Rent from Rs. 700/Day | RYD Nepal',
+    description: 'Bike rental in Kathmandu made simple. Rent a Hero Super Splendor 125cc from Rs. 700/day — no loan, no down payment. Earn Rs. 40,000–60,000/month on Pathao, InDrive, Yango & Tootle and own the bike after 1.5 years.',
     canonical: 'https://www.rydnepal.com/',
     priority: '1.0',
     changefreq: 'weekly',
@@ -59,8 +59,8 @@ const ROUTE_META = {
     ogType: 'website',
   },
   '/services': {
-    title: 'Bike Rental Plans — Weekly, Monthly & Rent-to-Own | RYD Nepal',
-    description: 'Rent a Hero Super Splendor 125cc in Kathmandu: Weekly Rs. 5,600/week, Pro Monthly Rs. 7,000/week, Prepayment Rs. 21,000/month. Includes free maintenance, insurance, and rent-to-own after 1.5 years.',
+    title: 'Bike Rent in Kathmandu — Price Per Day, Week & Month | RYD Nepal',
+    description: 'Bike rent in Kathmandu price list: Hero Super Splendor 125cc from Rs. 700/day, Rs. 5,600/week or Rs. 21,000/month — free maintenance, insurance & rent-to-own after 1.5 years. Transparent bike rental pricing for Pathao, InDrive, Yango & Tootle riders.',
     canonical: 'https://www.rydnepal.com/services',
     priority: '0.9',
     changefreq: 'monthly',
@@ -135,8 +135,8 @@ const ROUTE_META = {
     dateModified: '2026-05-17',
   },
   '/blog/gig-economy-kathmandu-bike-rental': {
-    title: 'Work Today, Get Paid Today: Kathmandu’s Gig Economy Boom 2026 | RYD Nepal',
-    description: 'Ride-sharing is now formally recognised in Nepal’s latest national budget. Here is how Kathmandu riders earn daily payouts in 2026 and how to start with zero investment, even without a bike.',
+    title: 'How Much Do Pathao & InDrive Riders Earn in Kathmandu? (2026 Guide)',
+    description: 'How much do Pathao, InDrive, Yango and Tootle riders really earn in Kathmandu in 2026? Real daily payout numbers, running costs, and how to start earning with zero investment — even without your own bike.',
     canonical: 'https://www.rydnepal.com/blog/gig-economy-kathmandu-bike-rental',
     priority: '0.9',
     changefreq: 'monthly',
