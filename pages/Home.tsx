@@ -256,7 +256,7 @@ const Home: React.FC = () => {
             </h2>
             <p className="text-slate-500 max-w-2xl mx-auto">
               Thousands of people earn a full-time income in Kathmandu using Pathao, InDrive, Yango, and Tootle every day.
-              The only thing stopping most people? They don't own a motorcycle. RYD Nepal removes that barrier with affordable <Link to="/services" className="text-primary font-semibold hover:underline">bike rental plans from Rs. 700/day</Link>.
+              The only thing stopping most people? They don't own a motorcycle. RYD Nepal removes that barrier — see our <Link to="/services" className="text-primary font-semibold hover:underline">bike rent in Kathmandu price per day</Link>, from Rs. 700.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

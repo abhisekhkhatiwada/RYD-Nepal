@@ -1,20 +1,79 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
 import { useSEO, breadcrumbJsonLd } from '../utils/seo';
 import { Check, Shield, Wrench, Clock, Zap, Gift, TrendingUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
+
+// Price-intent FAQ — backs the FAQPage rich result and answers the exact
+// "bike rent in kathmandu price per day / cheapest with price / documents"
+// queries that show in Search Console with impressions but zero clicks.
+const PRICE_FAQ: { q: string; a: string }[] = [
+  {
+    q: 'How much does it cost to rent a bike in Kathmandu per day?',
+    a: 'At RYD Nepal a Hero Super Splendor 125cc costs from Rs. 700/day on the prepaid monthly plan (Rs. 21,000/month). Weekly rental is Rs. 5,600/week and the rent-to-own Pro plan is Rs. 7,000/week. Free maintenance, insurance guidance and 24/7 breakdown support are included in every plan.',
+  },
+  {
+    q: 'What is the cheapest bike rent in Kathmandu with price?',
+    a: 'The cheapest option is the prepaid monthly plan at Rs. 21,000/month, which works out to just Rs. 700/day — Rs. 100/day cheaper than paying weekly. There are no hidden charges; maintenance, insurance support and roadside help are all included.',
+  },
+  {
+    q: 'What documents do I need to rent a bike in Kathmandu?',
+    a: 'You need a valid Nepali driving licence and a citizenship copy. Bring them to our Kapan office (Dhalane Pul) or apply online — verification takes under 30 minutes and you can ride out the same day.',
+  },
+  {
+    q: 'Is there a deposit to rent a motorcycle from RYD Nepal?',
+    a: 'Requirements are kept minimal so gig riders can start earning fast. Call us at +977-9709197877 for the current deposit and document details for your chosen plan.',
+  },
+  {
+    q: 'Can I own the bike after renting?',
+    a: 'Yes. On the Pro Monthly rent-to-own plan, the Hero Super Splendor 125cc is legally transferred to you after 1.5 years of continuous rental — with no bank loan, no interest and no credit check.',
+  },
+];
 
 const Services: React.FC = () => {
   useSEO({
     title: 'Bike Rent in Kathmandu — Price Per Day, Week & Month | RYD Nepal',
     description: 'Bike rent in Kathmandu price list: Hero Super Splendor 125cc from Rs. 700/day, Rs. 5,600/week or Rs. 21,000/month — free maintenance, insurance & rent-to-own after 1.5 years. Transparent bike rental pricing for Pathao, InDrive, Yango & Tootle riders.',
-    keywords: 'bike rental plans Kathmandu, motorcycle rental price Nepal, cheapest bike rent Kathmandu, daily bike rental Kathmandu, weekly bike rental Nepal, monthly motorcycle rental Kathmandu, rent to own bike Nepal, rent to own motorcycle Kathmandu, Hero Splendor rent price, bike on rent Kathmandu price, affordable motorcycle rental Nepal, Pathao bike rental cost, gig worker bike rental, बाइक भाडा काठमाडौं मूल्य, मोटरसाइकल भाडा नेपाल',
+    keywords: 'bike rent in kathmandu price per day, cheapest bike rent in kathmandu with price, bike rent price in kathmandu nepal, bike rental plans Kathmandu, motorcycle rental price Nepal, daily bike rental Kathmandu, weekly bike rental Nepal, monthly motorcycle rental Kathmandu, rent to own bike Nepal, Hero Splendor rent price, बाइक भाडा काठमाडौं मूल्य, मोटरसाइकल भाडा नेपाल',
     path: '/services',
     jsonLd: [
       breadcrumbJsonLd([
         { name: 'Home', url: 'https://www.rydnepal.com/' },
-        { name: 'Rental Plans', url: 'https://www.rydnepal.com/services' },
+        { name: 'Bike Rental Plans', url: 'https://www.rydnepal.com/services' },
       ]),
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Product',
+        name: 'Hero Super Splendor 125cc — Bike Rent in Kathmandu',
+        description:
+          'Bike rent in Kathmandu on a Hero Super Splendor 125cc from Rs. 700/day (Rs. 21,000/month prepaid), Rs. 5,600/week, or Rs. 7,000/week on the rent-to-own Pro plan. Free maintenance, insurance guidance and 24/7 breakdown support included.',
+        brand: { '@type': 'Brand', name: 'Hero' },
+        image: 'https://www.rydnepal.com/og/why-ryd-nepal.jpg',
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: '4.8',
+          ratingCount: '500',
+          bestRating: '5',
+          worstRating: '1',
+        },
+        offers: {
+          '@type': 'AggregateOffer',
+          priceCurrency: 'NPR',
+          lowPrice: '700',
+          highPrice: '21000',
+          offerCount: '3',
+          availability: 'https://schema.org/InStock',
+          url: 'https://www.rydnepal.com/services',
+        },
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: PRICE_FAQ.map((f) => ({
+          '@type': 'Question',
+          name: f.q,
+          acceptedAnswer: { '@type': 'Answer', text: f.a },
+        })),
+      },
     ],
   });
 
@@ -76,11 +135,6 @@ const Services: React.FC = () => {
 
   return (
     <div className="animate-in fade-in duration-700">
-      <Helmet>
-        <title>Bike Rental Plans — Weekly, Monthly &amp; Rent-to-Own | RYD Nepal</title>
-        <meta name="description" content="Rent a Hero Super Splendor 125cc in Kathmandu: Weekly Rs. 5,600/week, Pro Monthly Rs. 7,000/week, Prepayment Rs. 21,000/month. Includes free maintenance, insurance, and rent-to-own after 1.5 years." />
-        <link rel="canonical" href="https://www.rydnepal.com/services" />
-      </Helmet>
       {/* Header */}
       <section className="py-20 bg-gradient-to-b from-primary to-primary-800 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -288,6 +342,36 @@ const Services: React.FC = () => {
             </div>
             <Link to="/contact" className="bg-slate-900 text-white px-8 py-4 rounded-xl font-bold hover:bg-slate-800 transition-all whitespace-nowrap">
               Ask About Add-ons
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Price FAQ — visible content backing the FAQPage rich result */}
+      <section className="py-20 bg-slate-50 border-t border-slate-100" aria-label="Bike rent in Kathmandu price FAQ">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-slate-900 mb-3">Bike Rent in Kathmandu — Price FAQ</h2>
+            <p className="text-slate-500">Straight answers on daily price, the cheapest plan, documents, and ownership.</p>
+          </div>
+          <div className="space-y-4">
+            {PRICE_FAQ.map((item, i) => (
+              <details
+                key={i}
+                className="group bg-white rounded-2xl border border-slate-200 p-6 open:shadow-sm transition-all"
+                {...(i === 0 ? { open: true } : {})}
+              >
+                <summary className="flex cursor-pointer items-center justify-between font-bold text-slate-900 list-none">
+                  <span>{item.q}</span>
+                  <span className="ml-4 flex-shrink-0 text-primary transition-transform group-open:rotate-45 text-2xl leading-none">+</span>
+                </summary>
+                <p className="mt-4 text-slate-600 text-sm leading-relaxed">{item.a}</p>
+              </details>
+            ))}
+          </div>
+          <div className="text-center mt-10">
+            <Link to="/contact" className="inline-block bg-primary text-white px-8 py-4 rounded-xl font-bold hover:bg-primary-600 transition-all shadow-lg shadow-primary-100">
+              Get a Bike Today — Apply Now
             </Link>
           </div>
         </div>

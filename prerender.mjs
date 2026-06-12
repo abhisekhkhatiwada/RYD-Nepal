@@ -32,6 +32,48 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // hook-line image; non-blog pages fall back to the RYD workshop shot which
 // shows the real fleet and signage — strongest brand asset we have.
 const DEFAULT_OG_IMAGE = 'https://www.rydnepal.com/og/why-ryd-nepal.jpg';
+const SITE = 'https://www.rydnepal.com';
+
+// BreadcrumbList builder — emits the trail Google shows in place of the raw URL.
+const crumb = (items) => ({
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: items.map((it, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: it.name,
+    item: it.url,
+  })),
+});
+
+// FAQPage builder — eligible for the expandable FAQ rich result under the listing.
+const faq = (qa) => ({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: qa.map(([q, a]) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: { '@type': 'Answer', text: a },
+  })),
+});
+
+const blogPosting = ({ headline, description, url, image, datePublished, dateModified }) => ({
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline,
+  description,
+  image,
+  mainEntityOfPage: url,
+  author: { '@type': 'Organization', name: 'RYD Nepal Pvt. Ltd.', url: SITE },
+  publisher: {
+    '@type': 'Organization',
+    name: 'RYD Nepal Pvt. Ltd.',
+    url: SITE,
+    logo: { '@type': 'ImageObject', url: `${SITE}/logo.png` },
+  },
+  datePublished,
+  dateModified: dateModified || datePublished,
+});
 
 const ROUTE_META = {
   '/': {
@@ -40,11 +82,14 @@ const ROUTE_META = {
     canonical: 'https://www.rydnepal.com/',
     priority: '1.0',
     changefreq: 'weekly',
-    lastmod: '2026-05-31',
+    lastmod: '2026-06-11',
     ogTitle: 'Rent a Bike in Kathmandu. Earn Rs. 40k–60k/Month on Pathao & InDrive.',
     ogDescription: 'Zero down payment. Free maintenance. Own the bike after 1.5 years. RYD Nepal is how thousands of Kathmandu riders earn daily on Pathao, InDrive, Yango and Tootle.',
     ogImage: DEFAULT_OG_IMAGE,
     ogType: 'website',
+    jsonLd: [
+      crumb([{ name: 'Home', url: `${SITE}/` }]),
+    ],
   },
   '/about': {
     title: "About RYD Nepal — Kathmandu's Largest Bike Rental Fleet",
@@ -57,6 +102,12 @@ const ROUTE_META = {
     ogDescription: 'RYD Nepal is built by riders, for riders. Free workshop in Kapan, rent-to-own in 1.5 years, and the only fleet that puts gig workers first.',
     ogImage: DEFAULT_OG_IMAGE,
     ogType: 'website',
+    jsonLd: [
+      crumb([
+        { name: 'Home', url: `${SITE}/` },
+        { name: 'About', url: `${SITE}/about` },
+      ]),
+    ],
   },
   '/services': {
     title: 'Bike Rent in Kathmandu — Price Per Day, Week & Month | RYD Nepal',
@@ -64,11 +115,64 @@ const ROUTE_META = {
     canonical: 'https://www.rydnepal.com/services',
     priority: '0.9',
     changefreq: 'monthly',
-    lastmod: '2026-05-17',
+    lastmod: '2026-06-11',
     ogTitle: 'Rs. 700/Day. Hero Splendor 125cc. Yours After 18 Months.',
     ogDescription: 'Weekly, monthly, or prepaid bike rental in Kathmandu. Maintenance included. No bank loan. No credit check. Walk in with a licence, ride out the same day.',
     ogImage: DEFAULT_OG_IMAGE,
     ogType: 'website',
+    jsonLd: [
+      crumb([
+        { name: 'Home', url: `${SITE}/` },
+        { name: 'Bike Rental Plans', url: `${SITE}/services` },
+      ]),
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Product',
+        name: 'Hero Super Splendor 125cc — Bike Rent in Kathmandu',
+        description:
+          'Bike rent in Kathmandu on a Hero Super Splendor 125cc from Rs. 700/day (Rs. 21,000/month prepaid), Rs. 5,600/week, or Rs. 7,000/week on the rent-to-own Pro plan. Free maintenance, insurance guidance and 24/7 breakdown support included.',
+        brand: { '@type': 'Brand', name: 'Hero' },
+        image: DEFAULT_OG_IMAGE,
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: '4.8',
+          ratingCount: '500',
+          bestRating: '5',
+          worstRating: '1',
+        },
+        offers: {
+          '@type': 'AggregateOffer',
+          priceCurrency: 'NPR',
+          lowPrice: '700',
+          highPrice: '21000',
+          offerCount: '3',
+          availability: 'https://schema.org/InStock',
+          url: `${SITE}/services`,
+        },
+      },
+      faq([
+        [
+          'How much does it cost to rent a bike in Kathmandu per day?',
+          'At RYD Nepal a Hero Super Splendor 125cc costs from Rs. 700/day on the prepaid monthly plan (Rs. 21,000/month). Weekly rental is Rs. 5,600/week and the rent-to-own Pro plan is Rs. 7,000/week. Free maintenance, insurance guidance and 24/7 breakdown support are included in every plan.',
+        ],
+        [
+          'What is the cheapest bike rent in Kathmandu with price?',
+          'The cheapest option is the prepaid monthly plan at Rs. 21,000/month, which works out to just Rs. 700/day — Rs. 100/day cheaper than paying weekly. There are no hidden charges; maintenance, insurance support and roadside help are all included.',
+        ],
+        [
+          'What documents do I need to rent a bike in Kathmandu?',
+          'You need a valid Nepali driving licence and a citizenship copy. Bring them to our Kapan office (Dhalane Pul) or apply online — verification takes under 30 minutes and you can ride out the same day.',
+        ],
+        [
+          'Is there a deposit to rent a motorcycle from RYD Nepal?',
+          'Requirements are kept minimal so gig riders can start earning fast. Contact us at +977-9709197877 for the current deposit and document details for your chosen plan.',
+        ],
+        [
+          'Can I own the bike after renting?',
+          'Yes. On the Pro Monthly rent-to-own plan, the Hero Super Splendor 125cc is legally transferred to you after 1.5 years of continuous rental — with no bank loan, no interest and no credit check.',
+        ],
+      ]),
+    ],
   },
   '/contact': {
     title: 'Contact RYD Nepal — Apply to Rent a Bike in Kathmandu',
@@ -81,6 +185,12 @@ const ROUTE_META = {
     ogDescription: 'Call +977-9709197877 or walk into our Dhalane Pul office with your licence and citizenship. Start earning on Pathao, InDrive, Yango or Tootle today.',
     ogImage: DEFAULT_OG_IMAGE,
     ogType: 'website',
+    jsonLd: [
+      crumb([
+        { name: 'Home', url: `${SITE}/` },
+        { name: 'Contact', url: `${SITE}/contact` },
+      ]),
+    ],
   },
   '/support': {
     title: 'Rider Support & FAQ — RYD Nepal',
@@ -93,6 +203,26 @@ const ROUTE_META = {
     ogDescription: 'Flat tire on Ring Road at 10 PM? We dispatch help in 30 minutes. Every answer about rentals, paperwork, insurance, and workshop hours is here.',
     ogImage: DEFAULT_OG_IMAGE,
     ogType: 'website',
+    jsonLd: [
+      crumb([
+        { name: 'Home', url: `${SITE}/` },
+        { name: 'Support', url: `${SITE}/support` },
+      ]),
+      faq([
+        [
+          'What areas in Kathmandu does RYD Nepal cover for breakdown support?',
+          'We provide 24/7 breakdown and flat-tire assistance across the entire Kathmandu Valley, with a typical 30-minute response time inside the Ring Road from our Kapan workshop near Dhalane Bridge.',
+        ],
+        [
+          'How often is the bike serviced and who pays for it?',
+          'Every rental includes free servicing every 1,500 km (oil change, brake check, tire inspection and parts replacement) at our Kapan workshop. The rider pays nothing for routine maintenance.',
+        ],
+        [
+          'How do I contact RYD Nepal for support?',
+          'Call or WhatsApp +977-9709197877 any time, or visit our office at Dhalane Pul, Kapan, Kathmandu. Support is available 24/7 for breakdowns.',
+        ],
+      ]),
+    ],
   },
   '/blog': {
     title: 'RYD Nepal Blog — Bike Rental Guides & Rider Stories from Kathmandu',
@@ -105,6 +235,21 @@ const ROUTE_META = {
     ogDescription: 'Real numbers from 500+ active riders. Financial breakdowns, maintenance tips, and the truth about earning on Pathao, InDrive, Yango and Tootle.',
     ogImage: DEFAULT_OG_IMAGE,
     ogType: 'website',
+    jsonLd: [
+      crumb([
+        { name: 'Home', url: `${SITE}/` },
+        { name: 'Blog', url: `${SITE}/blog` },
+      ]),
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Blog',
+        name: 'RYD Nepal Blog',
+        url: `${SITE}/blog`,
+        description:
+          'Financial guides, rider tips, and news about motorcycle rental and gig economy in Kathmandu.',
+        publisher: { '@type': 'Organization', name: 'RYD Nepal Pvt. Ltd.', url: SITE },
+      },
+    ],
   },
   '/blog/rent-to-own-hero-splendor-125': {
     title: 'Why Rent-to-Own a Hero Splendor 125 Makes Sense | RYD Nepal Blog',
@@ -119,6 +264,21 @@ const ROUTE_META = {
     ogType: 'article',
     datePublished: '2026-04-05',
     dateModified: '2026-04-05',
+    jsonLd: [
+      crumb([
+        { name: 'Home', url: `${SITE}/` },
+        { name: 'Blog', url: `${SITE}/blog` },
+        { name: 'Rent-to-Own Hero Splendor 125', url: `${SITE}/blog/rent-to-own-hero-splendor-125` },
+      ]),
+      blogPosting({
+        headline: 'Why Paying Rs. 1,000/Day to Rent-to-Own a Bike Makes Financial Sense',
+        description:
+          'A data-driven breakdown of why paying Rs. 1,000/day to rent-to-own a Hero Super Splendor 125cc is smarter than a bank loan in Kathmandu. Real numbers for Pathao and InDrive riders.',
+        url: `${SITE}/blog/rent-to-own-hero-splendor-125`,
+        image: `${SITE}/og/rent-to-own-splendor.jpg`,
+        datePublished: '2026-04-05',
+      }),
+    ],
   },
   '/blog/why-ryd-nepal-best-bike-rental-kathmandu': {
     title: 'Why RYD Nepal Is Kathmandu’s Most Reliable Bike Rental Near You',
@@ -133,6 +293,21 @@ const ROUTE_META = {
     ogType: 'article',
     datePublished: '2026-05-17',
     dateModified: '2026-05-17',
+    jsonLd: [
+      crumb([
+        { name: 'Home', url: `${SITE}/` },
+        { name: 'Blog', url: `${SITE}/blog` },
+        { name: 'Why RYD Nepal Is the Bike Rental Riders Trust', url: `${SITE}/blog/why-ryd-nepal-best-bike-rental-kathmandu` },
+      ]),
+      blogPosting({
+        headline: 'Why RYD Nepal Is the Bike Rental Near You in Kathmandu That Riders Actually Trust',
+        description:
+          'Free bi-weekly maintenance, well-maintained bikes, 30-minute breakdown response, and 24/7 flat-tire help in Kathmandu. Here is why RYD Nepal is the bike rental near you that gig riders actually trust.',
+        url: `${SITE}/blog/why-ryd-nepal-best-bike-rental-kathmandu`,
+        image: `${SITE}/og/why-ryd-nepal.jpg`,
+        datePublished: '2026-05-17',
+      }),
+    ],
   },
   '/blog/gig-economy-kathmandu-bike-rental': {
     title: 'How Much Do Pathao & InDrive Riders Earn in Kathmandu? (2026 Guide)',
@@ -147,6 +322,21 @@ const ROUTE_META = {
     ogType: 'article',
     datePublished: '2026-05-31',
     dateModified: '2026-05-31',
+    jsonLd: [
+      crumb([
+        { name: 'Home', url: `${SITE}/` },
+        { name: 'Blog', url: `${SITE}/blog` },
+        { name: 'How Much Do Pathao & InDrive Riders Earn in Kathmandu?', url: `${SITE}/blog/gig-economy-kathmandu-bike-rental` },
+      ]),
+      blogPosting({
+        headline: 'How Much Do Pathao & InDrive Riders Earn in Kathmandu? (2026 Guide)',
+        description:
+          'How much do Pathao, InDrive, Yango and Tootle riders really earn in Kathmandu in 2026? Real daily payout numbers, running costs, and how to start earning with zero investment — even without your own bike.',
+        url: `${SITE}/blog/gig-economy-kathmandu-bike-rental`,
+        image: `${SITE}/og/gig-economy-kathmandu.jpg`,
+        datePublished: '2026-05-31',
+      }),
+    ],
   },
 };
 
@@ -276,6 +466,18 @@ for (const [route, meta] of Object.entries(ROUTE_META)) {
       `    <meta property="article:author" content="RYD Nepal Pvt. Ltd.">\n` +
       `    <meta property="article:section" content="Blog">\n`;
     page = page.replace('</head>', `${articleTags}  </head>`);
+  }
+
+  // Per-route JSON-LD → static HTML. useSEO only injects this client-side after
+  // hydration, so crawlers never saw BreadcrumbList / BlogPosting / FAQPage /
+  // Product on first crawl. We emit it server-side with id="page-jsonld" so the
+  // client hook cleanly replaces (not duplicates) it on hydration.
+  if (meta.jsonLd) {
+    const schemas = Array.isArray(meta.jsonLd) ? meta.jsonLd : [meta.jsonLd];
+    const payload = JSON.stringify(schemas.length === 1 ? schemas[0] : schemas)
+      .replace(/</g, '\\u003c'); // neutralise any "</script>" inside string values
+    const ldTag = `    <script type="application/ld+json" id="page-jsonld">${payload}</script>\n`;
+    page = page.replace('</head>', `${ldTag}  </head>`);
   }
 
   // Point every hreflang alternate at this route. The template hard-codes them
