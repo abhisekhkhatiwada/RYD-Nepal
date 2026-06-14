@@ -21,6 +21,22 @@ export interface BlogPostMeta {
 
 export const BLOG_POSTS: BlogPostMeta[] = [
   {
+    slug: 'bike-rental-kathmandu-uber-pathao-indrive',
+    title: 'Bike Rental in Kathmandu for Uber, Pathao & InDrive: Rent from Rs. 700/Day',
+    titleNe: 'काठमाडौंमा बाइक भाडामा, उबर, पाठाओ र इनड्राइभका लागि: दिनको रु. ७०० देखि',
+    excerpt:
+      'Uber has officially launched in Kathmandu with Uber Bike. Four platforms now compete for riders. Rent a Hero Super Splendor 125cc from Rs. 700/day with zero down payment and earn on Uber, Pathao, InDrive, Yango and Tootle the same day.',
+    excerptNe:
+      'उबर अब काठमाडौंमा उबर बाइक सहित आइसक्यो। अब चार प्लेटफर्मले राइडर खोज्दैछन्। दिनको रु. ७०० मा हिरो सुपर स्प्लेन्डर 125cc भाडामा लिएर उबर, पाठाओ, इनड्राइभ, यांगो र टुटलमा आजै कमाउनुहोस्।',
+    date: 'June 14, 2026',
+    dateNe: '२०२६ जुन १४',
+    readTime: '8 min read',
+    readTimeNe: '८ मिनेट पठन',
+    tag: 'Ride-Sharing & Earnings',
+    tagNe: 'राइड-सेयरिङ र कमाइ',
+    cover: '/og/bike-rental-uber-pathao.webp',
+  },
+  {
     slug: 'gig-economy-kathmandu-bike-rental',
     title: 'The Gig Economy in Kathmandu: Work Today, Get Paid Today',
     titleNe: 'काठमाडौंमा गिग इकोनोमीको उदय: आजै काम, आजै पैसा',

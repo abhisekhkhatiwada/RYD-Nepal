@@ -6,11 +6,13 @@ import { BLOG_POSTS } from './BlogIndex';
 import RentToOwnPost from './Blog';
 import WhyRydPost from './BlogWhyRyd';
 import GigEconomyPost from './BlogGigEconomy';
+import UberPathaoPost from './BlogUberPathao';
 
 const POST_COMPONENTS: Record<string, React.FC> = {
   'rent-to-own-hero-splendor-125': RentToOwnPost,
   'why-ryd-nepal-best-bike-rental-kathmandu': WhyRydPost,
   'gig-economy-kathmandu-bike-rental': GigEconomyPost,
+  'bike-rental-kathmandu-uber-pathao-indrive': UberPathaoPost,
 };
 
 const BlogPost: React.FC = () => {
