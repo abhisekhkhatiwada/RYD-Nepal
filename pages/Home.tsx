@@ -1,5 +1,4 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { useSEO, breadcrumbJsonLd } from '../utils/seo';
 import { ChevronRight, Shield, Clock, Settings, TrendingUp, Star, CheckCircle, Bike, Users, Gift, Instagram, Facebook } from 'lucide-react';
@@ -17,13 +16,13 @@ const Home: React.FC = () => {
 
   return (
     <div className="animate-in fade-in duration-700">
-      <Helmet>
-        <title>Bike Rental in Kathmandu — Rent from Rs. 700/Day | RYD Nepal</title>
-        <meta name="description" content="Bike rental in Kathmandu made simple. Rent a Hero Super Splendor 125cc from Rs. 700/day — no loan, no down payment. Earn Rs. 40,000–60,000/month on Pathao, InDrive, Yango & Tootle and own the bike after 1.5 years." />
-        <link rel="canonical" href="https://www.rydnepal.com/" />
-      </Helmet>
       {/* Hero Section */}
       <section className="relative py-14 lg:py-32 overflow-hidden">
+        <div aria-hidden="true" className="absolute inset-0 -z-10 pointer-events-none">
+          <div className="absolute -top-40 -right-40 w-[560px] h-[560px] bg-primary-100/70 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/3 -left-48 w-[420px] h-[420px] bg-amber-50 rounded-full blur-3xl"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(#0f172a12_1px,transparent_1px)] [background-size:26px_26px] [mask-image:linear-gradient(to_bottom,black,transparent_75%)]"></div>
+        </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
             <div className="mb-10 lg:mb-0 z-10">
@@ -34,12 +33,12 @@ const Home: React.FC = () => {
                 </span>
                 <span className="text-primary-700 text-xs font-bold uppercase tracking-wider">Bikes Available Now in Kathmandu</span>
               </div>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 leading-[1.1] mb-4">
+              <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 leading-[1.05] tracking-tight mb-4">
                 Rent a Bike in <br/>
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-700">Kathmandu & Earn.</span>
               </h1>
               <p className="text-lg sm:text-xl text-slate-600 mb-8 max-w-xl leading-relaxed">
-                Affordable <strong>bike rental in Kathmandu</strong>: rent a <strong>Hero Super Splendor 125cc</strong> from just <strong>Rs. 700/day</strong> and start earning on <strong>Pathao, InDrive, Yango, or Tootle</strong> — no purchase, no loan, no down payment needed. Pick up from our Kapan workshop, near Ring Road.
+                Affordable <strong>bike rental in Kathmandu</strong>: rent a <strong>Hero Super Splendor 125cc</strong> from just <strong>Rs. 700/day</strong> and start earning on <strong>Pathao, InDrive, Yango, or Tootle</strong>. No loan, no down payment, no credit check — just your licence and citizenship. Ride out of our Kapan workshop the same day, and <strong>own the bike after 18 months</strong>.
               </p>
               <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
                 <Link to="/services" className="bg-primary text-white px-8 py-4 rounded-2xl font-bold hover:bg-primary-600 transition-all shadow-xl shadow-primary-200 flex items-center justify-center">
@@ -72,10 +71,11 @@ const Home: React.FC = () => {
               <div className="absolute inset-0 bg-primary/5 rounded-3xl lg:rounded-[40px] transform rotate-2 -z-10"></div>
               <div className="rounded-3xl lg:rounded-[40px] overflow-hidden shadow-2xl h-full border-4 lg:border-8 border-white">
                 <img
-                  src="https://images.deccanchronicle.com/dc-Cover-ilbrrabfksagbfb0ompgpgran2-20180314162754.Medi.jpeg"
+                  src="/images/hero-splendor-rider.jpg"
                   alt="Hero Super Splendor 125cc motorcycle available for rent in Kathmandu — RYD Nepal bike rental fleet"
                   className="w-full h-full object-cover"
                   loading="eager"
+                  fetchPriority="high"
                 />
               </div>
               <div className="absolute bottom-4 right-4 lg:-bottom-8 lg:-right-8 bg-white px-4 py-3 lg:p-6 rounded-2xl lg:rounded-3xl shadow-xl border border-slate-100 animate-bounce-slow">
@@ -94,6 +94,30 @@ const Home: React.FC = () => {
         </div>
       </section>
 
+      {/* Rider Guarantees Marquee */}
+      <section className="bg-slate-900 py-3.5 overflow-hidden" aria-label="RYD Nepal rider guarantees">
+        <div className="flex whitespace-nowrap animate-marquee w-max" aria-hidden="false">
+          {[0, 1].map((copy) => (
+            <div key={copy} className="flex items-center" aria-hidden={copy === 1}>
+              {[
+                'Zero Down Payment',
+                'No Credit Check',
+                'Licence + Citizenship Only',
+                'Own the Bike in 18 Months',
+                '30-Min Replacement Bike',
+                'Free Servicing Every 1,500 km',
+                'Insurance Included',
+              ].map((item, i) => (
+                <span key={i} className="flex items-center text-xs font-bold uppercase tracking-widest text-slate-300 mx-6">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary mr-3"></span>
+                  {item}
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* Stats Section */}
       <section className="py-12 bg-white border-y border-slate-100" aria-label="RYD Nepal statistics">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -105,7 +129,7 @@ const Home: React.FC = () => {
               { label: 'Emergency Support', val: '< 30min' },
             ].map((stat, i) => (
               <div key={i} className="text-center">
-                <p className="text-3xl font-black text-primary mb-1">{stat.val}</p>
+                <p className="font-display text-3xl md:text-4xl font-extrabold text-primary mb-1">{stat.val}</p>
                 <p className="text-sm text-slate-500 font-medium">{stat.label}</p>
               </div>
             ))}
@@ -144,7 +168,7 @@ const Home: React.FC = () => {
       <section className="py-20 bg-slate-50" aria-label="How bike rental works in Kathmandu">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">How to Rent a Bike in Kathmandu</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 mb-4">How to Rent a Bike in Kathmandu</h2>
             <p className="text-slate-500">Get on the road and start earning in 3 simple steps</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -170,7 +194,7 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
             <div>
-              <h2 className="text-3xl font-bold text-slate-900 mb-6">Why Choose RYD Nepal for Bike Rental in Kathmandu?</h2>
+              <h2 className="font-display text-3xl font-extrabold tracking-tight text-slate-900 mb-6">Why Choose RYD Nepal for Bike Rental in Kathmandu?</h2>
               <p className="text-slate-600 mb-8 leading-relaxed">
                 We understand the hustle of Kathmandu's streets. Our motorcycle rental service is designed to remove every barrier between you and earning a full income through ride-sharing and delivery platforms.
               </p>
@@ -179,7 +203,7 @@ const Home: React.FC = () => {
                   { icon: Shield, title: 'Insurance Support Included', desc: 'Full insurance included with every bike rental. We handle claims paperwork so you stay on the road earning.' },
                   { icon: Settings, title: 'Zero Maintenance Cost', desc: 'Full servicing every 1,500km at our Kapan workshop — oil changes, brake checks, tire inspections all included in your rental.' },
                   { icon: TrendingUp, title: 'Rent to Own — Own After 1.5 Years', desc: 'On the Pro plan, own your Hero Super Splendor after 1.5 years of rental payments. No bank EMI, no credit check needed.' },
-                  { icon: Clock, title: '24/7 Breakdown Support in Kathmandu Valley', desc: 'Emergency assistance anywhere in Kathmandu Valley — replacement bike dispatched within 30 minutes.' }
+                  { icon: Clock, title: 'Never Lose a Working Day', desc: 'Breakdown anywhere in Kathmandu Valley, any hour — a replacement bike reaches you within 30 minutes, so a flat tire never costs you a day of earnings.' }
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-start space-x-4">
                     <div className="bg-primary-50 p-3 rounded-lg mt-1">
@@ -194,8 +218,8 @@ const Home: React.FC = () => {
               </div>
             </div>
             <div className="mt-10 lg:mt-0 hidden sm:grid grid-cols-2 gap-4">
-              <img src="https://merogaadi.s3.us-east-2.amazonaws.com/images/makes/Hero%20Super%20Splendor-1588416954-817.jpg?q=80&w=400&h=500&auto=format&fit=crop" className="rounded-2xl shadow-lg mt-8 object-cover h-[280px] md:h-[360px] lg:h-[400px] w-full" alt="Hero Super Splendor 125cc detail view — available for rent at RYD Nepal Kathmandu" loading="lazy" />
-              <img src="https://imgd.aeplcdn.com/642x361/n/cw/ec/126977/hero-super-splendor-right-front-three-quarter0.jpeg?isig=0&q=75?q=80&w=400&h=500&auto=format&fit=crop" className="rounded-2xl shadow-lg object-cover h-[280px] md:h-[360px] lg:h-[400px] w-full" alt="Hero Super Splendor 125cc side profile — cheapest bike rental in Kathmandu Nepal" loading="lazy" />
+              <img src="/images/splendor-detail.jpg" className="rounded-2xl shadow-lg mt-8 object-cover h-[280px] md:h-[360px] lg:h-[400px] w-full" alt="Hero Super Splendor 125cc detail view — available for rent at RYD Nepal Kathmandu" loading="lazy" />
+              <img src="/images/splendor-side.webp" className="rounded-2xl shadow-lg object-cover h-[280px] md:h-[360px] lg:h-[400px] w-full" alt="Hero Super Splendor 125cc side profile — cheapest bike rental in Kathmandu Nepal" loading="lazy" />
             </div>
           </div>
         </div>
@@ -205,7 +229,7 @@ const Home: React.FC = () => {
       <section className="py-24 bg-slate-50 overflow-hidden" aria-label="Rider reviews and success stories">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">Rider Success Stories from Kathmandu</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 mb-4">Rider Success Stories from Kathmandu</h2>
             <p className="text-slate-500 max-w-2xl mx-auto">Real reviews from riders earning on Pathao, InDrive, Yango, and Tootle with RYD Nepal bikes.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -251,7 +275,7 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <p className="text-xs font-bold uppercase tracking-widest text-primary mb-3">Gig Economy Nepal — Earn Without Investment</p>
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+            <h2 className="font-display text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 mb-4">
               How to Earn Money in Kathmandu with a Rental Bike
             </h2>
             <p className="text-slate-500 max-w-2xl mx-auto">
@@ -322,7 +346,7 @@ const Home: React.FC = () => {
       <section className="py-16 bg-slate-50 border-y border-slate-100" aria-label="बाइक भाडामा काठमाडौं — RYD Nepal Nepali information">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-black text-slate-900 mb-6">
+            <h2 className="font-display text-2xl md:text-3xl font-extrabold tracking-tight text-slate-900 mb-6">
               बाइक भाडामा काठमाडौं — काठमाडौंमा कमाउनुहोस्
             </h2>
             <p className="text-slate-600 leading-relaxed mb-6">
@@ -354,7 +378,7 @@ const Home: React.FC = () => {
             <div className="grid md:grid-cols-2 gap-0">
               <div className="p-8 md:p-12 flex flex-col justify-center">
                 <span className="text-primary-300 text-xs font-bold uppercase tracking-widest mb-3">New Blog Post</span>
-                <h2 className="text-2xl md:text-3xl font-black text-white mb-4">
+                <h2 className="font-display text-2xl md:text-3xl font-extrabold tracking-tight text-white mb-4">
                   Why Rs. 1,000/Day Rent-to-Own Makes Financial Sense
                 </h2>
                 <p className="text-slate-400 mb-6 text-sm leading-relaxed">
@@ -440,8 +464,8 @@ const Home: React.FC = () => {
             <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
             <div className="relative z-10 grid md:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-4xl md:text-5xl font-black text-white mb-6">Join 500+ Riders <br/> Earning in Kathmandu</h2>
-                <p className="text-slate-400 text-lg mb-8 max-w-md">Get your Hero Super Splendor 125cc keys today. No credit checks, no loan hassle — just Rs. 700/day and you're earning on Pathao, InDrive, Yango, or Tootle.</p>
+                <h2 className="font-display text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-6">Join 500+ Riders <br/> Earning in Kathmandu</h2>
+                <p className="text-slate-400 text-lg mb-8 max-w-md">Get your Hero Super Splendor 125cc keys today. No credit check, no down payment, no loan hassle — just your licence, your citizenship, and Rs. 700/day. Earn on Pathao, InDrive, Yango, or Tootle, and own the bike in 18 months.</p>
                 <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
                   <Link to="/contact" className="bg-primary text-white px-10 py-5 rounded-2xl font-bold hover:bg-primary-600 transition-all shadow-xl shadow-primary-900/40">
                     Rent a Bike Now
@@ -452,7 +476,7 @@ const Home: React.FC = () => {
                 </div>
               </div>
               <div className="hidden md:block">
-                <img src="https://techsathi.com/wp-content/uploads/2024/04/Pathao-Nepal-Ridesharing-Nepal.jpg?q=80&w=1974&auto=format&fit=crop" className="rounded-3xl shadow-2xl rotate-2 object-cover h-[350px] w-full" alt="Pathao rider earning money in Kathmandu with RYD Nepal rental bike" loading="lazy" />
+                <img src="/images/pathao-rider-kathmandu.jpg" className="rounded-3xl shadow-2xl rotate-2 object-cover h-[350px] w-full" alt="Pathao rider earning money in Kathmandu with RYD Nepal rental bike" loading="lazy" />
               </div>
             </div>
           </div>

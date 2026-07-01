@@ -9,6 +9,10 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'Noto Sans Devanagari', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['Bricolage Grotesque', 'Inter', 'Noto Sans Devanagari', 'sans-serif'],
+      },
       colors: {
         primary: {
           DEFAULT: '#E64D3D',

@@ -7,8 +7,14 @@ import RentToOwnPost from './Blog';
 import WhyRydPost from './BlogWhyRyd';
 import GigEconomyPost from './BlogGigEconomy';
 import UberPathaoPost from './BlogUberPathao';
+import BecomePathaoRiderPost from './BlogBecomePathaoRider';
+import PlatformComparisonPost from './BlogPlatformComparison';
+import RentVsBuyPost from './BlogRentVsBuy';
 
 const POST_COMPONENTS: Record<string, React.FC> = {
+  'how-to-become-pathao-rider-without-bike': BecomePathaoRiderPost,
+  'pathao-vs-indrive-vs-yango-rider-earnings': PlatformComparisonPost,
+  'rent-vs-buy-vs-emi-bike-nepal': RentVsBuyPost,
   'rent-to-own-hero-splendor-125': RentToOwnPost,
   'why-ryd-nepal-best-bike-rental-kathmandu': WhyRydPost,
   'gig-economy-kathmandu-bike-rental': GigEconomyPost,

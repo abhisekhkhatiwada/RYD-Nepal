@@ -21,6 +21,54 @@ export interface BlogPostMeta {
 
 export const BLOG_POSTS: BlogPostMeta[] = [
   {
+    slug: 'how-to-become-pathao-rider-without-bike',
+    title: 'How to Become a Pathao Rider in Nepal Without Owning a Bike (2026 Guide)',
+    titleNe: 'आफ्नै बाइक नभई नेपालमा पाठाओ राइडर कसरी बन्ने (२०२६ गाइड)',
+    excerpt:
+      'You don\'t need to own a bike to earn on Pathao. Rent one from Rs. 700/day, register on the Pathao app in 24 hours, and start earning this week.',
+    excerptNe:
+      'पाठाओमा कमाउन आफ्नै बाइक चाहिँदैन। दिनको रु. ७०० देखि भाडामा लिनुहोस्, २४ घण्टामा दर्ता गर्नुहोस्, र यही हप्ता कमाउन सुरु गर्नुहोस्।',
+    date: 'July 1, 2026',
+    dateNe: '२०२६ जुलाई १',
+    readTime: '9 min read',
+    readTimeNe: '९ मिनेट पठन',
+    tag: 'Pathao & Gig Work',
+    tagNe: 'पाठाओ र गिग काम',
+    cover: '/og/become-pathao-rider.jpg',
+  },
+  {
+    slug: 'pathao-vs-indrive-vs-yango-rider-earnings',
+    title: 'Pathao vs InDrive vs Yango: Which Pays Kathmandu Riders More in 2026?',
+    titleNe: 'पाठाओ vs इनड्राइभ vs यांगो: २०२६ मा काठमाडौंका राइडरलाई कसले बढी तिर्छ?',
+    excerpt:
+      'Same bike, same hours, very different take-home. We compare Pathao (~20%), InDrive (~10%) and Yango (~3%) commissions, demand, and real daily earnings for Kathmandu riders.',
+    excerptNe:
+      'उही बाइक, उही घण्टा, फरक कमाइ। पाठाओ (~२०%), इनड्राइभ (~१०%) र यांगो (~३%) को कमिसन, माग र काठमाडौंका राइडरको वास्तविक दैनिक कमाइको तुलना।',
+    date: 'July 1, 2026',
+    dateNe: '२०२६ जुलाई १',
+    readTime: '9 min read',
+    readTimeNe: '९ मिनेट पठन',
+    tag: 'Platform Comparison',
+    tagNe: 'प्लेटफर्म तुलना',
+    cover: '/og/pathao-indrive-yango.jpg',
+  },
+  {
+    slug: 'rent-vs-buy-vs-emi-bike-nepal',
+    title: 'Rent vs Buy vs EMI: The Real Cost of Getting a Bike for Pathao in Nepal (2026)',
+    titleNe: 'भाडा कि किन्ने कि EMI: नेपालमा पाठाओका लागि बाइक पाउने वास्तविक लागत (२०२६)',
+    excerpt:
+      'The honest 18-month math on all four ways to get a bike in Kathmandu: cash, used, bank EMI, and rent-to-own — including the uncomfortable table.',
+    excerptNe:
+      'काठमाडौंमा बाइक पाउने चारै तरिकाको इमानदार १८ महिने हिसाब: नगद, पुरानो, बैंक EMI र भाडामा-लिएर-आफ्नो — असहज तालिकासहित।',
+    date: 'July 1, 2026',
+    dateNe: '२०२६ जुलाई १',
+    readTime: '10 min read',
+    readTimeNe: '१० मिनेट पठन',
+    tag: 'Money & Ownership',
+    tagNe: 'पैसा र स्वामित्व',
+    cover: '/og/rent-vs-buy-emi.jpg',
+  },
+  {
     slug: 'bike-rental-kathmandu-uber-pathao-indrive',
     title: 'Bike Rental in Kathmandu for Uber, Pathao & InDrive: Rent from Rs. 700/Day',
     titleNe: 'काठमाडौंमा बाइक भाडामा, उबर, पाठाओ र इनड्राइभका लागि: दिनको रु. ७०० देखि',

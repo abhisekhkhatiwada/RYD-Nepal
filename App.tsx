@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone, Mail, MapPin, Facebook, Instagram, Bike, MessageCircle } from 'lucide-react';
+import { Menu, X, Phone, Mail, MapPin, Facebook, Instagram, MessageCircle } from 'lucide-react';
 
 // Pages
 import Home from './pages/Home';
@@ -43,14 +43,9 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2.5 group">
-            <div className="bg-primary p-1.5 rounded-xl group-hover:bg-primary-600 transition-colors">
-              <Bike className="w-5 h-5 text-white" />
-            </div>
-            <div className="leading-none">
-              <span className="text-lg font-black tracking-tight text-slate-900">RYD </span>
-              <span className="text-lg font-black tracking-tight text-primary">Nepal</span>
-            </div>
+          <Link to="/" className="flex items-center space-x-2 group">
+            <img src="/images/ryd-logo.png" alt="RYD Nepal logo" className="h-9 w-auto group-hover:opacity-90 transition-opacity" width="48" height="36" />
+            <span className="text-lg font-black tracking-tight text-slate-900 leading-none">Nepal</span>
           </Link>
 
           {/* Desktop Links */}
@@ -127,14 +122,9 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-12">
           {/* Brand */}
           <div className="md:col-span-4">
-            <Link to="/" className="flex items-center space-x-2.5 mb-5">
-              <div className="bg-primary p-1.5 rounded-xl">
-                <Bike className="w-5 h-5 text-white" />
-              </div>
-              <div className="leading-none">
-                <span className="text-lg font-black tracking-tight text-white">RYD </span>
-                <span className="text-lg font-black tracking-tight text-primary">Nepal</span>
-              </div>
+            <Link to="/" className="flex items-center space-x-2 mb-5">
+              <img src="/images/ryd-logo.png" alt="RYD Nepal logo" className="h-10 w-auto" width="53" height="40" loading="lazy" />
+              <span className="text-lg font-black tracking-tight text-white leading-none">Nepal</span>
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed mb-6">
               Nepal's #1 motorcycle rental for gig workers. Rent a Hero Super Splendor 125cc in Kathmandu from Rs. 700/day. Earn on Pathao, InDrive, Yango & Tootle. Own after 1.5 years. बाइक भाडामा काठमाडौं — अब तपाईंको कमाउने पालो।
