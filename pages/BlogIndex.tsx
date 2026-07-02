@@ -17,9 +17,29 @@ export interface BlogPostMeta {
   tagNe: string;
   /** Path under /og/ used for the listing thumbnail and the social card */
   cover: string;
+  /** Draft mode: post is reachable at its URL but hidden from the /blog listing.
+   *  Keep in sync with the `draft` flag on the same route in prerender.mjs. */
+  hidden?: boolean;
 }
 
 export const BLOG_POSTS: BlogPostMeta[] = [
+  {
+    slug: 'ryd-predict-win-fifa-world-cup-2026',
+    title: 'RYD Predict & Win: FIFA World Cup 2026 Giveaway — Win Up to Rs. 20,000',
+    titleNe: 'RYD Predict & Win: फिफा विश्वकप २०२६ गिभअवे — रु. २०,००० सम्म जित्नुहोस्',
+    excerpt:
+      'Predict World Cup knockout results, tag 2 friends, and win cash: 2 winners per match (Rs. 500–3,000 each) plus a Rs. 20,000 bumper for calling all 7 big results. Free entry.',
+    excerptNe:
+      'विश्वकप नकआउट नतिजा प्रेडिक्ट गर्नुहोस्, २ साथी ट्याग गर्नुहोस्, र नगद जित्नुहोस्: हरेक खेलमा २ विजेता (रु. ५००–३,०००) र सबै ७ नतिजा मिलाउनेलाई रु. २०,००० बम्पर। निःशुल्क इन्ट्री।',
+    date: 'July 1, 2026',
+    dateNe: '२०२६ जुलाई १',
+    readTime: '5 min read',
+    readTimeNe: '५ मिनेट पठन',
+    tag: 'Giveaway & Events',
+    tagNe: 'गिभअवे र कार्यक्रम',
+    cover: '/og/predict-win-worldcup.jpg',
+    hidden: true, // unpublish flag — set to false (or delete) to go live
+  },
   {
     slug: 'how-to-become-pathao-rider-without-bike',
     title: 'How to Become a Pathao Rider in Nepal Without Owning a Bike (2026 Guide)',
@@ -190,7 +210,7 @@ const BlogIndex: React.FC = () => {
       {/* Post listing */}
       <section className="py-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="space-y-8">
-          {BLOG_POSTS.map((post) => (
+          {BLOG_POSTS.filter((post) => !post.hidden).map((post) => (
             <Link
               key={post.slug}
               to={`/blog/${post.slug}`}

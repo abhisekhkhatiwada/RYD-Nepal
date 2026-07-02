@@ -10,8 +10,10 @@ import UberPathaoPost from './BlogUberPathao';
 import BecomePathaoRiderPost from './BlogBecomePathaoRider';
 import PlatformComparisonPost from './BlogPlatformComparison';
 import RentVsBuyPost from './BlogRentVsBuy';
+import PredictWinPost from './BlogPredictWin';
 
 const POST_COMPONENTS: Record<string, React.FC> = {
+  'ryd-predict-win-fifa-world-cup-2026': PredictWinPost,
   'how-to-become-pathao-rider-without-bike': BecomePathaoRiderPost,
   'pathao-vs-indrive-vs-yango-rider-earnings': PlatformComparisonPost,
   'rent-vs-buy-vs-emi-bike-nepal': RentVsBuyPost,

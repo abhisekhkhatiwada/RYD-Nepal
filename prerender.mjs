@@ -251,6 +251,47 @@ const ROUTE_META = {
       },
     ],
   },
+  '/blog/ryd-predict-win-fifa-world-cup-2026': {
+    // DRAFT: page renders at its URL but gets noindex/nofollow and is excluded
+    // from sitemap.xml. Flip to false (or delete the flag) to publish — and
+    // also unset `hidden` on the matching BLOG_POSTS entry in BlogIndex.tsx.
+    draft: true,
+    title: 'RYD Predict & Win: FIFA World Cup 2026 Giveaway — Win Up to Rs. 20,000',
+    description: 'Predict FIFA World Cup 2026 knockout results with RYD Nepal and win cash: 2 winners per match (Rs. 500–3,000 each) plus a Rs. 20,000 bumper prize for predicting all 7 big results. Free entry — like, share, tag 2 friends.',
+    canonical: 'https://www.rydnepal.com/blog/ryd-predict-win-fifa-world-cup-2026',
+    priority: '0.8',
+    changefreq: 'weekly',
+    lastmod: '2026-07-01',
+    ogTitle: 'Predict the World Cup. Win Up to Rs. 20,000 Cash. Free Entry.',
+    ogDescription: 'RYD Nepal\'s FIFA World Cup 2026 Predict & Win: 2 cash winners on every knockout match post, and Rs. 20,000 for predicting all 7 big results. Like, share, tag 2 friends.',
+    ogImage: 'https://www.rydnepal.com/og/predict-win-worldcup.jpg',
+    ogType: 'article',
+    datePublished: '2026-07-01',
+    dateModified: '2026-07-01',
+    jsonLd: [
+      crumb([
+        { name: 'Home', url: `${SITE}/` },
+        { name: 'Blog', url: `${SITE}/blog` },
+        { name: 'RYD Predict & Win: FIFA World Cup 2026 Giveaway', url: `${SITE}/blog/ryd-predict-win-fifa-world-cup-2026` },
+      ]),
+      blogPosting({
+        headline: 'RYD Predict & Win: FIFA World Cup 2026 Giveaway — Win Up to Rs. 20,000',
+        description:
+          'RYD Nepal\'s FIFA World Cup 2026 Predict & Win giveaway: 2 cash winners per knockout match (Rs. 500 to 3,000 each) and a Rs. 20,000 bumper prize for predicting all 4 quarter-finals, both semi-finals and the final correctly. Free entry via Facebook, Instagram, and TikTok.',
+        url: `${SITE}/blog/ryd-predict-win-fifa-world-cup-2026`,
+        image: `${SITE}/og/predict-win-worldcup.jpg`,
+        datePublished: '2026-07-01',
+      }),
+      faq([
+        ['How do I participate in the RYD Predict & Win giveaway?', 'Three steps: like the RYD Nepal page, share the match prediction post, and tag 2 friends in the comment with your prediction. An individual prediction post goes live on our Facebook, Instagram, and TikTok pages as soon as each match is fixed.'],
+        ['Is the giveaway free to enter?', 'Yes, completely free. You do not need to rent a bike or pay anything — just like, share, tag, and predict.'],
+        ['How are the winners chosen for each match?', 'For every prediction post, 2 lucky winners are drawn from everyone who predicted the result correctly and completed all three steps. Round of 16 winners get Rs. 500 each, quarter-final winners Rs. 1,000 each, semi-final winners Rs. 2,000 each, and final winners Rs. 3,000 each.'],
+        ['How do I win the Rs. 20,000 bumper prize?', 'Correctly predict all 7 big knockout results — the 4 quarter-finals, both semi-finals, and the final. If more than one participant gets all 7 right, the bumper winner is chosen by lucky draw among them.'],
+        ['Where will the prediction posts and winner announcements appear?', 'On RYD Nepal\'s official Facebook, Instagram, and TikTok pages. Follow all three so you never miss a match post — each one goes live as soon as the fixture is confirmed.'],
+        ['Who can participate in the giveaway?', 'Anyone in Nepal with a Facebook, Instagram, or TikTok account. You do not need to be an RYD rider.'],
+      ]),
+    ],
+  },
   '/blog/how-to-become-pathao-rider-without-bike': {
     title: 'How to Become a Pathao Rider in Nepal Without a Bike (2026)',
     description: 'Become a Pathao rider in Nepal without owning a bike. Rent from Rs. 700/day at RYD Nepal, register on the Pathao app in 24 hours, and earn Rs. 40,000 to 60,000/month.',
@@ -561,6 +602,23 @@ for (const [route, meta] of Object.entries(ROUTE_META)) {
     `<link rel="canonical" href="${escAttr(meta.canonical)}">`,
   );
 
+  // Draft routes: reachable at their URL, but invisible to search engines.
+  if (meta.draft) {
+    page = page
+      .replace(
+        /<meta\s+name="robots"[^>]*\/?>/i,
+        '<meta name="robots" content="noindex, nofollow">',
+      )
+      .replace(
+        /<meta\s+name="googlebot"[^>]*\/?>/i,
+        '<meta name="googlebot" content="noindex, nofollow">',
+      )
+      .replace(
+        /<meta\s+name="bingbot"[^>]*\/?>/i,
+        '<meta name="bingbot" content="noindex, nofollow">',
+      );
+  }
+
   // Replace <meta property="og:url"> — template hard-codes it to the homepage,
   // so without this every page advertised "/" as its Open Graph URL.
   page = page.replace(
@@ -667,6 +725,7 @@ for (const [route, meta] of Object.entries(ROUTE_META)) {
 // modified on every deploy, which can dampen ranking signals.
 const today = new Date().toISOString().split('T')[0];
 const urlEntries = Object.entries(ROUTE_META)
+  .filter(([, meta]) => !meta.draft) // draft routes stay out of the sitemap
   .map(
     ([r, { priority, changefreq, lastmod }]) =>
       `  <url>\n    <loc>https://www.rydnepal.com${r}</loc>\n    <lastmod>${lastmod || today}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`,
