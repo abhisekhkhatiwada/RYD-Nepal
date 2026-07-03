@@ -59,11 +59,11 @@ const PRIZE_ROWS: [string, string, string, string][] = [
 
 // [stage EN, stage NE, dates EN, dates NE]
 const SCHEDULE_ROWS: [string, string, string, string][] = [
-  ['Round of 16', 'राउन्ड अफ १६', 'July 4–7, 2026', 'जुलाई ४–७, २०२६'],
-  ['Quarter Finals', 'क्वाटर फाइनल', 'July 9–11, 2026', 'जुलाई ९–११, २०२६'],
-  ['Semi Finals', 'सेमी फाइनल', 'July 14–15, 2026', 'जुलाई १४–१५, २०२६'],
-  ['Third-Place Match', 'तेस्रो स्थानको खेल', 'July 18, 2026', 'जुलाई १८, २०२६'],
-  ['Final — MetLife Stadium, New Jersey', 'फाइनल — मेटलाइफ स्टेडियम, न्यू जर्सी', 'July 19, 2026', 'जुलाई १९, २०२६'],
+  ['Round of 16', 'राउन्ड अफ १६', 'July 4–8, 2026', 'जुलाई ४–८, २०२६'],
+  ['Quarter Finals', 'क्वाटर फाइनल', 'July 10–12, 2026', 'जुलाई १०–१२, २०२६'],
+  ['Semi Finals', 'सेमी फाइनल', 'July 15–16, 2026', 'जुलाई १५–१६, २०२६'],
+  ['Third-Place Match', 'तेस्रो स्थानको खेल', 'July 19, 2026', 'जुलाई १९, २०२६'],
+  ['Final — MetLife Stadium, New Jersey', 'फाइनल — मेटलाइफ स्टेडियम, न्यू जर्सी', 'July 20, 2026', 'जुलाई २०, २०२६'],
 ];
 
 const STEPS: [React.ComponentType<{ className?: string }>, string, string, string, string][] = [
@@ -311,7 +311,9 @@ const BlogPredictWin: React.FC = () => {
             <thead>
               <tr className="bg-primary text-white">
                 <th className="text-left px-5 py-4 rounded-tl-2xl font-bold">{en ? 'Stage' : 'चरण'}</th>
-                <th className="text-left px-5 py-4 rounded-tr-2xl font-bold">{en ? 'Dates' : 'मिति'}</th>
+                <th className="text-left px-5 py-4 rounded-tr-2xl font-bold">
+                  {en ? 'Dates (Nepal Time)' : 'मिति (नेपाल समय अनुसार)'}
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -381,10 +383,9 @@ const BlogPredictWin: React.FC = () => {
         {/* Fine print */}
         <p className="text-xs text-slate-400 leading-relaxed mb-10">
           {en
-            ? 'This giveaway is organised by RYD Nepal Pvt. Ltd. and is not sponsored, endorsed, or administered by FIFA, Meta, or TikTok. Prizes are paid in Nepali Rupees. Winners are contacted through the platform they entered on and announced publicly on RYD Nepal\'s pages. RYD Nepal reserves the right to amend giveaway terms; any changes will be announced on the official pages.'
-            : 'यो गिभअवे RYD Nepal Pvt. Ltd. द्वारा आयोजित हो र FIFA, Meta वा TikTok द्वारा प्रायोजित वा व्यवस्थित होइन। पुरस्कार नेपाली रुपैयाँमा दिइन्छ। विजेतालाई उनीहरूले भाग लिएकै प्लेटफर्ममार्फत सम्पर्क गरिन्छ र RYD Nepal का पेजमा सार्वजनिक घोषणा गरिन्छ। गिभअवेका सर्त परिमार्जन गर्ने अधिकार RYD Nepal मा सुरक्षित छ; कुनै परिवर्तन आधिकारिक पेजमा घोषणा गरिनेछ।'}
+          ? 'This giveaway is organised by RYD Nepal Pvt. Ltd. and is not sponsored, endorsed, or administered by FIFA, Meta, or TikTok. Prizes are paid in Nepali Rupees and are subject to applicable TDS as per the prevailing Government of Nepal regulations. Winners are contacted through the platform they entered on and announced publicly on RYD Nepal\'s pages. RYD Nepal reserves the right to amend giveaway terms; any changes will be announced on the official pages.'
+          : 'यो गिभअवे RYD Nepal Pvt. Ltd. द्वारा आयोजित हो र FIFA, Meta वा TikTok द्वारा प्रायोजित, समर्थन गरिएको वा व्यवस्थापन गरिएको होइन। पुरस्कार नेपाली रुपैयाँमा प्रदान गरिनेछ र नेपाल सरकारको प्रचलित नियमअनुसार लागू हुने TDS (कर कट्टी) कटाइनेछ। विजेतालाई उनीहरूले भाग लिएकै प्लेटफर्ममार्फत सम्पर्क गरिनेछ र RYD Nepal का आधिकारिक पेजहरूमा सार्वजनिक घोषणा गरिनेछ। गिभअवेका सर्तहरू परिमार्जन गर्ने अधिकार RYD Nepal मा सुरक्षित छ; कुनै पनि परिवर्तन आधिकारिक पेजहरूमा घोषणा गरिनेछ।'} 
         </p>
-
         {/* Related posts */}
         <div className="border-t border-slate-100 pt-8">
           <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">{en ? 'Read next' : 'अर्को पढ्नुहोस्'}</p>

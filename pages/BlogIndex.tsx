@@ -38,7 +38,7 @@ export const BLOG_POSTS: BlogPostMeta[] = [
     tag: 'Giveaway & Events',
     tagNe: 'गिभअवे र कार्यक्रम',
     cover: '/og/predict-win-worldcup.jpg',
-    hidden: true, // unpublish flag — set to false (or delete) to go live
+    // hidden: true, // unpublish flag — set to false (or delete) to go live
   },
   {
     slug: 'how-to-become-pathao-rider-without-bike',

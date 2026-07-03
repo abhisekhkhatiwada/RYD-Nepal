@@ -10,6 +10,7 @@ import Support from './pages/Support';
 import Contact from './pages/Contact';
 import BlogIndex from './pages/BlogIndex';
 import BlogPost from './pages/BlogPost';
+import Prize from './pages/Prize';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,6 +34,7 @@ const Navbar = () => {
     { name: 'Blog', path: '/blog' },
     { name: 'Support', path: '/support' },
     { name: 'Contact', path: '/contact' },
+    { name: 'Prize', path: '/prize' }
   ];
 
   const isActive = (path: string) =>
@@ -268,6 +270,7 @@ export const AppShell: React.FC = () => {
             <Route path="/services" element={<Services />} />
             <Route path="/blog" element={<BlogIndex />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/prize" element={<Prize />} />
             <Route path="/support" element={<Support />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>

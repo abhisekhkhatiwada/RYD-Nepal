@@ -109,6 +109,26 @@ const ROUTE_META = {
       ]),
     ],
   },
+ '/prize': {
+    title: 'Prize Details — FIFA World Cup 2026 Giveaway | RYD Nepal',
+    description:
+      'Prize details for the RYD Nepal FIFA World Cup 2026 Giveaway. Explore the rewards, winner information, and prize distribution details.',
+    canonical: 'https://www.rydnepal.com/prize',
+    priority: '0.9',
+    changefreq: 'weekly',
+    lastmod: '2026-07-03',
+    ogTitle: 'Prize Details — RYD Nepal FIFA World Cup 2026 Giveaway',
+    ogDescription:
+      'Discover the prizes for the RYD Nepal FIFA World Cup 2026 Giveaway. Full prize details and winner information will be available soon.',
+    ogImage: DEFAULT_OG_IMAGE,
+    ogType: 'website',
+    jsonLd: [
+      crumb([
+        { name: 'Home', url: `${SITE}/` },
+        { name: 'Prize Details', url: `${SITE}/prize` },
+      ]),
+    ],
+  },
   '/services': {
     title: 'Bike Rent in Kathmandu — Price Per Day, Week & Month | RYD Nepal',
     description: 'Bike rent in Kathmandu price list: Hero Super Splendor 125cc from Rs. 700/day, Rs. 5,600/week or Rs. 21,000/month — free maintenance, insurance & rent-to-own after 1.5 years. Transparent bike rental pricing for Pathao, InDrive, Yango & Tootle riders.',
@@ -255,7 +275,7 @@ const ROUTE_META = {
     // DRAFT: page renders at its URL but gets noindex/nofollow and is excluded
     // from sitemap.xml. Flip to false (or delete the flag) to publish — and
     // also unset `hidden` on the matching BLOG_POSTS entry in BlogIndex.tsx.
-    draft: true,
+    // draft: true,
     title: 'RYD Predict & Win: FIFA World Cup 2026 Giveaway — Win Up to Rs. 20,000',
     description: 'Predict FIFA World Cup 2026 knockout results with RYD Nepal and win cash: 2 winners per match (Rs. 500–3,000 each) plus a Rs. 20,000 bumper prize for predicting all 7 big results. Free entry — like, share, tag 2 friends.',
     canonical: 'https://www.rydnepal.com/blog/ryd-predict-win-fifa-world-cup-2026',
