@@ -55,7 +55,7 @@ const MATCHES: Match[] = [
     date: 'July 4, 2026', dateNe: 'जुलाई ४, २०२६', time: '10:45 PM', timeNe: 'राति १०:४५',
     prize: 'Rs. 500 × 2 winners', prizeNe: 'रु. ५०० × २ विजेता',
     detail: 'Predict the match winner.', detailNe: 'खेलको विजेता प्रेडिक्ट गर्नुहोस्।',
-    status: 'open', postUrl: '', winners: []
+    status: 'finished', postUrl: '', winners: ["On progress"], winnerTeam: 'Morocco', score: ['0', '3']
   },
   {
     id: 'r16-2', stage: 'Round of 16', stageNe: 'राउन्ड अफ १६',
@@ -63,7 +63,7 @@ const MATCHES: Match[] = [
     date: 'July 5, 2026', dateNe: 'जुलाई ५, २०२६', time: '2:45 AM', timeNe: 'राति २:४५',
     prize: 'Rs. 500 × 2 winners', prizeNe: 'रु. ५०० × २ विजेता',
     detail: 'Predict the match winner.', detailNe: 'खेलको विजेता प्रेडिक्ट गर्नुहोस्।',
-    status: 'open', postUrl: '', winners: [],
+    status: 'finished', postUrl: '', winners: ["On progress"], winnerTeam: 'France', score: ['0', '1']
   },
   {
     id: 'r16-3', stage: 'Round of 16', stageNe: 'राउन्ड अफ १६',
@@ -99,7 +99,7 @@ const MATCHES: Match[] = [
   },
   {
     id: 'r16-7', stage: 'Round of 16', stageNe: 'राउन्ड अफ १६',
-    teams: 'Australia / Egypt vs Argentina / Cape Verde', venue: 'Atlanta · Mercedes-Benz Stadium', venueNe: 'अट्लान्टा · मर्सिडिज-बेन्ज स्टेडियम',
+    teams: 'Egypt vs Argentina', venue: 'Atlanta · Mercedes-Benz Stadium', venueNe: 'अट्लान्टा · मर्सिडिज-बेन्ज स्टेडियम',
     date: 'July 7, 2026', dateNe: 'जुलाई ७, २०२६', time: '9:45 PM', timeNe: 'राति ९:४५',
     prize: 'Rs. 500 × 2 winners', prizeNe: 'रु. ५०० × २ विजेता',
     detail: 'Teams confirmed after the Round of 32.', detailNe: 'राउन्ड अफ ३२ पछि टोली पक्का हुन्छ।',
@@ -107,7 +107,7 @@ const MATCHES: Match[] = [
   },
   {
     id: 'r16-8', stage: 'Round of 16', stageNe: 'राउन्ड अफ १६',
-    teams: 'Switzerland vs Colombia / Ghana', venue: 'Vancouver · BC Place', venueNe: 'भ्यानकुभर · BC प्लेस',
+    teams: 'Switzerland vs Colombia', venue: 'Vancouver · BC Place', venueNe: 'भ्यानकुभर · BC प्लेस',
     date: 'July 8, 2026', dateNe: 'जुलाई ८, २०२६', time: '1:45 AM', timeNe: 'राति १:४५',
     prize: 'Rs. 500 × 2 winners', prizeNe: 'रु. ५०० × २ विजेता',
     detail: 'Opponent confirmed after the Round of 32.', detailNe: 'राउन्ड अफ ३२ पछि प्रतिद्वन्द्वी पक्का हुन्छ।',
