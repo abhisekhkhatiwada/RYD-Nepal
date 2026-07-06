@@ -71,7 +71,7 @@ const MATCHES: Match[] = [
     date: 'July 6, 2026', dateNe: 'जुलाई ६, २०२६', time: '1:45 AM', timeNe: 'राति १:४५',
     prize: 'Rs. 500 × 2 winners', prizeNe: 'रु. ५०० × २ विजेता',
     detail: 'Predict the match winner.', detailNe: 'खेलको विजेता प्रेडिक्ट गर्नुहोस्।',
-    status: 'open', postUrl: '', winners: [],
+    status: 'finished', postUrl: '', winners: ['On progress'], winnerTeam: 'Norway', score: ['1', '2']
   },
   {
     id: 'r16-4', stage: 'Round of 16', stageNe: 'राउन्ड अफ १६',
@@ -79,7 +79,7 @@ const MATCHES: Match[] = [
     date: 'July 6, 2026', dateNe: 'जुलाई ६, २०२६', time: '5:45 AM', timeNe: 'बिहान ५:४५',
     prize: 'Rs. 500 × 2 winners', prizeNe: 'रु. ५०० × २ विजेता',
     detail: 'Predict the match winner.', detailNe: 'खेलको विजेता प्रेडिक्ट गर्नुहोस्।',
-    status: 'open', postUrl: '', winners: [],
+    status: 'finished', postUrl: '', winners: ['On progress'], winnerTeam: 'England', score: ['2', '3']
   },
   {
     id: 'r16-5', stage: 'Round of 16', stageNe: 'राउन्ड अफ १६',
@@ -123,7 +123,7 @@ const MATCHES: Match[] = [
     status: 'upcoming', postUrl: '', winners: [],
   },
   {
-    id: 'qf-2', stage: 'Quarter Final', stageNe: 'क्वाटर फाइनल', sources: ['r16-5', 'r16-6'],
+    id: 'qf-2', stage: 'Quarter Final', stageNe: 'क्वाटर फाइनल', sources: ['r16-3', 'r16-4'],
     teams: 'TBD vs TBD', venue: 'Los Angeles · SoFi Stadium', venueNe: 'लस एन्जलस · SoFi स्टेडियम',
     date: 'July 11, 2026', dateNe: 'जुलाई ११, २०२६', time: 'Kickoff TBC', timeNe: 'किकअफ पुष्टि हुँदै',
     prize: 'Rs. 1,000 × 2 winners', prizeNe: 'रु. १,००० × २ विजेता',
@@ -131,7 +131,7 @@ const MATCHES: Match[] = [
     status: 'upcoming', postUrl: '', winners: [],
   },
   {
-    id: 'qf-3', stage: 'Quarter Final', stageNe: 'क्वाटर फाइनल', sources: ['r16-7', 'r16-8'],
+    id: 'qf-3', stage: 'Quarter Final', stageNe: 'क्वाटर फाइनल', sources: ['r16-5', 'r16-6'],
     teams: 'TBD vs TBD', venue: 'Kansas City · Arrowhead Stadium', venueNe: 'कान्सस सिटी · एरोहेड स्टेडियम',
     date: 'July 11, 2026', dateNe: 'जुलाई ११, २०२६', time: 'Kickoff TBC', timeNe: 'किकअफ पुष्टि हुँदै',
     prize: 'Rs. 1,000 × 2 winners', prizeNe: 'रु. १,००० × २ विजेता',
@@ -139,7 +139,7 @@ const MATCHES: Match[] = [
     status: 'upcoming', postUrl: '', winners: [],
   },
   {
-    id: 'qf-4', stage: 'Quarter Final', stageNe: 'क्वाटर फाइनल', sources: ['r16-3', 'r16-4'],
+    id: 'qf-4', stage: 'Quarter Final', stageNe: 'क्वाटर फाइनल', sources: ['r16-7', 'r16-8'],
     teams: 'TBD vs TBD', venue: 'Miami · Hard Rock Stadium', venueNe: 'मायामी · हार्ड रक स्टेडियम',
     date: 'July 12, 2026', dateNe: 'जुलाई १२, २०२६', time: 'Kickoff TBC', timeNe: 'किकअफ पुष्टि हुँदै',
     prize: 'Rs. 1,000 × 2 winners', prizeNe: 'रु. १,००० × २ विजेता',
