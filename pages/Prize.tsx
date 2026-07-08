@@ -87,7 +87,7 @@ const MATCHES: Match[] = [
     date: 'July 7, 2026', dateNe: 'जुलाई ७, २०२६', time: '12:45 AM', timeNe: 'राति १२:४५',
     prize: 'Rs. 500 × 2 winners', prizeNe: 'रु. ५०० × २ विजेता',
     detail: 'Predict the match winner.', detailNe: 'खेलको विजेता प्रेडिक्ट गर्नुहोस्।',
-    status: 'open', postUrl: '', winners: [],
+    status: 'finished', postUrl: '', winners: ["On progress"], winnerTeam: 'Spain', score: ['1', '0']
   },
   {
     id: 'r16-6', stage: 'Round of 16', stageNe: 'राउन्ड अफ १६',
@@ -95,7 +95,7 @@ const MATCHES: Match[] = [
     date: 'July 7, 2026', dateNe: 'जुलाई ७, २०२६', time: '5:45 AM', timeNe: 'बिहान ५:४५',
     prize: 'Rs. 500 × 2 winners', prizeNe: 'रु. ५०० × २ विजेता',
     detail: 'Predict the match winner.', detailNe: 'खेलको विजेता प्रेडिक्ट गर्नुहोस्।',
-    status: 'open', postUrl: '', winners: [],
+    status: 'finished', postUrl: '', winners: ["On progress"], winnerTeam: 'Belgium', score: ['1', '4']
   },
   {
     id: 'r16-7', stage: 'Round of 16', stageNe: 'राउन्ड अफ १६',
@@ -103,7 +103,7 @@ const MATCHES: Match[] = [
     date: 'July 7, 2026', dateNe: 'जुलाई ७, २०२६', time: '9:45 PM', timeNe: 'राति ९:४५',
     prize: 'Rs. 500 × 2 winners', prizeNe: 'रु. ५०० × २ विजेता',
     detail: 'Teams confirmed after the Round of 32.', detailNe: 'राउन्ड अफ ३२ पछि टोली पक्का हुन्छ।',
-    status: 'upcoming', postUrl: '', winners: [],
+    status: 'finished', postUrl: '', winners: ["On progress"], winnerTeam: 'Argentina', score: ['2', '3']
   },
   {
     id: 'r16-8', stage: 'Round of 16', stageNe: 'राउन्ड अफ १६',
@@ -111,7 +111,7 @@ const MATCHES: Match[] = [
     date: 'July 8, 2026', dateNe: 'जुलाई ८, २०२६', time: '1:45 AM', timeNe: 'राति १:४५',
     prize: 'Rs. 500 × 2 winners', prizeNe: 'रु. ५०० × २ विजेता',
     detail: 'Opponent confirmed after the Round of 32.', detailNe: 'राउन्ड अफ ३२ पछि प्रतिद्वन्द्वी पक्का हुन्छ।',
-    status: 'upcoming', postUrl: '', winners: [],
+    status: 'finished', postUrl: '', winners: ["On progress"], winnerTeam: 'Switzerland', score: ['0(4)', '0(3)']
   },
   // ── Quarter Finals · Rs. 1,000 × 2 winners ──
   {
