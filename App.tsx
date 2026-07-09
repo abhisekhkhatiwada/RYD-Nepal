@@ -230,6 +230,10 @@ const Footer = () => {
           <p className="text-slate-600 text-xs text-center">
             As covered by ShareHub Nepal · Insurance Khabar · Corporate Khabar
           </p>
+          <p className="text-slate-600 text-xs text-center">
+            Software by{' '}
+            <a href="https://www.lumetha.com/" title="Lumetha — AI-augmented software development teams in Nepal" className="text-slate-400 hover:text-white transition-colors">Lumetha</a>
+          </p>
         </div>
       </div>
     </footer>
