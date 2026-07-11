@@ -81,10 +81,10 @@ const BlogPredictWin: React.FC = () => {
       ? 'RYD Predict & Win: FIFA World Cup 2026 Giveaway — Win Up to Rs. 20,000 | RYD Nepal'
       : 'RYD Predict & Win: फिफा विश्वकप २०२६ गिभअवे — रु. २०,००० सम्म जित्नुहोस् | RYD Nepal',
     description: en
-      ? 'Predict FIFA World Cup 2026 knockout results with RYD Nepal and win cash: 2 winners per match (Rs. 500–3,000 each) plus a Rs. 20,000 bumper prize for predicting all 7 big results. Free entry — like, share, tag 2 friends.'
+      ? 'Predict FIFA World Cup 2026 knockout results with RYD Nepal: 2 cash winners per match (Rs. 500–3,000) plus a Rs. 20,000 bumper for all 7 big results. Free entry.'
       : 'RYD Nepal सँग फिफा विश्वकप २०२६ नकआउट नतिजा प्रेडिक्ट गरेर नगद जित्नुहोस्: हरेक खेलमा २ विजेता (रु. ५००–३,०००) र सबै ७ नतिजा मिलाउनेलाई रु. २०,००० बम्पर। निःशुल्क — लाइक, सेयर, २ साथी ट्याग।',
     keywords:
-      'RYD Nepal giveaway, predict and win Nepal, FIFA World Cup 2026 giveaway Nepal, world cup prediction contest Nepal, win cash Nepal giveaway, world cup 2026 Nepal, RYD predict and win, football giveaway Kathmandu',
+      'RYD Nepal giveaway, predict and win Nepal, FIFA World Cup 2026 giveaway Nepal, world cup prediction contest Nepal, FIFA world cup 2026 prediction, world cup 2026 schedule Nepal time, world cup 2026 knockout Nepal, win cash Nepal giveaway, world cup 2026 Nepal, RYD predict and win, football giveaway Kathmandu, FIFA 2026 predict and win',
     path: '/blog/ryd-predict-win-fifa-world-cup-2026',
     ogType: 'article',
     ogTitle: 'Predict the World Cup. Win Up to Rs. 20,000 Cash. Free Entry.',
@@ -92,7 +92,7 @@ const BlogPredictWin: React.FC = () => {
       'RYD Nepal\'s FIFA World Cup 2026 Predict & Win: 2 cash winners on every knockout match post, and Rs. 20,000 for predicting all 7 big results. Like, share, tag 2 friends.',
     ogImage: 'https://www.rydnepal.com/og/predict-win-worldcup.jpg',
     datePublished: '2026-07-01',
-    dateModified: '2026-07-01',
+    dateModified: '2026-07-11',
     jsonLd: [
       breadcrumbJsonLd([
         { name: 'Home', url: 'https://www.rydnepal.com/' },
@@ -115,7 +115,7 @@ const BlogPredictWin: React.FC = () => {
           logo: { '@type': 'ImageObject', url: 'https://www.rydnepal.com/logo.png' },
         },
         datePublished: '2026-07-01',
-        dateModified: '2026-07-01',
+        dateModified: '2026-07-11',
         inLanguage: ['en', 'ne'],
         about: [
           { '@type': 'Thing', name: 'FIFA World Cup 2026' },
@@ -206,8 +206,8 @@ const BlogPredictWin: React.FC = () => {
         <div className="prose-slate max-w-none">
           <p className="text-lg text-slate-700 leading-relaxed mb-6">
             {en
-              ? 'Kathmandu runs on football fever every World Cup — late-night screenings, office bracket debates, and group chats that never sleep. This year, RYD Nepal is adding real cash to the fun. From the Round of 16 all the way to the final at MetLife Stadium on July 19, every big match becomes a Predict & Win post on our social pages.'
-              : 'हरेक विश्वकपमा काठमाडौं फुटबल ज्वरोले चल्छ — मध्यरातका स्क्रिनिङ, अफिसका बहस, र कहिल्यै नसुत्ने ग्रुप च्याटहरू। यसपालि RYD Nepal ले यो रमाइलोमा साँच्चैको नगद थप्दैछ। राउन्ड अफ १६ देखि जुलाई १९ को मेटलाइफ स्टेडियमको फाइनलसम्म, हरेक ठूलो खेल हाम्रा सोसल पेजमा Predict & Win पोस्ट बन्नेछ।'}
+              ? 'Kathmandu runs on football fever every World Cup — late-night screenings, office bracket debates, and group chats that never sleep. This year, RYD Nepal is adding real cash to the fun. From the Round of 16 all the way to the final at MetLife Stadium on July 20 (Nepal time), every big match becomes a Predict & Win post on our social pages.'
+              : 'हरेक विश्वकपमा काठमाडौं फुटबल ज्वरोले चल्छ — मध्यरातका स्क्रिनिङ, अफिसका बहस, र कहिल्यै नसुत्ने ग्रुप च्याटहरू। यसपालि RYD Nepal ले यो रमाइलोमा साँच्चैको नगद थप्दैछ। राउन्ड अफ १६ देखि जुलाई २० (नेपाल समय) को मेटलाइफ स्टेडियमको फाइनलसम्म, हरेक ठूलो खेल हाम्रा सोसल पेजमा Predict & Win पोस्ट बन्नेछ।'}
           </p>
           <p className="text-slate-600 leading-relaxed mb-10">
             {en
@@ -277,6 +277,19 @@ const BlogPredictWin: React.FC = () => {
               ))}
             </tbody>
           </table>
+        </div>
+
+        {/* Live tracker CTA */}
+        <div className="bg-primary-50 border border-primary-100 rounded-2xl px-6 py-5 mb-14 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <p className="text-sm text-slate-700 font-semibold">
+            {en
+              ? 'Every fixture, Nepal-time kickoff, live bracket, result, and winner — updated after every match.'
+              : 'हरेक फिक्स्चर, नेपाल समयको किकअफ, लाइभ ब्राकेट, नतिजा र विजेता — हरेक खेलपछि अपडेट।'}
+          </p>
+          <Link to="/prize" className="inline-flex items-center gap-1.5 bg-primary text-white px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-primary-600 transition-all whitespace-nowrap flex-shrink-0">
+            {en ? 'Track matches & winners live' : 'खेल र विजेता लाइभ हेर्नुहोस्'}
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
 
         {/* Bumper */}

@@ -1,0 +1,70 @@
+# Auto-updates the World Cup 2026 tie sheet (data/tiesheet.json) from ESPN's
+# public scoreboard, then rebuilds and deploys — but only when something
+# actually changed. After the tournament ends (July 21, 2026) every run is a
+# no-op; delete this file once the campaign is over.
+#
+# Note: it deploys directly instead of relying on deploy-cloudflare.yml because
+# pushes made with the default GITHUB_TOKEN do not trigger other workflows.
+name: Auto-update World Cup tie sheet
+
+on:
+  schedule:
+    # 04:15 UTC = 10:00 AM Nepal Time, after the night's matches finish.
+    - cron: '15 4 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  deployments: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Update tie sheet from ESPN scoreboard
+        id: tiesheet
+        run: |
+          node scripts/update-tiesheet.mjs
+          if git diff --quiet -- data/tiesheet.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No tie sheet changes — skipping deploy."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            git diff -- data/tiesheet.json | head -100
+          fi
+
+      - name: Commit and push
+        if: steps.tiesheet.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/tiesheet.json
+          git commit -m "chore: auto-update World Cup 2026 tie sheet ($(TZ=Asia/Kathmandu date +%F))"
+          git push
+
+      - name: Install dependencies
+        if: steps.tiesheet.outputs.changed == 'true'
+        run: npm ci
+
+      - name: Build
+        if: steps.tiesheet.outputs.changed == 'true'
+        run: npm run build
+
+      - name: Deploy to Cloudflare Pages
+        if: steps.tiesheet.outputs.changed == 'true'
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: ryd-nepal
+          directory: dist
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}

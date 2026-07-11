@@ -2,6 +2,10 @@
 # catch-all here. The old `/* /index.html 200` rule served 200-OK HTML for
 # dead URLs (e.g. /login, /_next/*) — Google saw soft-404s and duplicates.
 
+# Friendly aliases for the World Cup 2026 Predict & Win page.
+/prizes           /prize  301
+/predict-and-win  /prize  301
+
 # Legacy URLs from the previous Next.js site → real 404 so Google de-indexes them.
 /_next/*  /404.html  404
 /login    /404.html  404

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSEO, breadcrumbJsonLd } from '../utils/seo';
-import { ChevronRight, Shield, Clock, Settings, TrendingUp, Star, CheckCircle, Bike, Users, Gift, Instagram, Facebook } from 'lucide-react';
+import { ChevronRight, Shield, Clock, Settings, TrendingUp, Star, CheckCircle, Bike, Users, Gift, Instagram, Facebook, Trophy, ArrowRight } from 'lucide-react';
 
 const Home: React.FC = () => {
   useSEO({
@@ -91,6 +91,35 @@ const Home: React.FC = () => {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* FIFA World Cup 2026 Predict & Win campaign banner — remove after July 21, 2026 */}
+      <section aria-label="FIFA World Cup 2026 Predict and Win giveaway" className="bg-gradient-to-r from-slate-900 via-slate-800 to-primary-900 relative overflow-hidden">
+        <div aria-hidden="true" className="absolute inset-0 opacity-10 pointer-events-none">
+          <div className="absolute -top-10 left-1/4 w-56 h-56 bg-primary rounded-full blur-3xl"></div>
+          <div className="absolute -bottom-10 right-10 w-56 h-56 bg-primary-400 rounded-full blur-3xl"></div>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-4">
+            <div className="bg-primary p-2.5 rounded-xl shadow-lg shadow-primary-900/40 flex-shrink-0">
+              <Trophy className="w-5 h-5 text-white" />
+            </div>
+            <div>
+              <p className="text-white font-black leading-snug">
+                FIFA World Cup 2026 Predict & Win — win up to <span className="text-primary-300">Rs. 20,000 cash</span>
+              </p>
+              <p className="text-slate-400 text-sm">
+                Free entry on every knockout match. Nepal-time kickoffs, live bracket, prizes & winners.
+              </p>
+            </div>
+          </div>
+          <Link
+            to="/prize"
+            className="inline-flex items-center gap-1.5 bg-primary text-white px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-primary-600 transition-all whitespace-nowrap flex-shrink-0"
+          >
+            Predict & Win Now <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </section>
 

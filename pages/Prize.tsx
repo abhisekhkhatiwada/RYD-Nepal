@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import {
@@ -6,10 +6,11 @@ import {
   CheckCircle, Facebook, Instagram, Sparkles, ArrowRight, Award, Hourglass, ExternalLink,
 } from 'lucide-react';
 import { useSEO, breadcrumbJsonLd } from '../utils/seo';
+import tiesheet from '../data/tiesheet.json';
 
-const SEO_TITLE = 'RYD Predict & Win — FIFA World Cup 2026 Prizes & Winners | RYD Nepal';
+const SEO_TITLE = 'FIFA World Cup 2026 Predict & Win — Prizes, Bracket & Winners | RYD Nepal';
 const SEO_DESCRIPTION =
-  'Every FIFA World Cup 2026 knockout match, its Nepal kickoff time, the cash prize, and the winners — all in one place. Win Rs. 500–3,000 per match plus a Rs. 20,000 bumper. Free entry.';
+  'Every FIFA World Cup 2026 knockout match with Nepal-time kickoff, live bracket, prizes and winners. Win Rs. 500–3,000 per match plus a Rs. 20,000 bumper. Free entry.';
 
 // RYD Nepal's official Facebook page — used as the fallback when a match's
 // specific prediction post URL hasn't been added yet.
@@ -47,134 +48,15 @@ interface Match {
   score?: [string, string];   // final score per slot, e.g. ['2 (4)', '2 (2)'] for a shootout
 }
 
-const MATCHES: Match[] = [
-  // ── Round of 16 · Rs. 500 × 2 winners (kickoffs in Nepal Time) ──
-  {
-    id: 'r16-1', stage: 'Round of 16', stageNe: 'राउन्ड अफ १६',
-    teams: 'Canada vs Morocco', venue: 'Houston · NRG Stadium', venueNe: 'ह्युस्टन · NRG स्टेडियम',
-    date: 'July 4, 2026', dateNe: 'जुलाई ४, २०२६', time: '10:45 PM', timeNe: 'राति १०:४५',
-    prize: 'Rs. 500 × 2 winners', prizeNe: 'रु. ५०० × २ विजेता',
-    detail: 'Predict the match winner.', detailNe: 'खेलको विजेता प्रेडिक्ट गर्नुहोस्।',
-    status: 'finished', postUrl: '', winners: ["On progress"], winnerTeam: 'Morocco', score: ['0', '3']
-  },
-  {
-    id: 'r16-2', stage: 'Round of 16', stageNe: 'राउन्ड अफ १६',
-    teams: 'Paraguay vs France', venue: 'Philadelphia · Lincoln Financial Field', venueNe: 'फिलाडेल्फिया · लिंकन फाइनान्सियल फिल्ड',
-    date: 'July 5, 2026', dateNe: 'जुलाई ५, २०२६', time: '2:45 AM', timeNe: 'राति २:४५',
-    prize: 'Rs. 500 × 2 winners', prizeNe: 'रु. ५०० × २ विजेता',
-    detail: 'Predict the match winner.', detailNe: 'खेलको विजेता प्रेडिक्ट गर्नुहोस्।',
-    status: 'finished', postUrl: '', winners: ["On progress"], winnerTeam: 'France', score: ['0', '1']
-  },
-  {
-    id: 'r16-3', stage: 'Round of 16', stageNe: 'राउन्ड अफ १६',
-    teams: 'Brazil vs Norway', venue: 'East Rutherford · MetLife Stadium', venueNe: 'इस्ट रदरफोर्ड · मेटलाइफ स्टेडियम',
-    date: 'July 6, 2026', dateNe: 'जुलाई ६, २०२६', time: '1:45 AM', timeNe: 'राति १:४५',
-    prize: 'Rs. 500 × 2 winners', prizeNe: 'रु. ५०० × २ विजेता',
-    detail: 'Predict the match winner.', detailNe: 'खेलको विजेता प्रेडिक्ट गर्नुहोस्।',
-    status: 'finished', postUrl: '', winners: ['On progress'], winnerTeam: 'Norway', score: ['1', '2']
-  },
-  {
-    id: 'r16-4', stage: 'Round of 16', stageNe: 'राउन्ड अफ १६',
-    teams: 'Mexico vs England', venue: 'Mexico City · Estadio Azteca', venueNe: 'मेक्सिको सिटी · एस्टाडियो अज्टेका',
-    date: 'July 6, 2026', dateNe: 'जुलाई ६, २०२६', time: '5:45 AM', timeNe: 'बिहान ५:४५',
-    prize: 'Rs. 500 × 2 winners', prizeNe: 'रु. ५०० × २ विजेता',
-    detail: 'Predict the match winner.', detailNe: 'खेलको विजेता प्रेडिक्ट गर्नुहोस्।',
-    status: 'finished', postUrl: '', winners: ['On progress'], winnerTeam: 'England', score: ['2', '3']
-  },
-  {
-    id: 'r16-5', stage: 'Round of 16', stageNe: 'राउन्ड अफ १६',
-    teams: 'Spain vs Portugal', venue: 'Arlington · AT&T Stadium', venueNe: 'अर्लिंगटन · AT&T स्टेडियम',
-    date: 'July 7, 2026', dateNe: 'जुलाई ७, २०२६', time: '12:45 AM', timeNe: 'राति १२:४५',
-    prize: 'Rs. 500 × 2 winners', prizeNe: 'रु. ५०० × २ विजेता',
-    detail: 'Predict the match winner.', detailNe: 'खेलको विजेता प्रेडिक्ट गर्नुहोस्।',
-    status: 'finished', postUrl: '', winners: ["On progress"], winnerTeam: 'Spain', score: ['1', '0']
-  },
-  {
-    id: 'r16-6', stage: 'Round of 16', stageNe: 'राउन्ड अफ १६',
-    teams: 'USA vs Belgium', venue: 'Seattle · Lumen Field', venueNe: 'सिएटल · लुमेन फिल्ड',
-    date: 'July 7, 2026', dateNe: 'जुलाई ७, २०२६', time: '5:45 AM', timeNe: 'बिहान ५:४५',
-    prize: 'Rs. 500 × 2 winners', prizeNe: 'रु. ५०० × २ विजेता',
-    detail: 'Predict the match winner.', detailNe: 'खेलको विजेता प्रेडिक्ट गर्नुहोस्।',
-    status: 'finished', postUrl: '', winners: ["On progress"], winnerTeam: 'Belgium', score: ['1', '4']
-  },
-  {
-    id: 'r16-7', stage: 'Round of 16', stageNe: 'राउन्ड अफ १६',
-    teams: 'Egypt vs Argentina', venue: 'Atlanta · Mercedes-Benz Stadium', venueNe: 'अट्लान्टा · मर्सिडिज-बेन्ज स्टेडियम',
-    date: 'July 7, 2026', dateNe: 'जुलाई ७, २०२६', time: '9:45 PM', timeNe: 'राति ९:४५',
-    prize: 'Rs. 500 × 2 winners', prizeNe: 'रु. ५०० × २ विजेता',
-    detail: 'Teams confirmed after the Round of 32.', detailNe: 'राउन्ड अफ ३२ पछि टोली पक्का हुन्छ।',
-    status: 'finished', postUrl: '', winners: ["On progress"], winnerTeam: 'Argentina', score: ['2', '3']
-  },
-  {
-    id: 'r16-8', stage: 'Round of 16', stageNe: 'राउन्ड अफ १६',
-    teams: 'Switzerland vs Colombia', venue: 'Vancouver · BC Place', venueNe: 'भ्यानकुभर · BC प्लेस',
-    date: 'July 8, 2026', dateNe: 'जुलाई ८, २०२६', time: '1:45 AM', timeNe: 'राति १:४५',
-    prize: 'Rs. 500 × 2 winners', prizeNe: 'रु. ५०० × २ विजेता',
-    detail: 'Opponent confirmed after the Round of 32.', detailNe: 'राउन्ड अफ ३२ पछि प्रतिद्वन्द्वी पक्का हुन्छ।',
-    status: 'finished', postUrl: '', winners: ["On progress"], winnerTeam: 'Switzerland', score: ['0(4)', '0(3)']
-  },
-  // ── Quarter Finals · Rs. 1,000 × 2 winners ──
-  {
-    id: 'qf-1', stage: 'Quarter Final', stageNe: 'क्वाटर फाइनल', sources: ['r16-1', 'r16-2'],
-    teams: 'TBD vs TBD', venue: 'Boston · Gillette Stadium', venueNe: 'बोस्टन · जिलेट स्टेडियम',
-    date: 'July 10, 2026', dateNe: 'जुलाई १०, २०२६', time: 'Kickoff TBC', timeNe: 'किकअफ पुष्टि हुँदै',
-    prize: 'Rs. 1,000 × 2 winners', prizeNe: 'रु. १,००० × २ विजेता',
-    detail: 'Predict the winner — counts toward the bumper.', detailNe: 'विजेता प्रेडिक्ट गर्नुहोस् — बम्परमा गनिन्छ।',
-    status: 'upcoming', postUrl: '', winners: [],
-  },
-  {
-    id: 'qf-2', stage: 'Quarter Final', stageNe: 'क्वाटर फाइनल', sources: ['r16-3', 'r16-4'],
-    teams: 'TBD vs TBD', venue: 'Los Angeles · SoFi Stadium', venueNe: 'लस एन्जलस · SoFi स्टेडियम',
-    date: 'July 11, 2026', dateNe: 'जुलाई ११, २०२६', time: 'Kickoff TBC', timeNe: 'किकअफ पुष्टि हुँदै',
-    prize: 'Rs. 1,000 × 2 winners', prizeNe: 'रु. १,००० × २ विजेता',
-    detail: 'Predict the winner — counts toward the bumper.', detailNe: 'विजेता प्रेडिक्ट गर्नुहोस् — बम्परमा गनिन्छ।',
-    status: 'upcoming', postUrl: '', winners: [],
-  },
-  {
-    id: 'qf-3', stage: 'Quarter Final', stageNe: 'क्वाटर फाइनल', sources: ['r16-5', 'r16-6'],
-    teams: 'TBD vs TBD', venue: 'Kansas City · Arrowhead Stadium', venueNe: 'कान्सस सिटी · एरोहेड स्टेडियम',
-    date: 'July 11, 2026', dateNe: 'जुलाई ११, २०२६', time: 'Kickoff TBC', timeNe: 'किकअफ पुष्टि हुँदै',
-    prize: 'Rs. 1,000 × 2 winners', prizeNe: 'रु. १,००० × २ विजेता',
-    detail: 'Predict the winner — counts toward the bumper.', detailNe: 'विजेता प्रेडिक्ट गर्नुहोस् — बम्परमा गनिन्छ।',
-    status: 'upcoming', postUrl: '', winners: [],
-  },
-  {
-    id: 'qf-4', stage: 'Quarter Final', stageNe: 'क्वाटर फाइनल', sources: ['r16-7', 'r16-8'],
-    teams: 'TBD vs TBD', venue: 'Miami · Hard Rock Stadium', venueNe: 'मायामी · हार्ड रक स्टेडियम',
-    date: 'July 12, 2026', dateNe: 'जुलाई १२, २०२६', time: 'Kickoff TBC', timeNe: 'किकअफ पुष्टि हुँदै',
-    prize: 'Rs. 1,000 × 2 winners', prizeNe: 'रु. १,००० × २ विजेता',
-    detail: 'Predict the winner — counts toward the bumper.', detailNe: 'विजेता प्रेडिक्ट गर्नुहोस् — बम्परमा गनिन्छ।',
-    status: 'upcoming', postUrl: '', winners: [],
-  },
-  // ── Semi Finals · Rs. 2,000 × 2 winners ──
-  {
-    id: 'sf-1', stage: 'Semi Final', stageNe: 'सेमी फाइनल', sources: ['qf-1', 'qf-2'],
-    teams: 'TBD vs TBD', venue: 'Dallas · AT&T Stadium', venueNe: 'डलास · AT&T स्टेडियम',
-    date: 'July 15, 2026', dateNe: 'जुलाई १५, २०२६', time: 'Kickoff TBC', timeNe: 'किकअफ पुष्टि हुँदै',
-    prize: 'Rs. 2,000 × 2 winners', prizeNe: 'रु. २,००० × २ विजेता',
-    detail: 'Predict the winner — counts toward the bumper.', detailNe: 'विजेता प्रेडिक्ट गर्नुहोस् — बम्परमा गनिन्छ।',
-    status: 'upcoming', postUrl: '', winners: [],
-  },
-  {
-    id: 'sf-2', stage: 'Semi Final', stageNe: 'सेमी फाइनल', sources: ['qf-4', 'qf-3'],
-    teams: 'TBD vs TBD', venue: 'Atlanta · Mercedes-Benz Stadium', venueNe: 'अट्लान्टा · मर्सिडिज-बेन्ज स्टेडियम',
-    date: 'July 16, 2026', dateNe: 'जुलाई १६, २०२६', time: 'Kickoff TBC', timeNe: 'किकअफ पुष्टि हुँदै',
-    prize: 'Rs. 2,000 × 2 winners', prizeNe: 'रु. २,००० × २ विजेता',
-    detail: 'Predict the winner — counts toward the bumper.', detailNe: 'विजेता प्रेडिक्ट गर्नुहोस् — बम्परमा गनिन्छ।',
-    status: 'upcoming', postUrl: '', winners: [],
-  },
-  // ── Final · Rs. 3,000 × 2 winners ──
-  {
-    id: 'final', stage: 'Final', stageNe: 'फाइनल', sources: ['sf-1', 'sf-2'],
-    teams: 'TBD vs TBD', venue: 'East Rutherford · MetLife Stadium', venueNe: 'इस्ट रदरफोर्ड · मेटलाइफ स्टेडियम',
-    date: 'July 20, 2026', dateNe: 'जुलाई २०, २०२६', time: 'Kickoff TBC', timeNe: 'किकअफ पुष्टि हुँदै',
-    prize: 'Rs. 3,000 × 2 winners', prizeNe: 'रु. ३,००० × २ विजेता',
-    detail: 'Predict the champion — the final bumper leg.', detailNe: 'च्याम्पियन प्रेडिक्ट गर्नुहोस् — बम्परको अन्तिम खुड्किलो।',
-    status: 'upcoming', postUrl: '', winners: [],
-  },
-];
+// Campaign data lives in data/tiesheet.json so the auto-update script
+// (scripts/update-tiesheet.mjs, run daily by GitHub Actions) and prerender.mjs
+// share one source of truth. Edit that file to add RYD cash-winner names and
+// Facebook post URLs — everything match-related updates itself.
+const MATCHES = tiesheet.matches as Match[];
 
-// Country name → ISO code for flagcdn.com (England uses the subdivision code).
+// Country name → ISO code for the self-hosted flags in public/images/flags/
+// (80px PNGs from flagcdn.com; England uses the subdivision code). When a new
+// country reaches the knockouts, download its flag there and add it here.
 const COUNTRY: Record<string, string> = {
   Canada: 'ca', Morocco: 'ma', Paraguay: 'py', France: 'fr', Brazil: 'br',
   Norway: 'no', Mexico: 'mx', England: 'gb-eng', Spain: 'es', Portugal: 'pt',
@@ -190,7 +72,9 @@ const Flag: React.FC<{ name?: string; className?: string }> = ({ name, className
   if (code) {
     return (
       <img
-        src={`https://flagcdn.com/${code}.svg`}
+        src={`/images/flags/${code}.png`}
+        width={80}
+        height={53}
         alt={name}
         title={name}
         loading="lazy"
@@ -220,8 +104,90 @@ const parseSlots = (teams: string): (string | undefined)[] => {
 };
 
 // The country that won a given match (only set once status is 'finished').
-const winnerOf = (id?: string): string | undefined =>
-  id ? MATCHES.find((m) => m.id === id)?.winnerTeam : undefined;
+const winnerOf = (list: Match[], id?: string): string | undefined =>
+  id ? list.find((m) => m.id === id)?.winnerTeam : undefined;
+
+// Resolve a fixture's display name. Later-round matches list 'TBD vs TBD' until
+// confirmed, but as soon as both feeder matches have a winner we can name the
+// matchup — real team names are what fans (and search engines) look for.
+const fixture = (list: Match[], m: Match): string => {
+  if (!m.sources) return m.teams;
+  const [a, b] = m.sources.map((id) => winnerOf(list, id));
+  if (a || b) return `${a ?? 'TBD'} vs ${b ?? 'TBD'}`;
+  return m.teams;
+};
+
+// "July 4, 2026" + "10:45 PM" → ISO 8601 in Nepal Time (+05:45) for SportsEvent
+// schema. Returns date-only when the kickoff is still TBC.
+const MONTH_NUM: Record<string, string> = {
+  January: '01', February: '02', March: '03', April: '04', May: '05', June: '06',
+  July: '07', August: '08', September: '09', October: '10', November: '11', December: '12',
+};
+const isoKickoff = (m: Match): string | undefined => {
+  const d = m.date.match(/^(\w+) (\d+), (\d+)$/);
+  if (!d || !MONTH_NUM[d[1]]) return undefined;
+  const day = `${d[3]}-${MONTH_NUM[d[1]]}-${d[2].padStart(2, '0')}`;
+  const t = m.time.match(/^(\d+):(\d+) (AM|PM)$/);
+  if (!t) return day;
+  let h = parseInt(t[1], 10) % 12;
+  if (t[3] === 'PM') h += 12;
+  return `${day}T${String(h).padStart(2, '0')}:${t[2]}:00+05:45`;
+};
+
+// SportsEvent list for every knockout fixture whose teams are known.
+// prerender.mjs derives the identical list from data/tiesheet.json at build
+// time, so the crawler-facing copy stays in sync automatically.
+const eventsJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'FIFA World Cup 2026 Knockout Matches — RYD Predict & Win',
+  itemListElement: MATCHES.filter((m) => !fixture(MATCHES, m).includes('TBD')).map((m, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    item: {
+      '@type': 'SportsEvent',
+      name: `FIFA World Cup 2026 ${m.stage}: ${fixture(MATCHES, m)}`,
+      startDate: isoKickoff(m),
+      location: { '@type': 'Place', name: m.venue },
+      url: 'https://www.rydnepal.com/prize',
+    },
+  })),
+};
+
+// Bilingual FAQ. English q/a feed the FAQPage schema (kept in sync with the
+// /prize entry in prerender.mjs); qNe/aNe render in the Nepali view.
+const FAQ: { q: string; a: string; qNe: string; aNe: string }[] = [
+  {
+    q: 'How do I enter the RYD Predict & Win contest for a World Cup 2026 match?',
+    a: 'Four steps on the match prediction post: follow RYD Nepal on Facebook, Instagram, or TikTok, like the post, comment which team will win, and tag 2 friends. Entry is free and takes about 30 seconds per match.',
+    qNe: 'विश्वकप २०२६ को खेलमा RYD Predict & Win मा कसरी भाग लिने?',
+    aNe: 'म्याच प्रेडिक्सन पोस्टमा चार चरण: फेसबुक, इन्स्टाग्राम वा टिकटकमा RYD Nepal फलो गर्नुहोस्, पोस्ट लाइक गर्नुहोस्, कुन टोली जित्छ कमेन्ट गर्नुहोस्, र २ साथी ट्याग गर्नुहोस्। निःशुल्क — हरेक खेलमा करिब ३० सेकेन्ड।',
+  },
+  {
+    q: 'What time are the FIFA World Cup 2026 knockout matches in Nepal?',
+    a: 'Most knockout matches kick off late night or early morning Nepal Time (NPT), roughly between 9:45 PM and 5:45 AM, because the tournament is hosted in the USA, Canada, and Mexico. Every match card on this page shows the exact Nepal-time kickoff.',
+    qNe: 'फिफा विश्वकप २०२६ का नकआउट खेल नेपाली समयअनुसार कति बजे हुन्छन्?',
+    aNe: 'प्रतियोगिता अमेरिका, क्यानडा र मेक्सिकोमा भइरहेकाले धेरैजसो नकआउट खेल नेपाली समयअनुसार राति ९:४५ देखि बिहान ५:४५ बीच सुरु हुन्छन्। यो पेजका हरेक म्याच कार्डमा नेपाल समयको ठ्याक्कै किकअफ देखिन्छ।',
+  },
+  {
+    q: 'How much can I win on each World Cup 2026 match?',
+    a: 'Every knockout match pays 2 lucky winners: Rs. 500 each in the Round of 16, Rs. 1,000 each in the quarter-finals, Rs. 2,000 each in the semi-finals, and Rs. 3,000 each for the final. Predicting all 7 big results (4 quarter-finals, 2 semi-finals, and the final) wins the Rs. 20,000 bumper prize.',
+    qNe: 'विश्वकप २०२६ को हरेक खेलमा कति जित्न सकिन्छ?',
+    aNe: 'हरेक नकआउट खेलमा २ भाग्यशाली विजेता: राउन्ड अफ १६ मा रु. ५००/व्यक्ति, क्वाटर फाइनलमा रु. १,०००, सेमी फाइनलमा रु. २,००० र फाइनलमा रु. ३,०००। सबै ७ ठूला नतिजा (४ क्वाटर फाइनल, २ सेमी फाइनल र फाइनल) मिलाउनेले रु. २०,००० बम्पर जित्छ।',
+  },
+  {
+    q: 'Where are the RYD Predict & Win winners announced?',
+    a: 'Winners are announced on RYD Nepal\'s official Facebook, Instagram, and TikTok pages after each match, and this page is updated with the result, score, and winner names — so you can always check back here.',
+    qNe: 'RYD Predict & Win का विजेता कहाँ घोषणा हुन्छन्?',
+    aNe: 'हरेक खेलपछि RYD Nepal का आधिकारिक फेसबुक, इन्स्टाग्राम र टिकटक पेजमा विजेता घोषणा हुन्छ, र यही पेजमा नतिजा, स्कोर र विजेताको नाम अपडेट गरिन्छ — जहिले पनि यहाँ फर्केर हेर्न सकिन्छ।',
+  },
+  {
+    q: 'Is the contest free? Do I need to be an RYD rider to participate?',
+    a: 'Completely free, and no — anyone in Nepal with a Facebook, Instagram, or TikTok account can enter. You never pay anything to participate. If the World Cup inspires you to start earning, RYD Nepal rents bikes from Rs. 700/day for Pathao, InDrive, Yango, and Uber Bike.',
+    qNe: 'के प्रतियोगिता निःशुल्क छ? भाग लिन RYD राइडर हुनुपर्छ?',
+    aNe: 'पूर्ण निःशुल्क, र होइन — फेसबुक, इन्स्टाग्राम वा टिकटक अकाउन्ट भएका नेपालका जो कोहीले भाग लिन सक्छन्। भाग लिन केही तिर्नु पर्दैन। विश्वकपले कमाउने जोश जगायो भने RYD Nepal ले पाठाओ, इनड्राइभ, यांगो र उबर बाइकका लागि दिनको रु. ७०० देखि बाइक भाडामा दिन्छ।',
+  },
+];
 
 // One team's line in the bracket: country, its score, and whether it advanced.
 interface BracketSlot { name?: string; score?: string; won: boolean }
@@ -230,9 +196,9 @@ type BracketMatch = [BracketSlot, BracketSlot];
 // Bracket per stage. Round of 16 fills from its fixtures; later rounds
 // auto-advance from the winners of the two matches named in `sources`, so
 // setting `winnerTeam`/`score` on a match flows straight up into the bracket.
-const bracketMatches = (stage: string): BracketMatch[] =>
-  MATCHES.filter((m) => m.stage === stage).map((m) => {
-    const names = m.sources ? m.sources.map(winnerOf) : parseSlots(m.teams);
+const bracketMatches = (list: Match[], stage: string): BracketMatch[] =>
+  list.filter((m) => m.stage === stage).map((m) => {
+    const names = m.sources ? m.sources.map((id) => winnerOf(list, id)) : parseSlots(m.teams);
     return [0, 1].map((i) => ({
       name: names[i],
       score: m.score?.[i],
@@ -240,14 +206,139 @@ const bracketMatches = (stage: string): BracketMatch[] =>
     })) as BracketMatch;
   });
 
-const BRACKET: { label: string; labelNe: string; matches: BracketMatch[] }[] = [
-  { label: 'Round of 16', labelNe: 'राउन्ड अफ १६', matches: bracketMatches('Round of 16') },
-  { label: 'Quarter Finals', labelNe: 'क्वाटर फाइनल', matches: bracketMatches('Quarter Final') },
-  { label: 'Semi Finals', labelNe: 'सेमी फाइनल', matches: bracketMatches('Semi Final') },
-  { label: 'Final', labelNe: 'फाइनल', matches: bracketMatches('Final') },
+const buildBracket = (list: Match[]): { label: string; labelNe: string; matches: BracketMatch[] }[] => [
+  { label: 'Round of 16', labelNe: 'राउन्ड अफ १६', matches: bracketMatches(list, 'Round of 16') },
+  { label: 'Quarter Finals', labelNe: 'क्वाटर फाइनल', matches: bracketMatches(list, 'Quarter Final') },
+  { label: 'Semi Finals', labelNe: 'सेमी फाइनल', matches: bracketMatches(list, 'Semi Final') },
+  { label: 'Final', labelNe: 'फाइनल', matches: bracketMatches(list, 'Final') },
 ];
 
 const STAGE_ORDER = ['Round of 16', 'Quarter Final', 'Semi Final', 'Final'];
+
+// ── Live tie sheet (auto-fetch) ──────────────────────────────────────────────
+// ESPN's public World Cup scoreboard keeps fixtures, Nepal-time kickoffs,
+// venues, scores, and match winners current automatically — only the RYD
+// cash-winner names in MATCHES need manual editing. If the fetch fails
+// (offline, API changed), the static MATCHES data above still renders, and it
+// is also what crawlers see in the prerendered HTML either way.
+const SCOREBOARD_URL =
+  'https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260704-20260721';
+
+const STAGE_SLUG: Record<string, string> = {
+  'Round of 16': 'round-of-16',
+  'Quarter Final': 'quarterfinals',
+  'Semi Final': 'semifinals',
+  Final: 'final',
+};
+
+// ESPN display names → the short names used in COUNTRY / MATCHES.
+const TEAM_ALIAS: Record<string, string> = { 'United States': 'USA' };
+const shortName = (n: string) => TEAM_ALIAS[n] ?? n;
+// "Quarterfinal 4 Winner", "TBD", … — ESPN placeholders for unresolved fixtures.
+const isPlaceholder = (n: string) => /winner|loser|tbd/i.test(n);
+
+const NE_DIGIT = ['०', '१', '२', '३', '४', '५', '६', '७', '८', '९'];
+const neDigits = (s: string) => s.replace(/\d/g, (d) => NE_DIGIT[+d]);
+const NE_MONTH: Record<string, string> = {
+  January: 'जनवरी', February: 'फेब्रुअरी', March: 'मार्च', April: 'अप्रिल', May: 'मे', June: 'जुन',
+  July: 'जुलाई', August: 'अगस्ट', September: 'सेप्टेम्बर', October: 'अक्टोबर', November: 'नोभेम्बर', December: 'डिसेम्बर',
+};
+
+// Format a UTC kickoff in Nepal Time, in both languages. Field names match
+// Match so the result can be Object.assign-ed onto a match.
+const nptStrings = (iso: string) => {
+  const parts = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'Asia/Kathmandu', month: 'long', day: 'numeric', year: 'numeric',
+    hour: 'numeric', minute: '2-digit', hour12: true,
+  }).formatToParts(new Date(iso));
+  const get = (t: string) => parts.find((p) => p.type === t)?.value ?? '';
+  const ampm = get('dayPeriod').toUpperCase();
+  const h24 = (parseInt(get('hour'), 10) % 12) + (ampm === 'PM' ? 12 : 0);
+  const period = h24 < 4 ? 'राति' : h24 < 12 ? 'बिहान' : h24 < 16 ? 'दिउँसो' : h24 < 19 ? 'साँझ' : 'राति';
+  return {
+    date: `${get('month')} ${get('day')}, ${get('year')}`,
+    time: `${get('hour')}:${get('minute')} ${ampm}`,
+    dateNe: `${NE_MONTH[get('month')] ?? get('month')} ${neDigits(get('day'))}, ${neDigits(get('year'))}`,
+    timeNe: `${period} ${neDigits(`${get('hour')}:${get('minute')}`)}`,
+  };
+};
+
+interface LiveMatch {
+  stageSlug: string;
+  when: string;                    // kickoff, UTC ISO
+  venue?: string;                  // "City · Stadium"
+  completed: boolean;
+  names: string[];                 // both teams (short names, may be placeholders)
+  scores: Record<string, string>;  // team → "2" or "0 (4)" after a shootout
+  winner?: string;
+}
+
+// One ESPN scoreboard event → the bits we merge. Returns null on shape changes.
+const parseLive = (ev: any): LiveMatch | null => {
+  try {
+    const comp = ev.competitions[0];
+    const teams = comp.competitors.map((c: any) => ({
+      name: shortName(c.team.displayName),
+      score: c.shootoutScore != null ? `${c.score} (${c.shootoutScore})` : `${c.score ?? ''}`,
+      winner: !!c.winner,
+    }));
+    const city = comp.venue?.address?.city?.split(',')[0];
+    return {
+      stageSlug: ev.season?.slug ?? '',
+      when: ev.date,
+      venue: comp.venue?.fullName ? `${city ? `${city} · ` : ''}${comp.venue.fullName}` : undefined,
+      completed: !!comp.status?.type?.completed,
+      names: teams.map((t: { name: string }) => t.name),
+      scores: Object.fromEntries(teams.map((t: { name: string; score: string }) => [t.name, t.score])),
+      winner: teams.find((t: { winner: boolean }) => t.winner)?.name,
+    };
+  } catch {
+    return null;
+  }
+};
+
+// Merge live data into the static campaign data. Stages are processed in
+// bracket order so a quarter-final winner immediately resolves the semi-final
+// fixture it feeds. Events are matched by team names when the fixture is
+// known, falling back to kickoff order within the stage.
+const mergeLive = (base: Match[], events: any[]): Match[] => {
+  const live = events.map(parseLive).filter((e): e is LiveMatch => !!e);
+  const out = base.map((m) => ({ ...m }));
+  const used = new Set<LiveMatch>();
+  for (const stage of STAGE_ORDER) {
+    const ours = out.filter((m) => m.stage === stage);
+    const theirs = live
+      .filter((e) => e.stageSlug === STAGE_SLUG[stage])
+      .sort((x, y) => x.when.localeCompare(y.when));
+    ours.forEach((m, i) => {
+      const slots = m.sources ? m.sources.map((id) => winnerOf(out, id)) : parseSlots(m.teams);
+      const known = slots.every(Boolean);
+      const ev =
+        theirs.find((e) => !used.has(e) && known && (slots as string[]).every((n) => e.names.includes(n))) ??
+        (!used.has(theirs[i]) ? theirs[i] : undefined);
+      if (!ev) return;
+      used.add(ev);
+      // Slot order: our bracket order when the fixture is known, else ESPN's.
+      const [a, b] = known
+        ? (slots as string[])
+        : ev.names.some(isPlaceholder) ? [undefined, undefined] : ev.names;
+      if (a && b) m.teams = `${a} vs ${b}`;
+      Object.assign(m, nptStrings(ev.when));
+      if (ev.venue && ev.venue !== m.venue) {
+        m.venue = ev.venue;
+        m.venueNe = ev.venue; // stadium names stay in Latin script
+      }
+      if (ev.completed && a && b) {
+        m.status = 'finished';
+        m.winnerTeam = ev.winner;
+        m.score = [ev.scores[a] ?? '', ev.scores[b] ?? ''];
+      } else if (m.status === 'upcoming' && a && b) {
+        m.status = 'open';
+      }
+    });
+  }
+  return out;
+};
 
 // [Icon, titleEn, descEn, titleNe, descNe]
 const STEPS: [React.ComponentType<{ className?: string }>, string, string, string, string][] = [
@@ -267,27 +358,55 @@ const Prize: React.FC = () => {
   const [lang, setLang] = useState<'en' | 'ne'>('en');
   const en = lang === 'en';
 
+  // Static campaign data, upgraded in place once the live tie sheet arrives.
+  const [matches, setMatches] = useState<Match[]>(MATCHES);
+  useEffect(() => {
+    const ctrl = new AbortController();
+    fetch(SCOREBOARD_URL, { signal: ctrl.signal })
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
+      .then((data) => setMatches(mergeLive(MATCHES, data?.events ?? [])))
+      .catch(() => { /* static data remains the fallback */ });
+    return () => ctrl.abort();
+  }, []);
+
   useSEO({
     title: SEO_TITLE,
     description: SEO_DESCRIPTION,
     keywords:
-      'RYD Nepal giveaway prize, FIFA World Cup 2026 prize, RYD predict and win, world cup prediction winners Nepal, RYD Nepal prizes',
+      'FIFA World Cup 2026 prediction Nepal, world cup 2026 schedule Nepal time, world cup 2026 bracket, FIFA 2026 knockout results, predict and win Nepal, RYD predict and win, world cup prediction contest Nepal, world cup 2026 quarter final Nepal time, RYD Nepal giveaway prize, win cash Nepal world cup',
     path: '/prize',
-    ogTitle: 'Predict the World Cup. Win Up to Rs. 20,000 Cash.',
+    ogTitle: 'FIFA World Cup 2026: Predict Every Match. Win Up to Rs. 20,000 Cash.',
     ogDescription: SEO_DESCRIPTION,
     ogImage: 'https://www.rydnepal.com/og/predict-win-worldcup.jpg',
     jsonLd: [
       breadcrumbJsonLd([
         { name: 'Home', url: 'https://www.rydnepal.com/' },
-        { name: 'Prize Details', url: 'https://www.rydnepal.com/prize' },
+        { name: 'FIFA World Cup 2026 Predict & Win — Prizes & Winners', url: 'https://www.rydnepal.com/prize' },
       ]),
       {
         '@context': 'https://schema.org',
         '@type': 'WebPage',
-        name: 'Prize Details',
+        name: 'FIFA World Cup 2026 Predict & Win — Prizes, Bracket & Winners',
         description: SEO_DESCRIPTION,
         url: 'https://www.rydnepal.com/prize',
+        inLanguage: ['en', 'ne'],
+        isPartOf: { '@type': 'WebSite', name: 'RYD Nepal', url: 'https://www.rydnepal.com' },
+        about: [
+          { '@type': 'Thing', name: 'FIFA World Cup 2026' },
+          { '@type': 'Thing', name: 'Football Prediction Contest Nepal' },
+        ],
+        dateModified: tiesheet.updated,
       },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: FAQ.map((f) => ({
+          '@type': 'Question',
+          name: f.q,
+          acceptedAnswer: { '@type': 'Answer', text: f.a },
+        })),
+      },
+      eventsJsonLd,
     ],
   });
 
@@ -295,13 +414,15 @@ const Prize: React.FC = () => {
     () =>
       STAGE_ORDER.map((stage) => ({
         stage,
-        stageNe: MATCHES.find((m) => m.stage === stage)?.stageNe ?? stage,
-        matches: MATCHES.filter((m) => m.stage === stage),
+        stageNe: matches.find((m) => m.stage === stage)?.stageNe ?? stage,
+        matches: matches.filter((m) => m.stage === stage),
       })).filter((g) => g.matches.length > 0),
-    [],
+    [matches],
   );
 
-  const totalWinners = MATCHES.reduce((n, m) => n + m.winners.length, 0);
+  const bracket = useMemo(() => buildBracket(matches), [matches]);
+
+  const totalWinners = matches.reduce((n, m) => n + m.winners.length, 0);
 
   return (
     <div className="animate-in fade-in duration-700">
@@ -340,9 +461,9 @@ const Prize: React.FC = () => {
 
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-6">
             {en ? (
-              <>Every Match. Every Prize. <span className="text-primary-300">Every Winner.</span></>
+              <>FIFA World Cup 2026: Every Match. Every Prize. <span className="text-primary-300">Every Winner.</span></>
             ) : (
-              <>हरेक खेल। हरेक पुरस्कार। <span className="text-primary-300">हरेक विजेता।</span></>
+              <>फिफा विश्वकप २०२६: हरेक खेल। हरेक पुरस्कार। <span className="text-primary-300">हरेक विजेता।</span></>
             )}
           </h1>
           <p className="text-slate-300 text-lg leading-relaxed max-w-2xl mx-auto">
@@ -382,8 +503,8 @@ const Prize: React.FC = () => {
 
           <div className="overflow-x-auto pb-2">
             <div className="flex gap-8 min-w-[920px] min-h-[640px]">
-              {BRACKET.map((round, ri) => {
-                const isLast = ri === BRACKET.length - 1;
+              {bracket.map((round, ri) => {
+                const isLast = ri === bracket.length - 1;
                 return (
                   <div key={round.label} className="flex-1 min-w-[200px] flex flex-col">
                     <p className="text-center text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">
@@ -472,7 +593,7 @@ const Prize: React.FC = () => {
         <div id="matches" className="scroll-mt-24">
           <div className="flex items-end justify-between mb-2">
             <h2 className="text-2xl md:text-3xl font-black text-slate-900">
-              {en ? 'Matches, Prizes & Winners' : 'खेल, पुरस्कार र विजेता'}
+              {en ? 'World Cup 2026 Matches, Prizes & Winners — Nepal Time' : 'विश्वकप २०२६ का खेल, पुरस्कार र विजेता — नेपाल समय'}
             </h2>
           </div>
           <p className="text-slate-500 text-sm mb-8">
@@ -519,7 +640,7 @@ const Prize: React.FC = () => {
                         </div>
 
                         <h3 className="text-lg font-black text-slate-900 mb-3 group-hover:text-primary transition-colors">
-                          {m.teams}
+                          {fixture(matches, m)}
                         </h3>
 
                         <div className="space-y-1.5 text-sm text-slate-600">
@@ -544,7 +665,7 @@ const Prize: React.FC = () => {
 
                       {/* Winner / action section */}
                       <div className="border-t border-slate-100 bg-slate-50 px-6 py-4">
-                        {m.status === 'finished' && m.winners.length > 0 ? (
+                        {m.status === 'finished' ? (
                           <div>
                             <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-emerald-600 mb-2">
                               <Award className="w-4 h-4" />{en ? 'Winners' : 'विजेता'}
@@ -556,16 +677,22 @@ const Prize: React.FC = () => {
                                 <span className="text-xs text-slate-500">{en ? 'won the match' : 'खेल जित्यो'}</span>
                               </div>
                             )}
-                            <ul className="flex flex-wrap gap-2">
-                              {m.winners.map((w) => (
-                                <li
-                                  key={w}
-                                  className="inline-flex items-center gap-1.5 rounded-full bg-white border border-emerald-100 px-3 py-1 text-sm font-semibold text-slate-800"
-                                >
-                                  <Trophy className="w-3.5 h-3.5 text-primary" />{w}
-                                </li>
-                              ))}
-                            </ul>
+                            {m.winners.length > 0 ? (
+                              <ul className="flex flex-wrap gap-2">
+                                {m.winners.map((w) => (
+                                  <li
+                                    key={w}
+                                    className="inline-flex items-center gap-1.5 rounded-full bg-white border border-emerald-100 px-3 py-1 text-sm font-semibold text-slate-800"
+                                  >
+                                    <Trophy className="w-3.5 h-3.5 text-primary" />{w}
+                                  </li>
+                                ))}
+                              </ul>
+                            ) : (
+                              <p className="text-sm text-slate-500">
+                                {en ? 'Cash winners announced soon on our pages.' : 'नगद विजेता चाँडै हाम्रा पेजमा घोषणा हुनेछ।'}
+                              </p>
+                            )}
                           </div>
                         ) : m.status === 'open' ? (
                           <div className="flex items-center justify-between gap-3">
@@ -636,6 +763,24 @@ const Prize: React.FC = () => {
           <Link to="/blog/ryd-predict-win-fifa-world-cup-2026" className="inline-flex items-center gap-1.5 mt-5 text-sm font-bold text-primary hover:text-primary-700 transition-colors">
             {en ? 'Read the full giveaway rules' : 'पूरा गिभअवे नियम पढ्नुहोस्'}<ArrowRight className="w-4 h-4" />
           </Link>
+        </div>
+
+        {/* FAQ */}
+        <h2 className="text-2xl md:text-3xl font-black text-slate-900 mb-6">
+          {en ? 'World Cup 2026 Predict & Win — FAQ' : 'विश्वकप २०२६ Predict & Win — बारम्बार सोधिने प्रश्न'}
+        </h2>
+        <div className="space-y-4 mb-14">
+          {FAQ.map((f, i) => (
+            <details key={i} className="group bg-slate-50 border border-slate-100 rounded-2xl overflow-hidden">
+              <summary className="flex items-start justify-between cursor-pointer px-6 py-5 font-bold text-slate-900 list-none">
+                <span className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                  {en ? f.q : f.qNe}
+                </span>
+              </summary>
+              <p className="px-6 pb-5 pl-14 text-sm text-slate-600 leading-relaxed">{en ? f.a : f.aNe}</p>
+            </details>
+          ))}
         </div>
 
         {/* Fine print */}

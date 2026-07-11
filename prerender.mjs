@@ -57,6 +57,38 @@ const faq = (qa) => ({
   })),
 });
 
+// ── World Cup tie sheet ───────────────────────────────────────────────────────
+// data/tiesheet.json is the single source of truth for the /prize campaign —
+// pages/Prize.tsx imports it for the UI, and scripts/update-tiesheet.mjs
+// (run daily by .github/workflows/update-tiesheet.yml) refreshes it from
+// ESPN's public scoreboard. The SportsEvent schema below is derived from it,
+// so a tie sheet update + rebuild refreshes the crawler-facing data too.
+const TIESHEET = JSON.parse(
+  fs.readFileSync(path.resolve(__dirname, 'data/tiesheet.json'), 'utf-8'),
+);
+
+const tsWinnerOf = (id) => TIESHEET.matches.find((m) => m.id === id)?.winnerTeam;
+// Resolve 'TBD vs TBD' fixtures from the winners of their feeder matches.
+const tsFixture = (m) => {
+  if (!m.sources) return m.teams;
+  const [a, b] = m.sources.map(tsWinnerOf);
+  return a || b ? `${a ?? 'TBD'} vs ${b ?? 'TBD'}` : m.teams;
+};
+// "July 12, 2026" + "2:45 AM" (Nepal Time) → "2026-07-12T02:45:00+05:45".
+const MONTH_NUM = {
+  January: '01', February: '02', March: '03', April: '04', May: '05', June: '06',
+  July: '07', August: '08', September: '09', October: '10', November: '11', December: '12',
+};
+const tsKickoff = (m) => {
+  const d = m.date.match(/^(\w+) (\d+), (\d+)$/);
+  if (!d || !MONTH_NUM[d[1]]) return undefined;
+  const day = `${d[3]}-${MONTH_NUM[d[1]]}-${d[2].padStart(2, '0')}`;
+  const t = m.time.match(/^(\d+):(\d+) (AM|PM)$/);
+  if (!t) return day;
+  const h = (parseInt(t[1], 10) % 12) + (t[3] === 'PM' ? 12 : 0);
+  return `${day}T${String(h).padStart(2, '0')}:${t[2]}:00+05:45`;
+};
+
 const blogPosting = ({ headline, description, url, image, datePublished, dateModified }) => ({
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
@@ -110,23 +142,67 @@ const ROUTE_META = {
     ],
   },
  '/prize': {
-    title: 'Prize Details — FIFA World Cup 2026 Giveaway | RYD Nepal',
+    // NOTE: keep title/description/FAQ in sync with pages/Prize.tsx (SEO_TITLE,
+    // SEO_DESCRIPTION, FAQ). Match data + lastmod come from data/tiesheet.json,
+    // which scripts/update-tiesheet.mjs refreshes automatically.
+    title: 'FIFA World Cup 2026 Predict & Win — Prizes, Bracket & Winners | RYD Nepal',
     description:
-      'Prize details for the RYD Nepal FIFA World Cup 2026 Giveaway. Explore the rewards, winner information, and prize distribution details.',
+      'Every FIFA World Cup 2026 knockout match with Nepal-time kickoff, live bracket, prizes and winners. Win Rs. 500–3,000 per match plus a Rs. 20,000 bumper. Free entry.',
     canonical: 'https://www.rydnepal.com/prize',
     priority: '0.9',
-    changefreq: 'weekly',
-    lastmod: '2026-07-03',
-    ogTitle: 'Prize Details — RYD Nepal FIFA World Cup 2026 Giveaway',
+    changefreq: 'daily',
+    lastmod: TIESHEET.updated,
+    ogTitle: 'FIFA World Cup 2026: Predict Every Match. Win Up to Rs. 20,000 Cash.',
     ogDescription:
-      'Discover the prizes for the RYD Nepal FIFA World Cup 2026 Giveaway. Full prize details and winner information will be available soon.',
-    ogImage: DEFAULT_OG_IMAGE,
+      'Every FIFA World Cup 2026 knockout match with Nepal-time kickoff, live bracket, prizes and winners. Win Rs. 500–3,000 per match plus a Rs. 20,000 bumper. Free entry.',
+    ogImage: 'https://www.rydnepal.com/og/predict-win-worldcup.jpg',
+    ogImageAlt: 'RYD Nepal Predict & Win — FIFA World Cup 2026 giveaway poster with Rs. 20,000 bumper cash prize',
     ogType: 'website',
     jsonLd: [
       crumb([
         { name: 'Home', url: `${SITE}/` },
-        { name: 'Prize Details', url: `${SITE}/prize` },
+        { name: 'FIFA World Cup 2026 Predict & Win — Prizes & Winners', url: `${SITE}/prize` },
       ]),
+      {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: 'FIFA World Cup 2026 Predict & Win — Prizes, Bracket & Winners',
+        description:
+          'Every FIFA World Cup 2026 knockout match with Nepal-time kickoff, live bracket, prizes and winners. Win Rs. 500–3,000 per match plus a Rs. 20,000 bumper. Free entry.',
+        url: `${SITE}/prize`,
+        inLanguage: ['en', 'ne'],
+        isPartOf: { '@type': 'WebSite', name: 'RYD Nepal', url: SITE },
+        about: [
+          { '@type': 'Thing', name: 'FIFA World Cup 2026' },
+          { '@type': 'Thing', name: 'Football Prediction Contest Nepal' },
+        ],
+        dateModified: TIESHEET.updated,
+      },
+      faq([
+        ['How do I enter the RYD Predict & Win contest for a World Cup 2026 match?', 'Four steps on the match prediction post: follow RYD Nepal on Facebook, Instagram, or TikTok, like the post, comment which team will win, and tag 2 friends. Entry is free and takes about 30 seconds per match.'],
+        ['What time are the FIFA World Cup 2026 knockout matches in Nepal?', 'Most knockout matches kick off late night or early morning Nepal Time (NPT), roughly between 9:45 PM and 5:45 AM, because the tournament is hosted in the USA, Canada, and Mexico. Every match card on this page shows the exact Nepal-time kickoff.'],
+        ['How much can I win on each World Cup 2026 match?', 'Every knockout match pays 2 lucky winners: Rs. 500 each in the Round of 16, Rs. 1,000 each in the quarter-finals, Rs. 2,000 each in the semi-finals, and Rs. 3,000 each for the final. Predicting all 7 big results (4 quarter-finals, 2 semi-finals, and the final) wins the Rs. 20,000 bumper prize.'],
+        ['Where are the RYD Predict & Win winners announced?', 'Winners are announced on RYD Nepal\'s official Facebook, Instagram, and TikTok pages after each match, and this page is updated with the result, score, and winner names — so you can always check back here.'],
+        ['Is the contest free? Do I need to be an RYD rider to participate?', 'Completely free, and no — anyone in Nepal with a Facebook, Instagram, or TikTok account can enter. You never pay anything to participate. If the World Cup inspires you to start earning, RYD Nepal rents bikes from Rs. 700/day for Pathao, InDrive, Yango, and Uber Bike.'],
+      ]),
+      {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        name: 'FIFA World Cup 2026 Knockout Matches — RYD Predict & Win',
+        itemListElement: TIESHEET.matches
+          .filter((m) => !tsFixture(m).includes('TBD'))
+          .map((m, i) => ({
+            '@type': 'ListItem',
+            position: i + 1,
+            item: {
+              '@type': 'SportsEvent',
+              name: `FIFA World Cup 2026 ${m.stage}: ${tsFixture(m)}`,
+              startDate: tsKickoff(m),
+              location: { '@type': 'Place', name: m.venue },
+              url: `${SITE}/prize`,
+            },
+          })),
+      },
     ],
   },
   '/services': {
@@ -277,17 +353,18 @@ const ROUTE_META = {
     // also unset `hidden` on the matching BLOG_POSTS entry in BlogIndex.tsx.
     // draft: true,
     title: 'RYD Predict & Win: FIFA World Cup 2026 Giveaway — Win Up to Rs. 20,000',
-    description: 'Predict FIFA World Cup 2026 knockout results with RYD Nepal and win cash: 2 winners per match (Rs. 500–3,000 each) plus a Rs. 20,000 bumper prize for predicting all 7 big results. Free entry — like, share, tag 2 friends.',
+    description: 'Predict FIFA World Cup 2026 knockout results with RYD Nepal: 2 cash winners per match (Rs. 500–3,000) plus a Rs. 20,000 bumper for all 7 big results. Free entry.',
     canonical: 'https://www.rydnepal.com/blog/ryd-predict-win-fifa-world-cup-2026',
-    priority: '0.8',
-    changefreq: 'weekly',
-    lastmod: '2026-07-01',
+    priority: '0.9',
+    changefreq: 'daily',
+    lastmod: '2026-07-11',
     ogTitle: 'Predict the World Cup. Win Up to Rs. 20,000 Cash. Free Entry.',
     ogDescription: 'RYD Nepal\'s FIFA World Cup 2026 Predict & Win: 2 cash winners on every knockout match post, and Rs. 20,000 for predicting all 7 big results. Like, share, tag 2 friends.',
     ogImage: 'https://www.rydnepal.com/og/predict-win-worldcup.jpg',
+    ogImageAlt: 'RYD Nepal Predict & Win — FIFA World Cup 2026 giveaway poster with Rs. 20,000 bumper cash prize',
     ogType: 'article',
     datePublished: '2026-07-01',
-    dateModified: '2026-07-01',
+    dateModified: '2026-07-11',
     jsonLd: [
       crumb([
         { name: 'Home', url: `${SITE}/` },
@@ -301,6 +378,7 @@ const ROUTE_META = {
         url: `${SITE}/blog/ryd-predict-win-fifa-world-cup-2026`,
         image: `${SITE}/og/predict-win-worldcup.jpg`,
         datePublished: '2026-07-01',
+        dateModified: '2026-07-11',
       }),
       faq([
         ['How do I participate in the RYD Predict & Win giveaway?', 'Three steps: like the RYD Nepal page, share the match prediction post, and tag 2 friends in the comment with your prediction. An individual prediction post goes live on our Facebook, Instagram, and TikTok pages as soon as each match is fixed.'],
@@ -671,6 +749,18 @@ for (const [route, meta] of Object.entries(ROUTE_META)) {
       `<meta property="og:image" content="${escAttr(ogImage)}">`,
     );
   }
+  // The template's og:image:alt / twitter:image:alt describe the homepage
+  // workshop shot — rewrite them so pages with their own card image don't
+  // ship a mismatched alt text. Falls back to the social hook line.
+  const ogImageAlt = meta.ogImageAlt || ogTitle;
+  page = page.replace(
+    /<meta\s+property="og:image:alt"[^>]*\/?>/i,
+    `<meta property="og:image:alt" content="${escAttr(ogImageAlt)}">`,
+  );
+  page = page.replace(
+    /<meta\s+name="twitter:image:alt"[^>]*\/?>/i,
+    `<meta name="twitter:image:alt" content="${escAttr(ogImageAlt)}">`,
+  );
 
   // Twitter card — large image preview on twitter.com and x.com
   page = page.replace(
