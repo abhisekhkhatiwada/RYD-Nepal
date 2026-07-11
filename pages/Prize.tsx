@@ -137,26 +137,23 @@ const isoKickoff = (m: Match): string | undefined => {
   return `${day}T${String(h).padStart(2, '0')}:${t[2]}:00+05:45`;
 };
 
-// SportsEvent list for every knockout fixture whose teams are known.
-// prerender.mjs derives the identical list from data/tiesheet.json at build
-// time, so the crawler-facing copy stays in sync automatically.
-const eventsJsonLd = {
+// Standalone SportsEvent entities for every knockout fixture whose teams are
+// known — deliberately NOT wrapped in an ItemList: that marks them as a
+// carousel, which requires each item to live on its own page and fails
+// validation with same-page urls. prerender.mjs derives the identical list
+// from data/tiesheet.json at build time, so the crawler copy stays in sync.
+const eventsJsonLd = MATCHES.filter((m) => !fixture(MATCHES, m).includes('TBD')).map((m) => ({
   '@context': 'https://schema.org',
-  '@type': 'ItemList',
-  name: 'FIFA World Cup 2026 Knockout Matches — RYD Predict & Win',
-  itemListElement: MATCHES.filter((m) => !fixture(MATCHES, m).includes('TBD')).map((m, i) => ({
-    '@type': 'ListItem',
-    position: i + 1,
-    item: {
-      '@type': 'SportsEvent',
-      name: `FIFA World Cup 2026 ${m.stage}: ${fixture(MATCHES, m)}`,
-      startDate: isoKickoff(m),
-      location: { '@type': 'Place', name: m.venue },
-      // unique per event — identical urls get flagged as an invalid carousel
-      url: `https://www.rydnepal.com/prize#${m.id}`,
-    },
-  })),
-};
+  '@type': 'SportsEvent',
+  name: `FIFA World Cup 2026 ${m.stage}: ${fixture(MATCHES, m)}`,
+  description: `${fixture(MATCHES, m)} — FIFA World Cup 2026 ${m.stage}. Predict the winner on RYD Nepal's Facebook, Instagram, or TikTok and win cash (${m.prize}). Kickoff shown in Nepal Time.`,
+  startDate: isoKickoff(m),
+  eventStatus: 'https://schema.org/EventScheduled',
+  eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+  location: { '@type': 'Place', name: m.venue },
+  organizer: { '@type': 'Organization', name: 'FIFA', url: 'https://www.fifa.com' },
+  url: `https://www.rydnepal.com/prize#${m.id}`,
+}));
 
 // Bilingual FAQ. English q/a feed the FAQPage schema (kept in sync with the
 // /prize entry in prerender.mjs); qNe/aNe render in the Nepali view.
@@ -426,7 +423,7 @@ const Prize: React.FC = () => {
           acceptedAnswer: { '@type': 'Answer', text: f.a },
         })),
       },
-      eventsJsonLd,
+      ...eventsJsonLd,
     ],
   });
 

@@ -185,25 +185,23 @@ const ROUTE_META = {
         ['Where are the RYD Predict & Win winners announced?', 'Winners are announced on RYD Nepal\'s official Facebook, Instagram, and TikTok pages after each match, and this page is updated with the result, score, and winner names — so you can always check back here.'],
         ['Is the contest free? Do I need to be an RYD rider to participate?', 'Completely free, and no — anyone in Nepal with a Facebook, Instagram, or TikTok account can enter. You never pay anything to participate. If the World Cup inspires you to start earning, RYD Nepal rents bikes from Rs. 700/day for Pathao, InDrive, Yango, and Uber Bike.'],
       ]),
-      {
-        '@context': 'https://schema.org',
-        '@type': 'ItemList',
-        name: 'FIFA World Cup 2026 Knockout Matches — RYD Predict & Win',
-        itemListElement: TIESHEET.matches
-          .filter((m) => !tsFixture(m).includes('TBD'))
-          .map((m, i) => ({
-            '@type': 'ListItem',
-            position: i + 1,
-            item: {
-              '@type': 'SportsEvent',
-              name: `FIFA World Cup 2026 ${m.stage}: ${tsFixture(m)}`,
-              startDate: tsKickoff(m),
-              location: { '@type': 'Place', name: m.venue },
-              // unique per event — identical urls get flagged as an invalid carousel
-              url: `${SITE}/prize#${m.id}`,
-            },
-          })),
-      },
+      // Standalone SportsEvent entities — deliberately NOT wrapped in an
+      // ItemList: that marks them as a carousel, which requires each item to
+      // live on its own page and fails validation with same-page urls.
+      ...TIESHEET.matches
+        .filter((m) => !tsFixture(m).includes('TBD'))
+        .map((m) => ({
+          '@context': 'https://schema.org',
+          '@type': 'SportsEvent',
+          name: `FIFA World Cup 2026 ${m.stage}: ${tsFixture(m)}`,
+          description: `${tsFixture(m)} — FIFA World Cup 2026 ${m.stage}. Predict the winner on RYD Nepal's Facebook, Instagram, or TikTok and win cash (${m.prize}). Kickoff shown in Nepal Time.`,
+          startDate: tsKickoff(m),
+          eventStatus: 'https://schema.org/EventScheduled',
+          eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+          location: { '@type': 'Place', name: m.venue },
+          organizer: { '@type': 'Organization', name: 'FIFA', url: 'https://www.fifa.com' },
+          url: `${SITE}/prize#${m.id}`,
+        })),
     ],
   },
   '/services': {
