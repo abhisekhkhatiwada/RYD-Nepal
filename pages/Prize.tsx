@@ -43,7 +43,10 @@ interface Match {
   status: Status;
   postUrl: string;      // Facebook prediction post — '' falls back to FB_PAGE
   winnerTeam?: string;  // country that won the match (must match a COUNTRY key)
-  winners: string[];    // announced RYD cash winner names/handles
+  /** Announced RYD cash winners. Plain string, or { name, url } to link the
+   *  winner's Facebook / Instagram / TikTok profile:
+   *  "winners": ["Ram B.", { "name": "Sita KC", "url": "https://facebook.com/sita.kc" }] */
+  winners: (string | { name: string; url?: string })[];
   sources?: [string, string]; // ids of the two matches whose winners feed this one (bracket)
   score?: [string, string];   // final score per slot, e.g. ['2 (4)', '2 (2)'] for a shootout
 }
@@ -193,11 +196,11 @@ const FAQ: { q: string; a: string; qNe: string; aNe: string }[] = [
 interface BracketSlot { name?: string; score?: string; won: boolean }
 type BracketMatch = [BracketSlot, BracketSlot];
 
-// Bracket per stage. Round of 16 fills from its fixtures; later rounds
+// Bracket rows for a column. Round of 16 fills from its fixtures; later rounds
 // auto-advance from the winners of the two matches named in `sources`, so
 // setting `winnerTeam`/`score` on a match flows straight up into the bracket.
-const bracketMatches = (list: Match[], stage: string): BracketMatch[] =>
-  list.filter((m) => m.stage === stage).map((m) => {
+const bracketMatches = (list: Match[], column: Match[]): BracketMatch[] =>
+  column.map((m) => {
     const names = m.sources ? m.sources.map((id) => winnerOf(list, id)) : parseSlots(m.teams);
     return [0, 1].map((i) => ({
       name: names[i],
@@ -206,12 +209,28 @@ const bracketMatches = (list: Match[], stage: string): BracketMatch[] =>
     })) as BracketMatch;
   });
 
-const buildBracket = (list: Match[]): { label: string; labelNe: string; matches: BracketMatch[] }[] => [
-  { label: 'Round of 16', labelNe: 'राउन्ड अफ १६', matches: bracketMatches(list, 'Round of 16') },
-  { label: 'Quarter Finals', labelNe: 'क्वाटर फाइनल', matches: bracketMatches(list, 'Quarter Final') },
-  { label: 'Semi Finals', labelNe: 'सेमी फाइनल', matches: bracketMatches(list, 'Semi Final') },
-  { label: 'Final', labelNe: 'फाइनल', matches: bracketMatches(list, 'Final') },
-];
+// Column order is derived by walking DOWN from the final through `sources`, so
+// adjacent pairs always sit next to the match they feed and the connector
+// lines are correct. (The tie sheet JSON keeps matches in kickoff order, which
+// is NOT bracket order — e.g. Spain vs Belgium kicked off before Norway vs
+// England but feeds the other semi-final.)
+const buildBracket = (list: Match[]): { label: string; labelNe: string; matches: BracketMatch[] }[] => {
+  const feeders = (round: Match[]): Match[] =>
+    round
+      .flatMap((m) => m.sources ?? [])
+      .map((id) => list.find((x) => x.id === id))
+      .filter((m): m is Match => !!m);
+  const final = list.filter((m) => m.stage === 'Final');
+  const semis = feeders(final);
+  const quarters = feeders(semis);
+  const r16 = feeders(quarters);
+  return [
+    { label: 'Round of 16', labelNe: 'राउन्ड अफ १६', matches: bracketMatches(list, r16) },
+    { label: 'Quarter Finals', labelNe: 'क्वाटर फाइनल', matches: bracketMatches(list, quarters) },
+    { label: 'Semi Finals', labelNe: 'सेमी फाइनल', matches: bracketMatches(list, semis) },
+    { label: 'Final', labelNe: 'फाइनल', matches: bracketMatches(list, final) },
+  ];
+};
 
 const STAGE_ORDER = ['Round of 16', 'Quarter Final', 'Semi Final', 'Final'];
 
@@ -679,14 +698,32 @@ const Prize: React.FC = () => {
                             )}
                             {m.winners.length > 0 ? (
                               <ul className="flex flex-wrap gap-2">
-                                {m.winners.map((w) => (
-                                  <li
-                                    key={w}
-                                    className="inline-flex items-center gap-1.5 rounded-full bg-white border border-emerald-100 px-3 py-1 text-sm font-semibold text-slate-800"
-                                  >
-                                    <Trophy className="w-3.5 h-3.5 text-primary" />{w}
-                                  </li>
-                                ))}
+                                {m.winners.map((w) => {
+                                  const name = typeof w === 'string' ? w : w.name;
+                                  const url = typeof w === 'string' ? undefined : w.url;
+                                  const pill = 'inline-flex items-center gap-1.5 rounded-full bg-white border border-emerald-100 px-3 py-1 text-sm font-semibold text-slate-800';
+                                  return (
+                                    <li key={name}>
+                                      {url ? (
+                                        <a
+                                          href={url}
+                                          target="_blank"
+                                          rel="nofollow noopener noreferrer"
+                                          className={`${pill} hover:border-primary hover:text-primary transition-colors`}
+                                        >
+                                          <Trophy className="w-3.5 h-3.5 text-primary" />
+                                          {name}
+                                          <ExternalLink className="w-3 h-3 text-slate-400" />
+                                        </a>
+                                      ) : (
+                                        <span className={pill}>
+                                          <Trophy className="w-3.5 h-3.5 text-primary" />
+                                          {name}
+                                        </span>
+                                      )}
+                                    </li>
+                                  );
+                                })}
                               </ul>
                             ) : (
                               <p className="text-sm text-slate-500">
