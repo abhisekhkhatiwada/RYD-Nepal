@@ -141,11 +141,11 @@ const BlogPlatformComparison: React.FC = () => {
           { '@type': 'Thing', name: 'Ride Sharing Earnings Kathmandu' },
         ],
         mentions: [
-          { '@type': 'SoftwareApplication', name: 'Pathao' },
-          { '@type': 'SoftwareApplication', name: 'InDrive' },
-          { '@type': 'SoftwareApplication', name: 'Yango' },
-          { '@type': 'SoftwareApplication', name: 'Uber' },
-          { '@type': 'SoftwareApplication', name: 'Tootle' },
+          { '@type': 'Organization', name: 'Pathao' },
+          { '@type': 'Organization', name: 'InDrive' },
+          { '@type': 'Organization', name: 'Yango' },
+          { '@type': 'Organization', name: 'Uber' },
+          { '@type': 'Organization', name: 'Tootle' },
         ],
       },
       {

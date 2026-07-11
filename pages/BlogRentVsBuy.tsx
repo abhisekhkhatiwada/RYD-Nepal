@@ -179,7 +179,7 @@ const BlogRentVsBuy: React.FC = () => {
         ],
         mentions: [
           { '@type': 'Product', name: 'Hero Super Splendor 125' },
-          { '@type': 'SoftwareApplication', name: 'Pathao' },
+          { '@type': 'Organization', name: 'Pathao' },
           { '@type': 'Organization', name: 'Hulas Finserv' },
         ],
       },

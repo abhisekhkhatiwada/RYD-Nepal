@@ -67,10 +67,10 @@ const BlogGigEconomy: React.FC = () => {
           { '@type': 'Thing', 'name': 'Rent to Own Bike Nepal' },
         ],
         'mentions': [
-          { '@type': 'SoftwareApplication', 'name': 'Pathao' },
-          { '@type': 'SoftwareApplication', 'name': 'InDrive' },
-          { '@type': 'SoftwareApplication', 'name': 'Yango' },
-          { '@type': 'SoftwareApplication', 'name': 'Tootle' },
+          { '@type': 'Organization', 'name': 'Pathao' },
+          { '@type': 'Organization', 'name': 'InDrive' },
+          { '@type': 'Organization', 'name': 'Yango' },
+          { '@type': 'Organization', 'name': 'Tootle' },
         ],
       },
       {

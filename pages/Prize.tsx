@@ -152,7 +152,8 @@ const eventsJsonLd = {
       name: `FIFA World Cup 2026 ${m.stage}: ${fixture(MATCHES, m)}`,
       startDate: isoKickoff(m),
       location: { '@type': 'Place', name: m.venue },
-      url: 'https://www.rydnepal.com/prize',
+      // unique per event — identical urls get flagged as an invalid carousel
+      url: `https://www.rydnepal.com/prize#${m.id}`,
     },
   })),
 };
@@ -643,8 +644,9 @@ const Prize: React.FC = () => {
                   return (
                     <CardTag
                       key={m.id}
+                      id={m.id}
                       // {...linkProps}
-                      className={`group flex flex-col rounded-3xl border border-slate-100 bg-white shadow-sm transition-all overflow-hidden ${
+                      className={`group flex flex-col rounded-3xl border border-slate-100 bg-white shadow-sm transition-all overflow-hidden scroll-mt-24 ${
                         clickable ? 'hover:shadow-lg hover:border-primary/30 cursor-pointer' : ''
                       }`}
                     >

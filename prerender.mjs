@@ -199,7 +199,8 @@ const ROUTE_META = {
               name: `FIFA World Cup 2026 ${m.stage}: ${tsFixture(m)}`,
               startDate: tsKickoff(m),
               location: { '@type': 'Place', name: m.venue },
-              url: `${SITE}/prize`,
+              // unique per event — identical urls get flagged as an invalid carousel
+              url: `${SITE}/prize#${m.id}`,
             },
           })),
       },

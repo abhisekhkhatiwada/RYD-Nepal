@@ -187,11 +187,11 @@ const BlogBecomePathaoRider: React.FC = () => {
           { '@type': 'Thing', name: 'Bike Rental Kathmandu' },
         ],
         mentions: [
-          { '@type': 'SoftwareApplication', name: 'Pathao' },
-          { '@type': 'SoftwareApplication', name: 'Pathao Drive' },
-          { '@type': 'SoftwareApplication', name: 'InDrive' },
-          { '@type': 'SoftwareApplication', name: 'Yango' },
-          { '@type': 'SoftwareApplication', name: 'Uber' },
+          { '@type': 'Organization', name: 'Pathao' },
+          { '@type': 'Organization', name: 'Pathao Drive' },
+          { '@type': 'Organization', name: 'InDrive' },
+          { '@type': 'Organization', name: 'Yango' },
+          { '@type': 'Organization', name: 'Uber' },
         ],
       },
       {
