@@ -268,9 +268,14 @@
       "prizeNe": "रु. १,००० × २ विजेता",
       "detail": "Predict the winner — counts toward the bumper.",
       "detailNe": "विजेता प्रेडिक्ट गर्नुहोस् — बम्परमा गनिन्छ।",
-      "status": "open",
+      "status": "finished",
       "postUrl": "",
-      "winners": []
+      "winners": [],
+      "winnerTeam": "England",
+      "score": [
+        "1",
+        "2"
+      ]
     },
     {
       "id": "qf-4",
@@ -291,9 +296,14 @@
       "prizeNe": "रु. १,००० × २ विजेता",
       "detail": "Predict the winner — counts toward the bumper.",
       "detailNe": "विजेता प्रेडिक्ट गर्नुहोस् — बम्परमा गनिन्छ।",
-      "status": "open",
+      "status": "finished",
       "postUrl": "",
-      "winners": []
+      "winners": [],
+      "winnerTeam": "Argentina",
+      "score": [
+        "3",
+        "1"
+      ]
     },
     {
       "id": "sf-1",
@@ -326,7 +336,7 @@
         "qf-3",
         "qf-4"
       ],
-      "teams": "TBD vs TBD",
+      "teams": "England vs Argentina",
       "venue": "Atlanta · Mercedes-Benz Stadium",
       "venueNe": "अट्लान्टा · मर्सिडिज-बेन्ज स्टेडियम",
       "date": "July 16, 2026",
@@ -337,7 +347,7 @@
       "prizeNe": "रु. २,००० × २ विजेता",
       "detail": "Predict the winner — counts toward the bumper.",
       "detailNe": "विजेता प्रेडिक्ट गर्नुहोस् — बम्परमा गनिन्छ।",
-      "status": "upcoming",
+      "status": "open",
       "postUrl": "",
       "winners": []
     },
