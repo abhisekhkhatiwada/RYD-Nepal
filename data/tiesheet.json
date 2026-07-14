@@ -18,12 +18,18 @@
       "detailNe": "खेलको विजेता प्रेडिक्ट गर्नुहोस्।",
       "status": "finished",
       "postUrl": "",
-      "winners": [],
+      "winners": [
+        {
+          "name": "So Deep Jethara",
+          "url": "https://www.facebook.com/sodeep.jethara"
+        },
+        {
+          "name": "Suman Ghimire",
+          "url": "https://www.facebook.com/suman.ghimire.1422409"
+        }
+      ],
       "winnerTeam": "Morocco",
-      "score": [
-        "0",
-        "3"
-      ]
+      "score": ["0", "3"]
     },
     {
       "id": "r16-2",
@@ -42,12 +48,18 @@
       "detailNe": "खेलको विजेता प्रेडिक्ट गर्नुहोस्।",
       "status": "finished",
       "postUrl": "",
-      "winners": [],
+      "winners": [
+        {
+          "name": "Shanti Acharya",
+          "url": "https://www.facebook.com/Shantitamang55"
+        },
+        {
+          "name": "Amshu Pokharel",
+          "url": "https://www.facebook.com/iamawishs"
+        }
+      ],
       "winnerTeam": "France",
-      "score": [
-        "0",
-        "1"
-      ]
+      "score": ["0", "1"]
     },
     {
       "id": "r16-3",
@@ -66,12 +78,14 @@
       "detailNe": "खेलको विजेता प्रेडिक्ट गर्नुहोस्।",
       "status": "finished",
       "postUrl": "",
-      "winners": [],
+      "winners": [
+        {
+          "name": "Amshu Pokharel",
+          "url": "https://www.facebook.com/iamawishs"
+        }
+      ],
       "winnerTeam": "Norway",
-      "score": [
-        "1",
-        "2"
-      ]
+      "score": ["1", "2"]
     },
     {
       "id": "r16-4",
@@ -90,12 +104,18 @@
       "detailNe": "खेलको विजेता प्रेडिक्ट गर्नुहोस्।",
       "status": "finished",
       "postUrl": "",
-      "winners": [],
+      "winners": [
+        {
+          "name": "Achyut Neupane",
+          "url": "https://www.facebook.com/achyut1324"
+        },
+        {
+          "name": "Kriston Pal",
+          "url": "https://www.facebook.com/kriston.pal"
+        }
+      ],
       "winnerTeam": "England",
-      "score": [
-        "2",
-        "3"
-      ]
+      "score": ["2", "3"]
     },
     {
       "id": "r16-5",
@@ -114,12 +134,18 @@
       "detailNe": "खेलको विजेता प्रेडिक्ट गर्नुहोस्।",
       "status": "finished",
       "postUrl": "",
-      "winners": [],
+      "winners": [
+        {
+          "name": "Amshu Pokharel",
+          "url": "https://www.facebook.com/iamawishs"
+        },
+        {
+          "name": "Samir Khadka",
+          "url": "https://www.facebook.com/saSamir89"
+        }
+      ],
       "winnerTeam": "Spain",
-      "score": [
-        "1",
-        "0"
-      ]
+      "score": ["1", "0"]
     },
     {
       "id": "r16-6",
@@ -138,12 +164,18 @@
       "detailNe": "खेलको विजेता प्रेडिक्ट गर्नुहोस्।",
       "status": "finished",
       "postUrl": "",
-      "winners": [],
+      "winners": [
+        {
+          "name": "Naresh Bista",
+          "url": "https://www.facebook.com/naresh.bista.79"
+        },
+        {
+          "name": "Soshal Dahal",
+          "url": "https://www.facebook.com/soshal.dahal.9"
+        }
+      ],
       "winnerTeam": "Belgium",
-      "score": [
-        "1",
-        "4"
-      ]
+      "score": ["1", "4"]
     },
     {
       "id": "r16-7",
@@ -162,12 +194,18 @@
       "detailNe": "राउन्ड अफ ३२ पछि टोली पक्का हुन्छ।",
       "status": "finished",
       "postUrl": "",
-      "winners": [],
+      "winners": [
+        {
+          "name": "Shanti Acharya",
+          "url": "https://www.facebook.com/Shantitamang55"
+        },
+        {
+          "name": "Adhikari Atul",
+          "url": "https://www.facebook.com/atul.adhikari.458"
+        }
+      ],
       "winnerTeam": "Argentina",
-      "score": [
-        "2",
-        "3"
-      ]
+      "score": ["2", "3"]
     },
     {
       "id": "r16-8",
@@ -186,21 +224,20 @@
       "detailNe": "राउन्ड अफ ३२ पछि प्रतिद्वन्द्वी पक्का हुन्छ।",
       "status": "finished",
       "postUrl": "",
-      "winners": [],
+      "winners": [
+        {
+          "name": "Shanti Acharya",
+          "url": "https://www.facebook.com/Shantitamang55"
+        }
+      ],
       "winnerTeam": "Switzerland",
-      "score": [
-        "0 (4)",
-        "0 (3)"
-      ]
+      "score": ["0 (4)", "0 (3)"]
     },
     {
       "id": "qf-1",
       "stage": "Quarter Final",
       "stageNe": "क्वाटर फाइनल",
-      "sources": [
-        "r16-1",
-        "r16-2"
-      ],
+      "sources": ["r16-1", "r16-2"],
       "teams": "Morocco vs France",
       "venue": "Foxborough · Gillette Stadium",
       "venueNe": "Foxborough · Gillette Stadium",
@@ -216,19 +253,13 @@
       "postUrl": "",
       "winners": [],
       "winnerTeam": "France",
-      "score": [
-        "0",
-        "2"
-      ]
+      "score": ["0", "2"]
     },
     {
       "id": "qf-2",
       "stage": "Quarter Final",
       "stageNe": "क्वाटर फाइनल",
-      "sources": [
-        "r16-5",
-        "r16-6"
-      ],
+      "sources": ["r16-5", "r16-6"],
       "teams": "Spain vs Belgium",
       "venue": "Inglewood · SoFi Stadium",
       "venueNe": "Inglewood · SoFi Stadium",
@@ -244,19 +275,13 @@
       "postUrl": "",
       "winners": [],
       "winnerTeam": "Spain",
-      "score": [
-        "2",
-        "1"
-      ]
+      "score": ["2", "1"]
     },
     {
       "id": "qf-3",
       "stage": "Quarter Final",
       "stageNe": "क्वाटर फाइनल",
-      "sources": [
-        "r16-3",
-        "r16-4"
-      ],
+      "sources": ["r16-3", "r16-4"],
       "teams": "Norway vs England",
       "venue": "Miami Gardens · Hard Rock Stadium",
       "venueNe": "Miami Gardens · Hard Rock Stadium",
@@ -272,19 +297,13 @@
       "postUrl": "",
       "winners": [],
       "winnerTeam": "England",
-      "score": [
-        "1",
-        "2"
-      ]
+      "score": ["1", "2"]
     },
     {
       "id": "qf-4",
       "stage": "Quarter Final",
       "stageNe": "क्वाटर फाइनल",
-      "sources": [
-        "r16-7",
-        "r16-8"
-      ],
+      "sources": ["r16-7", "r16-8"],
       "teams": "Argentina vs Switzerland",
       "venue": "Kansas City · GEHA Field at Arrowhead Stadium",
       "venueNe": "Kansas City · GEHA Field at Arrowhead Stadium",
@@ -300,19 +319,13 @@
       "postUrl": "",
       "winners": [],
       "winnerTeam": "Argentina",
-      "score": [
-        "3",
-        "1"
-      ]
+      "score": ["3", "1"]
     },
     {
       "id": "sf-1",
       "stage": "Semi Final",
       "stageNe": "सेमी फाइनल",
-      "sources": [
-        "qf-1",
-        "qf-2"
-      ],
+      "sources": ["qf-1", "qf-2"],
       "teams": "France vs Spain",
       "venue": "Arlington · AT&T Stadium",
       "venueNe": "Arlington · AT&T Stadium",
@@ -332,10 +345,7 @@
       "id": "sf-2",
       "stage": "Semi Final",
       "stageNe": "सेमी फाइनल",
-      "sources": [
-        "qf-3",
-        "qf-4"
-      ],
+      "sources": ["qf-3", "qf-4"],
       "teams": "England vs Argentina",
       "venue": "Atlanta · Mercedes-Benz Stadium",
       "venueNe": "अट्लान्टा · मर्सिडिज-बेन्ज स्टेडियम",
@@ -355,10 +365,7 @@
       "id": "final",
       "stage": "Final",
       "stageNe": "फाइनल",
-      "sources": [
-        "sf-1",
-        "sf-2"
-      ],
+      "sources": ["sf-1", "sf-2"],
       "teams": "TBD vs TBD",
       "venue": "East Rutherford · MetLife Stadium",
       "venueNe": "इस्ट रदरफोर्ड · मेटलाइफ स्टेडियम",
