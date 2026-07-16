@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-15",
+  "updated": "2026-07-16",
   "matches": [
     {
       "id": "r16-1",
@@ -416,9 +416,14 @@
       "prizeNe": "रु. २,००० × २ विजेता",
       "detail": "Predict the winner — counts toward the bumper.",
       "detailNe": "विजेता प्रेडिक्ट गर्नुहोस् — बम्परमा गनिन्छ।",
-      "status": "open",
+      "status": "finished",
       "postUrl": "",
-      "winners": []
+      "winners": [],
+      "winnerTeam": "Argentina",
+      "score": [
+        "1",
+        "2"
+      ]
     },
     {
       "id": "final",
@@ -428,7 +433,7 @@
         "sf-1",
         "sf-2"
       ],
-      "teams": "TBD vs TBD",
+      "teams": "Spain vs Argentina",
       "venue": "East Rutherford · MetLife Stadium",
       "venueNe": "इस्ट रदरफोर्ड · मेटलाइफ स्टेडियम",
       "date": "July 20, 2026",
@@ -439,7 +444,7 @@
       "prizeNe": "रु. ३,००० × २ विजेता",
       "detail": "Predict the champion — the final bumper leg.",
       "detailNe": "च्याम्पियन प्रेडिक्ट गर्नुहोस् — बम्परको अन्तिम खुड्किलो।",
-      "status": "upcoming",
+      "status": "open",
       "postUrl": "",
       "winners": []
     }
