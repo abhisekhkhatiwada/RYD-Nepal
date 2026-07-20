@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-16",
+  "updated": "2026-07-20",
   "matches": [
     {
       "id": "r16-1",
@@ -444,9 +444,14 @@
       "prizeNe": "रु. ३,००० × २ विजेता",
       "detail": "Predict the champion — the final bumper leg.",
       "detailNe": "च्याम्पियन प्रेडिक्ट गर्नुहोस् — बम्परको अन्तिम खुड्किलो।",
-      "status": "open",
+      "status": "finished",
       "postUrl": "",
-      "winners": []
+      "winners": [],
+      "winnerTeam": "Spain",
+      "score": [
+        "1",
+        "0"
+      ]
     }
   ]
 }
