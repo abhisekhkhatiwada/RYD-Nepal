@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-12",
+  "updated": "2026-07-20",
   "matches": [
     {
       "id": "r16-1",
@@ -373,7 +373,7 @@
       "prizeNe": "रु. २,००० × २ विजेता",
       "detail": "Predict the winner — counts toward the bumper.",
       "detailNe": "विजेता प्रेडिक्ट गर्नुहोस् — बम्परमा गनिन्छ।",
-      "status": "open",
+      "status": "finished",
       "postUrl": "",
       "winners": [
         {
@@ -384,7 +384,9 @@
           "name": "Alex Døüble P",
           "url": "https://www.facebook.com/piang.piang.395669"
         }
-      ]
+      ],
+      "winnerTeam": "Spain",
+      "score": ["2", "0"]
     },
     {
       "id": "sf-2",
@@ -402,7 +404,7 @@
       "prizeNe": "रु. २,००० × २ विजेता",
       "detail": "Predict the winner — counts toward the bumper.",
       "detailNe": "विजेता प्रेडिक्ट गर्नुहोस् — बम्परमा गनिन्छ।",
-      "status": "open",
+      "status": "finished",
       "postUrl": "",
       "winners": [
         {
@@ -413,14 +415,16 @@
           "name": "Utshab Bhatta",
           "url": "https://www.facebook.com/utshab.bhatta.39"
         }
-      ]
+      ],
+      "winnerTeam": "Argentina",
+      "score": ["2", "1"]
     },
     {
       "id": "final",
       "stage": "Final",
       "stageNe": "फाइनल",
       "sources": ["sf-1", "sf-2"],
-      "teams": "TBD vs TBD",
+      "teams": "Spain vs Argentina",
       "venue": "East Rutherford · MetLife Stadium",
       "venueNe": "इस्ट रदरफोर्ड · मेटलाइफ स्टेडियम",
       "date": "July 20, 2026",
@@ -431,9 +435,11 @@
       "prizeNe": "रु. ३,००० × २ विजेता",
       "detail": "Predict the champion — the final bumper leg.",
       "detailNe": "च्याम्पियन प्रेडिक्ट गर्नुहोस् — बम्परको अन्तिम खुड्किलो।",
-      "status": "upcoming",
+      "status": "finished",
       "postUrl": "",
-      "winners": []
+      "winners": [],
+      "winnerTeam": "Spain",
+      "score": ["1", "0"]
     }
   ]
 }
