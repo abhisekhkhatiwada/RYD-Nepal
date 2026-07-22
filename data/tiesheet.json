@@ -251,7 +251,16 @@
       "detailNe": "विजेता प्रेडिक्ट गर्नुहोस् — बम्परमा गनिन्छ।",
       "status": "finished",
       "postUrl": "",
-      "winners": [],
+      "winners": [
+        {
+          "name": "Pratikxya Gurung ",
+          "url": "https://www.facebook.com/pratikshya.grgtmg"
+        },
+        {
+          "name": "Suhail Khalid",
+          "url": "https://www.facebook.com/suhail.khalid.4702"
+        }
+      ],
       "winnerTeam": "France",
       "score": ["0", "2"]
     },
@@ -273,7 +282,16 @@
       "detailNe": "विजेता प्रेडिक्ट गर्नुहोस् — बम्परमा गनिन्छ।",
       "status": "finished",
       "postUrl": "",
-      "winners": [],
+      "winners": [
+        {
+          "name": "Shanti Acharya",
+          "url": "https://www.facebook.com/Shantitamang55"
+        },
+        {
+          "name": "Kulchandra Gautam",
+          "url": "https://www.facebook.com/dakulX"
+        }
+      ],
       "winnerTeam": "Spain",
       "score": ["2", "1"]
     },
@@ -295,7 +313,16 @@
       "detailNe": "विजेता प्रेडिक्ट गर्नुहोस् — बम्परमा गनिन्छ।",
       "status": "finished",
       "postUrl": "",
-      "winners": [],
+      "winners": [
+        {
+          "name": "Achyut Neupane",
+          "url": "https://www.facebook.com/achyut1324"
+        },
+        {
+          "name": "Kulchandra Gautam",
+          "url": "https://www.facebook.com/dakulX"
+        }
+      ],
       "winnerTeam": "England",
       "score": ["1", "2"]
     },
@@ -317,7 +344,16 @@
       "detailNe": "विजेता प्रेडिक्ट गर्नुहोस् — बम्परमा गनिन्छ।",
       "status": "finished",
       "postUrl": "",
-      "winners": [],
+      "winners": [
+        {
+          "name": "Amshu Pokharel",
+          "url": "https://www.facebook.com/iamawishs"
+        },
+        {
+          "name": "Shanti Acharya",
+          "url": "https://www.facebook.com/Shantitamang55"
+        }
+      ],
       "winnerTeam": "Argentina",
       "score": ["3", "1"]
     },
@@ -339,7 +375,16 @@
       "detailNe": "विजेता प्रेडिक्ट गर्नुहोस् — बम्परमा गनिन्छ।",
       "status": "open",
       "postUrl": "",
-      "winners": []
+      "winners": [
+        {
+          "name": "Sujan P Shrestha",
+          "url": "https://www.facebook.com/newar.sujan.589"
+        },
+        {
+          "name": "Alex Døüble P",
+          "url": "https://www.facebook.com/piang.piang.395669"
+        }
+      ]
     },
     {
       "id": "sf-2",
@@ -359,7 +404,16 @@
       "detailNe": "विजेता प्रेडिक्ट गर्नुहोस् — बम्परमा गनिन्छ।",
       "status": "open",
       "postUrl": "",
-      "winners": []
+      "winners": [
+        {
+          "name": "Samir Khadka",
+          "url": "https://www.facebook.com/saSamir89"
+        },
+        {
+          "name": "Utshab Bhatta",
+          "url": "https://www.facebook.com/utshab.bhatta.39"
+        }
+      ]
     },
     {
       "id": "final",
