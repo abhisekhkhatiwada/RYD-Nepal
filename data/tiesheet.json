@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-20",
+  "updated": "2026-07-23",
   "matches": [
     {
       "id": "r16-1",
@@ -29,7 +29,10 @@
         }
       ],
       "winnerTeam": "Morocco",
-      "score": ["0", "3"]
+      "score": [
+        "0",
+        "3"
+      ]
     },
     {
       "id": "r16-2",
@@ -59,7 +62,10 @@
         }
       ],
       "winnerTeam": "France",
-      "score": ["0", "1"]
+      "score": [
+        "0",
+        "1"
+      ]
     },
     {
       "id": "r16-3",
@@ -85,7 +91,10 @@
         }
       ],
       "winnerTeam": "Norway",
-      "score": ["1", "2"]
+      "score": [
+        "1",
+        "2"
+      ]
     },
     {
       "id": "r16-4",
@@ -115,7 +124,10 @@
         }
       ],
       "winnerTeam": "England",
-      "score": ["2", "3"]
+      "score": [
+        "2",
+        "3"
+      ]
     },
     {
       "id": "r16-5",
@@ -145,7 +157,10 @@
         }
       ],
       "winnerTeam": "Spain",
-      "score": ["1", "0"]
+      "score": [
+        "1",
+        "0"
+      ]
     },
     {
       "id": "r16-6",
@@ -175,7 +190,10 @@
         }
       ],
       "winnerTeam": "Belgium",
-      "score": ["1", "4"]
+      "score": [
+        "1",
+        "4"
+      ]
     },
     {
       "id": "r16-7",
@@ -205,7 +223,10 @@
         }
       ],
       "winnerTeam": "Argentina",
-      "score": ["2", "3"]
+      "score": [
+        "2",
+        "3"
+      ]
     },
     {
       "id": "r16-8",
@@ -231,13 +252,19 @@
         }
       ],
       "winnerTeam": "Switzerland",
-      "score": ["0 (4)", "0 (3)"]
+      "score": [
+        "0 (4)",
+        "0 (3)"
+      ]
     },
     {
       "id": "qf-1",
       "stage": "Quarter Final",
       "stageNe": "क्वाटर फाइनल",
-      "sources": ["r16-1", "r16-2"],
+      "sources": [
+        "r16-1",
+        "r16-2"
+      ],
       "teams": "Morocco vs France",
       "venue": "Foxborough · Gillette Stadium",
       "venueNe": "Foxborough · Gillette Stadium",
@@ -262,13 +289,19 @@
         }
       ],
       "winnerTeam": "France",
-      "score": ["0", "2"]
+      "score": [
+        "0",
+        "2"
+      ]
     },
     {
       "id": "qf-2",
       "stage": "Quarter Final",
       "stageNe": "क्वाटर फाइनल",
-      "sources": ["r16-5", "r16-6"],
+      "sources": [
+        "r16-5",
+        "r16-6"
+      ],
       "teams": "Spain vs Belgium",
       "venue": "Inglewood · SoFi Stadium",
       "venueNe": "Inglewood · SoFi Stadium",
@@ -293,13 +326,19 @@
         }
       ],
       "winnerTeam": "Spain",
-      "score": ["2", "1"]
+      "score": [
+        "2",
+        "1"
+      ]
     },
     {
       "id": "qf-3",
       "stage": "Quarter Final",
       "stageNe": "क्वाटर फाइनल",
-      "sources": ["r16-3", "r16-4"],
+      "sources": [
+        "r16-3",
+        "r16-4"
+      ],
       "teams": "Norway vs England",
       "venue": "Miami Gardens · Hard Rock Stadium",
       "venueNe": "Miami Gardens · Hard Rock Stadium",
@@ -324,13 +363,19 @@
         }
       ],
       "winnerTeam": "England",
-      "score": ["1", "2"]
+      "score": [
+        "1",
+        "2"
+      ]
     },
     {
       "id": "qf-4",
       "stage": "Quarter Final",
       "stageNe": "क्वाटर फाइनल",
-      "sources": ["r16-7", "r16-8"],
+      "sources": [
+        "r16-7",
+        "r16-8"
+      ],
       "teams": "Argentina vs Switzerland",
       "venue": "Kansas City · GEHA Field at Arrowhead Stadium",
       "venueNe": "Kansas City · GEHA Field at Arrowhead Stadium",
@@ -355,13 +400,19 @@
         }
       ],
       "winnerTeam": "Argentina",
-      "score": ["3", "1"]
+      "score": [
+        "3",
+        "1"
+      ]
     },
     {
       "id": "sf-1",
       "stage": "Semi Final",
       "stageNe": "सेमी फाइनल",
-      "sources": ["qf-1", "qf-2"],
+      "sources": [
+        "qf-1",
+        "qf-2"
+      ],
       "teams": "France vs Spain",
       "venue": "Arlington · AT&T Stadium",
       "venueNe": "Arlington · AT&T Stadium",
@@ -386,13 +437,19 @@
         }
       ],
       "winnerTeam": "Spain",
-      "score": ["2", "0"]
+      "score": [
+        "0",
+        "2"
+      ]
     },
     {
       "id": "sf-2",
       "stage": "Semi Final",
       "stageNe": "सेमी फाइनल",
-      "sources": ["qf-3", "qf-4"],
+      "sources": [
+        "qf-3",
+        "qf-4"
+      ],
       "teams": "England vs Argentina",
       "venue": "Atlanta · Mercedes-Benz Stadium",
       "venueNe": "अट्लान्टा · मर्सिडिज-बेन्ज स्टेडियम",
@@ -417,13 +474,19 @@
         }
       ],
       "winnerTeam": "Argentina",
-      "score": ["2", "1"]
+      "score": [
+        "1",
+        "2"
+      ]
     },
     {
       "id": "final",
       "stage": "Final",
       "stageNe": "फाइनल",
-      "sources": ["sf-1", "sf-2"],
+      "sources": [
+        "sf-1",
+        "sf-2"
+      ],
       "teams": "Spain vs Argentina",
       "venue": "East Rutherford · MetLife Stadium",
       "venueNe": "इस्ट रदरफोर्ड · मेटलाइफ स्टेडियम",
@@ -439,7 +502,10 @@
       "postUrl": "",
       "winners": [],
       "winnerTeam": "Spain",
-      "score": ["1", "0"]
+      "score": [
+        "1",
+        "0"
+      ]
     }
   ]
 }
